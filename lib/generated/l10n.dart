@@ -50,11 +50,101 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Hello`
-  String get hello {
+  /// `Hello Captain Taha`
+  String get home_hi {
     return Intl.message(
-      'Hello',
-      name: 'hello',
+      'Hello Captain Taha',
+      name: 'home_hi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Happy to see you again`
+  String get home_subHi {
+    return Intl.message(
+      'Happy to see you again',
+      name: 'home_subHi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Searching for nearby clubs...`
+  String get home_search {
+    return Intl.message(
+      'Searching for nearby clubs...',
+      name: 'home_search',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `What would you like to use today`
+  String get home_title {
+    return Intl.message(
+      'What would you like to use today',
+      name: 'home_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `اجمالي اللاعبين`
+  String get home_cat1 {
+    return Intl.message(
+      'اجمالي اللاعبين',
+      name: 'home_cat1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `لاعبين تحت الاختبار`
+  String get home_cat2 {
+    return Intl.message(
+      'لاعبين تحت الاختبار',
+      name: 'home_cat2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `لاعبين مرحله اولى`
+  String get home_cat3 {
+    return Intl.message(
+      'لاعبين مرحله اولى',
+      name: 'home_cat3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `لاعبين اختبار ثاني`
+  String get home_cat4 {
+    return Intl.message(
+      'لاعبين اختبار ثاني',
+      name: 'home_cat4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `لاعبين مرحله ثانيه`
+  String get home_cat5 {
+    return Intl.message(
+      'لاعبين مرحله ثانيه',
+      name: 'home_cat5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `لاعبين انتهى اشتراكهم`
+  String get home_cat6 {
+    return Intl.message(
+      'لاعبين انتهى اشتراكهم',
+      name: 'home_cat6',
       desc: '',
       args: [],
     );
