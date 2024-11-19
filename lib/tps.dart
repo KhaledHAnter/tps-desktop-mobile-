@@ -12,10 +12,11 @@ class Tps extends StatelessWidget {
     return MaterialApp(
       // home: LoginView(),
       debugShowCheckedModeBanner: false,
-      title: "Doc Adavanced Flutter",
+      title: "TPS",
       theme: ThemeData(
-        primaryColor: ColorsManager.mainBlue,
+        primaryColor: ColorsManager.mainBage,
         scaffoldBackgroundColor: Colors.white,
+        fontFamily: "DIN Next LT Arabic",
       ),
       initialRoute: Routes.homeScreen,
       onGenerateRoute: appRouter.generateRoute,
