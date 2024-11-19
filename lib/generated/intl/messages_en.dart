@@ -22,6 +22,20 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "hello": MessageLookupByLibrary.simpleMessage("Hello")
+        "home_cat1": MessageLookupByLibrary.simpleMessage("اجمالي اللاعبين"),
+        "home_cat2":
+            MessageLookupByLibrary.simpleMessage("لاعبين تحت الاختبار"),
+        "home_cat3": MessageLookupByLibrary.simpleMessage("لاعبين مرحله اولى"),
+        "home_cat4": MessageLookupByLibrary.simpleMessage("لاعبين اختبار ثاني"),
+        "home_cat5": MessageLookupByLibrary.simpleMessage("لاعبين مرحله ثانيه"),
+        "home_cat6":
+            MessageLookupByLibrary.simpleMessage("لاعبين انتهى اشتراكهم"),
+        "home_hi": MessageLookupByLibrary.simpleMessage("Hello Captain Taha"),
+        "home_search": MessageLookupByLibrary.simpleMessage(
+            "Searching for nearby clubs..."),
+        "home_subHi":
+            MessageLookupByLibrary.simpleMessage("Happy to see you again"),
+        "home_title": MessageLookupByLibrary.simpleMessage(
+            "What would you like to use today")
       };
 }

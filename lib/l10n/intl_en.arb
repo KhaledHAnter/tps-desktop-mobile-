@@ -1,3 +1,12 @@
 {
-    "hello": "Hello"
+    "home_hi": "Hello Captain Taha",
+    "home_subHi": "Happy to see you again",
+    "home_search": "Searching for nearby clubs...",
+    "home_title": "What would you like to use today",
+    "home_cat1" : "اجمالي اللاعبين",
+    "home_cat2" : "لاعبين تحت الاختبار",
+    "home_cat3" : "لاعبين مرحله اولى",
+    "home_cat4" : "لاعبين اختبار ثاني",
+    "home_cat5" : "لاعبين مرحله ثانيه",
+    "home_cat6" : "لاعبين انتهى اشتراكهم"
 }

@@ -38,4 +38,9 @@ class Styles {
     fontWeight: FontWeightsHelper.medium,
     color: Colors.black,
   );
+  static TextStyle font16medium = const TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeightsHelper.medium,
+    color: Colors.black,
+  );
 }
