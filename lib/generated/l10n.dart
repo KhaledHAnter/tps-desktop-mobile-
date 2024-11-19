@@ -149,6 +149,76 @@ class S {
       args: [],
     );
   }
+
+  /// `إضافة لاعب جديد`
+  String get home_add_player {
+    return Intl.message(
+      'إضافة لاعب جديد',
+      name: 'home_add_player',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `اسم اللاعب`
+  String get home_add_lbl1 {
+    return Intl.message(
+      'اسم اللاعب',
+      name: 'home_add_lbl1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `الرياضة`
+  String get home_add_lbl2 {
+    return Intl.message(
+      'الرياضة',
+      name: 'home_add_lbl2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `فترة التدريب`
+  String get home_add_lbl3 {
+    return Intl.message(
+      'فترة التدريب',
+      name: 'home_add_lbl3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `سعر الاشتراك`
+  String get home_add_lbl4 {
+    return Intl.message(
+      'سعر الاشتراك',
+      name: 'home_add_lbl4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `رقم التلفون`
+  String get home_add_lbl5 {
+    return Intl.message(
+      'رقم التلفون',
+      name: 'home_add_lbl5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `إضافة اللاعب`
+  String get home_add_action {
+    return Intl.message(
+      'إضافة اللاعب',
+      name: 'home_add_action',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
