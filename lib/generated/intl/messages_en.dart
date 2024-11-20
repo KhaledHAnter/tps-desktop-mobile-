@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "home_add_lbl3": MessageLookupByLibrary.simpleMessage("فترة التدريب"),
         "home_add_lbl4": MessageLookupByLibrary.simpleMessage("سعر الاشتراك"),
         "home_add_lbl5": MessageLookupByLibrary.simpleMessage("رقم التلفون"),
+        "home_add_lbl6": MessageLookupByLibrary.simpleMessage("ملاحظات"),
         "home_add_player":
             MessageLookupByLibrary.simpleMessage("إضافة لاعب جديد"),
         "home_cat1": MessageLookupByLibrary.simpleMessage("اجمالي اللاعبين"),

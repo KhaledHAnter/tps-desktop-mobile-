@@ -42,7 +42,18 @@ class PlayersSection extends StatelessWidget {
                 const Spacer(
                   flex: 3,
                 ),
-                const Icon(Icons.arrow_back_ios),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Row(
+                    children: [
+                      Text("2000ج.م", style: Styles.font14medium),
+                      const Spacer(),
+                      Text("20يوم",
+                          style: Styles.font14medium
+                              .copyWith(color: Colors.redAccent)),
+                    ],
+                  ),
+                ),
                 const Spacer(),
               ],
             ),

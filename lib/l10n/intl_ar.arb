@@ -16,9 +16,10 @@
 
     "home_add_lbl1" : "اسم اللاعب",
     "home_add_lbl2" : "الرياضة",
-    "home_add_lbl3" : "فترة التدريب",
+    "home_add_lbl3" : "فترة التدريب بالأيام",
     "home_add_lbl4" : "سعر الاشتراك",
     "home_add_lbl5" : "رقم التلفون",
+    "home_add_lbl6" : "ملاحظات",
 
     "home_add_action" : "إضافة اللاعب"
 }

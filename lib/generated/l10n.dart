@@ -210,6 +210,16 @@ class S {
     );
   }
 
+  /// `ملاحظات`
+  String get home_add_lbl6 {
+    return Intl.message(
+      'ملاحظات',
+      name: 'home_add_lbl6',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `إضافة اللاعب`
   String get home_add_action {
     return Intl.message(
