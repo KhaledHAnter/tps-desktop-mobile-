@@ -4,6 +4,7 @@ import 'package:tps/core/helpers/extentions.dart';
 import 'package:tps/core/theming/colors.dart';
 import 'package:tps/core/theming/styles.dart';
 import 'package:tps/core/widgets/app_text_form_feild.dart';
+import 'package:tps/features/home/data/models/category_model.dart';
 import 'package:tps/generated/l10n.dart';
 
 class BottomSheetBody extends StatelessWidget {
@@ -46,8 +47,18 @@ class BottomSheetBody extends StatelessWidget {
             hintText: S.of(context).home_add_lbl1,
           ),
           const Gap(8),
-          AppTextFormFeild(
-            hintText: S.of(context).home_add_lbl2,
+          Row(
+            children: [
+              Expanded(
+                child: AppTextFormFeild(
+                  hintText: S.of(context).home_add_lbl2,
+                ),
+              ),
+              const Gap(8),
+              const Expanded(
+                child: PhaseDropDownButton(),
+              )
+            ],
           ),
           const Gap(8),
           Row(
