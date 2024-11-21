@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "82807974550",
+    "project_id": "tps-app-dd7b0",
+    "storage_bucket": "tps-app-dd7b0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82807974550:android:3d29339551f8c4dd8d70b7",
+        "android_client_info": {
+          "package_name": "com.example.tps"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5F4MZlOJ7ubcJ46p2dsjZgs83WvIPcG8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
