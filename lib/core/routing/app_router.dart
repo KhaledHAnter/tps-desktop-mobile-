@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tps/core/di/dependency_injection.dart';
 import 'package:tps/core/routing/routes.dart';
-import 'package:tps/features/home/logic/cubit/category_cubit.dart';
+import 'package:tps/features/home/logic/category_cubit/category_cubit.dart';
+import 'package:tps/features/home/logic/cubit/add_player_cubit.dart';
 import 'package:tps/features/home/ui/views/home_screen.dart';
 
 class AppRouter {
@@ -15,6 +17,9 @@ class AppRouter {
           builder: (_) => MultiBlocProvider(providers: [
             BlocProvider(
               create: (context) => CategoryCubit(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<AddPlayerCubit>(),
             ),
           ], child: const HomeScreen()),
         );

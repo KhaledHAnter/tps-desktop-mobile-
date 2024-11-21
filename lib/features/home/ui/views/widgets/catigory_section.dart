@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:tps/core/theming/styles.dart';
 import 'package:tps/features/home/data/models/category_model.dart';
-import 'package:tps/features/home/logic/cubit/category_cubit.dart';
+import 'package:tps/features/home/logic/category_cubit/category_cubit.dart';
 import 'package:tps/features/home/ui/views/widgets/catigory_tile.dart';
 import 'package:tps/generated/l10n.dart';
 
