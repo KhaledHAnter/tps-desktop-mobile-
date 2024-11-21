@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:tps/core/di/dependency_injection.dart';
 import 'package:tps/core/helpers/assets.dart';
 import 'package:tps/core/theming/styles.dart';
+import 'package:tps/features/home/logic/cubit/add_player_cubit.dart';
 import 'package:tps/features/home/ui/views/widgets/bottom_sheet_body.dart';
 import 'package:tps/generated/l10n.dart';
 
@@ -58,7 +61,10 @@ class WelcomeHeader extends StatelessWidget {
     return showBottomSheet(
         context: context,
         builder: (_) {
-          return const BottomSheetBody();
+          return BlocProvider(
+            create: (context) => getIt<AddPlayerCubit>(),
+            child: const BottomSheetBody(),
+          );
         });
   }
 }

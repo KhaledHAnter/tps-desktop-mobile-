@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:tps/features/home/data/repos/add_player_repo.dart';
@@ -6,7 +8,8 @@ import 'package:tps/features/home/logic/cubit/add_player_state.dart';
 class AddPlayerCubit extends Cubit<AddPlayerState> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController sportController = TextEditingController();
-  final TextEditingController phaseController = TextEditingController();
+  // final TextEditingController phaseController = TextEditingController();
+  String phaseController = '';
   final TextEditingController durationController = TextEditingController();
   final TextEditingController moneyController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
@@ -20,7 +23,7 @@ class AddPlayerCubit extends Cubit<AddPlayerState> {
   Future<void> addPlayer() async {
     final name = nameController.text;
     final sport = sportController.text;
-    final phase = phaseController.text;
+    final phase = phaseController;
     final phone = int.tryParse(phoneController.text) ?? 0;
     final money = int.tryParse(moneyController.text) ?? 0;
     final duration = int.tryParse(durationController.text) ?? 0;
@@ -35,6 +38,10 @@ class AddPlayerCubit extends Cubit<AddPlayerState> {
       duration: duration,
       description: description,
       freeze: null, // Optional: Add FreezeModel if needed
+    );
+
+    log(
+      "Player: $player , phone: ${player.phone}, name: ${player.name}, sport: ${player.sport}, phase: ${player.phase}, phone: ${player.phone}, money: ${player.money}, duration: ${player.subsDuration}, description: ${player.description}",
     );
 
     emit(const AddPlayerState.loading());
@@ -57,7 +64,6 @@ class AddPlayerCubit extends Cubit<AddPlayerState> {
     durationController.dispose();
     moneyController.dispose();
     phoneController.dispose();
-    phaseController.dispose();
     descriptionController.dispose();
     return super.close();
   }

@@ -18,9 +18,9 @@ class AppRouter {
             BlocProvider(
               create: (context) => CategoryCubit(),
             ),
-            BlocProvider(
-              create: (context) => getIt<AddPlayerCubit>(),
-            ),
+            // BlocProvider(
+            //   create: (context) => getIt<AddPlayerCubit>(),
+            // ),
           ], child: const HomeScreen()),
         );
 

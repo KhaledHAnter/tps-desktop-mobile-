@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tps/core/theming/colors.dart';
 import 'package:tps/features/home/data/models/category_model.dart';
+import 'package:tps/features/home/logic/cubit/add_player_cubit.dart';
 import 'package:tps/generated/l10n.dart';
 
 class PhaseDropDownButton extends StatefulWidget {
@@ -85,6 +87,8 @@ class _PhaseDropDownButtonState extends State<PhaseDropDownButton> {
           setState(() {
             selectedCategory = value; // Update the selected category
           });
+          context.read<AddPlayerCubit>().phaseController =
+              selectedCategory ?? '';
         },
       ),
     );

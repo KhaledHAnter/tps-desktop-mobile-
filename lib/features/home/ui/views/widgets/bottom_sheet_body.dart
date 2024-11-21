@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:tps/core/helpers/extentions.dart';
 import 'package:tps/core/theming/colors.dart';
 import 'package:tps/core/theming/styles.dart';
 import 'package:tps/core/widgets/app_text_form_feild.dart';
-import 'package:tps/features/home/data/models/category_model.dart';
+import 'package:tps/features/home/logic/cubit/add_player_cubit.dart';
+import 'package:tps/features/home/ui/views/widgets/phase_drop_down_button.dart';
 import 'package:tps/generated/l10n.dart';
 
 class BottomSheetBody extends StatelessWidget {
@@ -14,6 +16,7 @@ class BottomSheetBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<AddPlayerCubit>();
     return Container(
       height: MediaQuery.sizeOf(context).height / 1.7,
       width: MediaQuery.sizeOf(context).width,
@@ -45,6 +48,7 @@ class BottomSheetBody extends StatelessWidget {
           const Gap(16),
           AppTextFormFeild(
             hintText: S.of(context).home_add_lbl1,
+            controller: cubit.nameController,
           ),
           const Gap(8),
           Row(
@@ -52,6 +56,7 @@ class BottomSheetBody extends StatelessWidget {
               Expanded(
                 child: AppTextFormFeild(
                   hintText: S.of(context).home_add_lbl2,
+                  controller: cubit.sportController,
                 ),
               ),
               const Gap(8),
@@ -67,6 +72,7 @@ class BottomSheetBody extends StatelessWidget {
                 child: AppTextFormFeild(
                   hintText: S.of(context).home_add_lbl3,
                   keyboardType: TextInputType.number,
+                  controller: cubit.durationController,
                 ),
               ),
               const Gap(8),
@@ -74,6 +80,7 @@ class BottomSheetBody extends StatelessWidget {
                 child: AppTextFormFeild(
                   hintText: S.of(context).home_add_lbl4,
                   keyboardType: TextInputType.number,
+                  controller: cubit.moneyController,
                 ),
               ),
             ],
@@ -82,15 +89,18 @@ class BottomSheetBody extends StatelessWidget {
           AppTextFormFeild(
             hintText: S.of(context).home_add_lbl5,
             keyboardType: TextInputType.number,
+            controller: cubit.phoneController,
           ),
           const Gap(8),
           AppTextFormFeild(
             hintText: S.of(context).home_add_lbl6,
+            controller: cubit.descriptionController,
           ),
           const Spacer(),
           GestureDetector(
             onTap: () {
-              context.pop();
+              cubit.addPlayer();
+              // context.pop();
             },
             child: Container(
               padding: const EdgeInsets.symmetric(
