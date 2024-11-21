@@ -28,16 +28,28 @@ class MessageLookup extends MessageLookupByLibrary {
         "home_add_lbl3": MessageLookupByLibrary.simpleMessage("فترة التدريب"),
         "home_add_lbl4": MessageLookupByLibrary.simpleMessage("سعر الاشتراك"),
         "home_add_lbl5": MessageLookupByLibrary.simpleMessage("رقم التلفون"),
+        "home_add_lbl6": MessageLookupByLibrary.simpleMessage("ملاحظات"),
         "home_add_player":
             MessageLookupByLibrary.simpleMessage("إضافة لاعب جديد"),
         "home_cat1": MessageLookupByLibrary.simpleMessage("اجمالي اللاعبين"),
-        "home_cat2":
-            MessageLookupByLibrary.simpleMessage("لاعبين تحت الاختبار"),
-        "home_cat3": MessageLookupByLibrary.simpleMessage("لاعبين مرحله اولى"),
-        "home_cat4": MessageLookupByLibrary.simpleMessage("لاعبين اختبار ثاني"),
-        "home_cat5": MessageLookupByLibrary.simpleMessage("لاعبين مرحله ثانيه"),
-        "home_cat6":
+        "home_cat10":
+            MessageLookupByLibrary.simpleMessage("لاعبين استلموا اخر اسابيع"),
+        "home_cat11":
             MessageLookupByLibrary.simpleMessage("لاعبين انتهى اشتراكهم"),
+        "home_cat2":
+            MessageLookupByLibrary.simpleMessage("لاعبين مهتمين بالخدمة"),
+        "home_cat3":
+            MessageLookupByLibrary.simpleMessage("لاعبين تحت الاختبار"),
+        "home_cat4":
+            MessageLookupByLibrary.simpleMessage("لاعبين مستنين البرنامج"),
+        "home_cat5":
+            MessageLookupByLibrary.simpleMessage("لاعبين اول 3 اسابيع"),
+        "home_cat6": MessageLookupByLibrary.simpleMessage("لاعبين اختبار ثاني"),
+        "home_cat7":
+            MessageLookupByLibrary.simpleMessage(" 2لاعبين مستنين البرنامج"),
+        "home_cat8":
+            MessageLookupByLibrary.simpleMessage("لاعبين استلموا 6 اسابيع"),
+        "home_cat9": MessageLookupByLibrary.simpleMessage("لاعبين اخر اختبار"),
         "home_hi": MessageLookupByLibrary.simpleMessage("Hello Captain Taha"),
         "home_search": MessageLookupByLibrary.simpleMessage(
             "Searching for nearby clubs..."),
