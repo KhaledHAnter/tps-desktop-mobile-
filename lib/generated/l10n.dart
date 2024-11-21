@@ -100,51 +100,101 @@ class S {
     );
   }
 
-  /// `لاعبين تحت الاختبار`
+  /// `لاعبين مهتمين بالخدمة`
   String get home_cat2 {
     return Intl.message(
-      'لاعبين تحت الاختبار',
+      'لاعبين مهتمين بالخدمة',
       name: 'home_cat2',
       desc: '',
       args: [],
     );
   }
 
-  /// `لاعبين مرحله اولى`
+  /// `لاعبين تحت الاختبار`
   String get home_cat3 {
     return Intl.message(
-      'لاعبين مرحله اولى',
+      'لاعبين تحت الاختبار',
       name: 'home_cat3',
       desc: '',
       args: [],
     );
   }
 
-  /// `لاعبين اختبار ثاني`
+  /// `لاعبين مستنين البرنامج`
   String get home_cat4 {
     return Intl.message(
-      'لاعبين اختبار ثاني',
+      'لاعبين مستنين البرنامج',
       name: 'home_cat4',
       desc: '',
       args: [],
     );
   }
 
-  /// `لاعبين مرحله ثانيه`
+  /// `لاعبين اول 3 اسابيع`
   String get home_cat5 {
     return Intl.message(
-      'لاعبين مرحله ثانيه',
+      'لاعبين اول 3 اسابيع',
       name: 'home_cat5',
       desc: '',
       args: [],
     );
   }
 
-  /// `لاعبين انتهى اشتراكهم`
+  /// `لاعبين اختبار ثاني`
   String get home_cat6 {
     return Intl.message(
-      'لاعبين انتهى اشتراكهم',
+      'لاعبين اختبار ثاني',
       name: 'home_cat6',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` 2لاعبين مستنين البرنامج`
+  String get home_cat7 {
+    return Intl.message(
+      ' 2لاعبين مستنين البرنامج',
+      name: 'home_cat7',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `لاعبين استلموا 6 اسابيع`
+  String get home_cat8 {
+    return Intl.message(
+      'لاعبين استلموا 6 اسابيع',
+      name: 'home_cat8',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `لاعبين اخر اختبار`
+  String get home_cat9 {
+    return Intl.message(
+      'لاعبين اخر اختبار',
+      name: 'home_cat9',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `لاعبين استلموا اخر اسابيع`
+  String get home_cat10 {
+    return Intl.message(
+      'لاعبين استلموا اخر اسابيع',
+      name: 'home_cat10',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `لاعبين انتهى اشتراكهم`
+  String get home_cat11 {
+    return Intl.message(
+      'لاعبين انتهى اشتراكهم',
+      name: 'home_cat11',
       desc: '',
       args: [],
     );

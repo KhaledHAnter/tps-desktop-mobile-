@@ -48,9 +48,11 @@ class PlayersSection extends StatelessWidget {
                     children: [
                       Text("2000ج.م", style: Styles.font14medium),
                       const Spacer(),
-                      Text("20يوم",
-                          style: Styles.font14medium
-                              .copyWith(color: Colors.redAccent)),
+                      Text(
+                        "20يوم",
+                        style: Styles.font14medium
+                            .copyWith(color: Colors.redAccent),
+                      ),
                     ],
                   ),
                 ),
