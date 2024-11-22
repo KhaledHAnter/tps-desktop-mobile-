@@ -12,6 +12,9 @@ part 'fetch_players_cubit.freezed.dart';
 
 class FetchPlayersCubit extends Cubit<FetchPlayersState> {
   final FetchPlayersRepo repository;
+  List<PlayerModel> allPlayers =
+      []; // To store all players for resetting filters
+
   FetchPlayersCubit(this.repository) : super(const FetchPlayersState.initial());
 
   void sortPlayers(List<PlayerModel> players, SortCriteria criteria) {
@@ -36,12 +39,11 @@ class FetchPlayersCubit extends Cubit<FetchPlayersState> {
   Future<void> fetchPlayers() async {
     emit(const FetchPlayersState.fetchLoading());
     final players = await repository.fetchPlayers();
-    log(players.toString());
-
     players.when(
-      success: (players) => emit(
-        FetchPlayersState.fetchSuccess(players),
-      ),
+      success: (fetchedPlayers) {
+        allPlayers = fetchedPlayers; // Cache all players for filtering
+        emit(FetchPlayersState.fetchSuccess(fetchedPlayers));
+      },
       error: (message) => emit(FetchPlayersState.fetchError(message)),
     );
   }
@@ -51,11 +53,29 @@ class FetchPlayersCubit extends Cubit<FetchPlayersState> {
     emit(const FetchPlayersState.fetchLoading());
     final players = await repository.fetchPlayers();
     players.when(
-      success: (players) {
-        sortPlayers(players, criteria);
-        emit(FetchPlayersState.fetchSuccess(players));
+      success: (fetchedPlayers) {
+        sortPlayers(fetchedPlayers, criteria);
+        allPlayers = fetchedPlayers; // Cache all players for filtering
+        emit(FetchPlayersState.fetchSuccess(fetchedPlayers));
       },
       error: (message) => emit(FetchPlayersState.fetchError(message)),
     );
+  }
+
+  /// Filter players by phase
+  void filterPlayersByPhase(String phase) {
+    if (phase == "All") {
+      // Show all players if "All" phase is selected
+      emit(FetchPlayersState.fetchSuccess(allPlayers));
+    } else if (phase == "sub_ended") {
+      final filteredPlayers =
+          allPlayers.where((player) => player.remainingDuration == 0).toList();
+      emit(FetchPlayersState.fetchSuccess(filteredPlayers));
+    } else {
+      // Filter players by the selected phase
+      final filteredPlayers =
+          allPlayers.where((player) => player.phase == phase).toList();
+      emit(FetchPlayersState.fetchSuccess(filteredPlayers));
+    }
   }
 }
