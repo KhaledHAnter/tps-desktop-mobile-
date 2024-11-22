@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tps/core/di/dependency_injection.dart';
 import 'package:tps/core/routing/routes.dart';
 import 'package:tps/features/home/logic/category_cubit/category_cubit.dart';
-import 'package:tps/features/home/logic/cubit/add_player_cubit.dart';
+import 'package:tps/features/home/logic/add_player_cubit/add_player_cubit.dart';
 import 'package:tps/features/home/ui/views/home_screen.dart';
 
 class AppRouter {

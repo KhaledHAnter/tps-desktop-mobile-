@@ -13,7 +13,7 @@ class AddPlayerRepo {
     required String name,
     required String sport,
     required String phase,
-    required int phone,
+    required String phone,
     required int money,
     required int duration, // Subscription duration in days
     String? description,
@@ -21,9 +21,7 @@ class AddPlayerRepo {
   }) {
     final startDate = DateTime.now();
     final endDate = startDate.add(Duration(days: duration));
-    final remainingDuration = Duration(
-      days: endDate.difference(DateTime.now()).inDays,
-    );
+    const remainingDuration = 0;
 
     return PlayerModel(
       name: name,
@@ -34,7 +32,7 @@ class AddPlayerRepo {
       subsDuration: duration,
       startDate: startDate,
       endDate: endDate,
-      remainingDuration: DateTime.now().add(remainingDuration),
+      remainingDuration: remainingDuration,
       freeze: freeze,
       description: description,
     );

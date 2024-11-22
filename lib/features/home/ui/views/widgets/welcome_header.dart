@@ -4,7 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:tps/core/di/dependency_injection.dart';
 import 'package:tps/core/helpers/assets.dart';
 import 'package:tps/core/theming/styles.dart';
-import 'package:tps/features/home/logic/cubit/add_player_cubit.dart';
+import 'package:tps/features/home/logic/add_player_cubit/add_player_cubit.dart';
 import 'package:tps/features/home/ui/views/widgets/bottom_sheet_body.dart';
 import 'package:tps/generated/l10n.dart';
 

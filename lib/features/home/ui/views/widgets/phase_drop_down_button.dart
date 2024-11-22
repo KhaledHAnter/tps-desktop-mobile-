@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tps/core/theming/colors.dart';
 import 'package:tps/features/home/data/models/category_model.dart';
-import 'package:tps/features/home/logic/cubit/add_player_cubit.dart';
+import 'package:tps/features/home/logic/add_player_cubit/add_player_cubit.dart';
 import 'package:tps/generated/l10n.dart';
 
 class PhaseDropDownButton extends StatefulWidget {
@@ -17,10 +17,6 @@ class _PhaseDropDownButtonState extends State<PhaseDropDownButton> {
   @override
   Widget build(BuildContext context) {
     List<CategoryModel> categories = [
-      CategoryModel(
-        name: "All",
-        text: S.of(context).home_cat1,
-      ),
       CategoryModel(
         name: "enteristed",
         text: S.of(context).home_cat2,

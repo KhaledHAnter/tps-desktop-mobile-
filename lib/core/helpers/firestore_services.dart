@@ -9,7 +9,7 @@ class FirestoreService {
     try {
       await _firestore
           .collection('players')
-          .doc(player.phone.toString()) // Use phone number as the document ID
+          .doc(player.phone) // Use phone number as the document ID
           .set({
         'name': player.name,
         'sport': player.sport,
@@ -19,7 +19,7 @@ class FirestoreService {
         'subsDuration': player.subsDuration,
         'startDate': player.startDate.toIso8601String(),
         'endDate': player.endDate.toIso8601String(),
-        'remainingDuration': player.remainingDuration.toIso8601String(),
+        'remainingDuration': player.remainingDuration,
         'description': player.description,
         'freeze': player.freeze != null
             ? {

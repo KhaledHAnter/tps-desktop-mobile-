@@ -1,10 +1,10 @@
 import 'package:tps/features/home/data/models/freeze_model.dart';
 
 class PlayerModel {
-  final String name, sport, phase;
+  final String name, sport, phase, phone;
   final String? description;
-  final int phone, money, subsDuration;
-  final DateTime startDate, endDate, remainingDuration;
+  final int money, subsDuration, remainingDuration;
+  final DateTime startDate, endDate;
   final FreezeModel? freeze;
 
   PlayerModel({
