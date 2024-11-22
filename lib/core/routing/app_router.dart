@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tps/core/di/dependency_injection.dart';
-import 'package:tps/core/routing/routes.dart';
-import 'package:tps/features/home/logic/category_cubit/category_cubit.dart';
-import 'package:tps/features/home/logic/fetch_player_cubit/fetch_players_cubit.dart';
-import 'package:tps/features/home/ui/views/home_screen.dart';
+import '../di/dependency_injection.dart';
+import 'routes.dart';
+import '../../features/home/logic/category_cubit/category_cubit.dart';
+import '../../features/home/logic/fetch_player_cubit/fetch_players_cubit.dart';
+import '../../features/home/ui/views/home_screen.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {

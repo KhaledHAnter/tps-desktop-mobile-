@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tps/core/theming/colors.dart';
-import 'package:tps/core/theming/styles.dart';
+import '../theming/colors.dart';
+import '../theming/styles.dart';
 
 class AppTextFormFeild extends StatelessWidget {
   final String hintText;

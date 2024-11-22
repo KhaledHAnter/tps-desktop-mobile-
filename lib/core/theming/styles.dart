@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tps/core/theming/colors.dart';
-import 'package:tps/core/theming/font_weights_helper.dart';
+import 'colors.dart';
+import 'font_weights_helper.dart';
 
 class Styles {
   static TextStyle font12regular = const TextStyle(

@@ -1,12 +1,8 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tps/features/home/data/models/player_model.dart';
-import 'package:tps/features/home/data/repos/fetch_players_repo.dart';
-
+import '../../data/models/player_model.dart';
+import '../../data/repos/fetch_players_repo.dart';
 import '../../data/models/sort_criteria_enum.dart';
-
 part 'fetch_players_state.dart';
 part 'fetch_players_cubit.freezed.dart';
 

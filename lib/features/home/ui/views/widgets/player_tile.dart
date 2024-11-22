@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:tps/core/theming/colors.dart';
-import 'package:tps/core/theming/styles.dart';
-import 'package:tps/features/home/data/models/category_model.dart';
-import 'package:tps/features/home/data/models/player_model.dart';
-import 'package:tps/generated/l10n.dart';
+import '../../../../../core/theming/colors.dart';
+import '../../../../../core/theming/styles.dart';
+import '../../../data/models/category_model.dart';
+import '../../../data/models/player_model.dart';
+import '../../../../../generated/l10n.dart';
 
 class PlayerTile extends StatelessWidget {
   final PlayerModel player;

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:tps/core/di/dependency_injection.dart';
-import 'package:tps/core/helpers/assets.dart';
-import 'package:tps/core/theming/styles.dart';
-import 'package:tps/features/home/logic/add_player_cubit/add_player_cubit.dart';
-import 'package:tps/features/home/ui/views/widgets/bottom_sheet_body.dart';
-import 'package:tps/generated/l10n.dart';
+import '../../../../../core/di/dependency_injection.dart';
+import '../../../../../core/helpers/assets.dart';
+import '../../../../../core/theming/styles.dart';
+import '../../../logic/add_player_cubit/add_player_cubit.dart';
+import 'bottom_sheet_body.dart';
+import '../../../../../generated/l10n.dart';
 
 class WelcomeHeader extends StatelessWidget {
   const WelcomeHeader({
