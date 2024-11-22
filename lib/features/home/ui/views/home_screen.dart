@@ -3,6 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:tps/features/home/ui/views/widgets/app_search_bar.dart';
 import 'package:tps/features/home/ui/views/widgets/catigory_section.dart';
 import 'package:tps/features/home/ui/views/widgets/player_section.dart';
+import 'package:tps/features/home/ui/views/widgets/player_section_bloc_builder.dart';
 import 'package:tps/features/home/ui/views/widgets/welcome_header.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -30,7 +31,7 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              PlayersSection(),
+              PlayersSectionBlocBuilder(),
             ],
           ),
         ),
