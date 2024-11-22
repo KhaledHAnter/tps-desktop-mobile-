@@ -6,6 +6,7 @@ import 'package:tps/core/theming/colors.dart';
 import 'package:tps/core/theming/styles.dart';
 import 'package:tps/core/widgets/app_text_form_feild.dart';
 import 'package:tps/features/home/logic/add_player_cubit/add_player_cubit.dart';
+import 'package:tps/features/home/ui/views/widgets/add_player_bloc_listener.dart';
 import 'package:tps/features/home/ui/views/widgets/phase_drop_down_button.dart';
 import 'package:tps/generated/l10n.dart';
 
@@ -47,6 +48,7 @@ class BottomSheetBody extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
             ),
+            const Spacer(),
             const Gap(16),
             AppTextFormFeild(
               hintText: S.of(context).home_add_lbl1,
@@ -126,6 +128,7 @@ class BottomSheetBody extends StatelessWidget {
               ),
             ),
             const Spacer(),
+            const AddPlayerBlocListener(),
           ],
         ),
       ),

@@ -17,7 +17,7 @@ class AddPlayerRepo {
     required int money,
     required int duration, // Subscription duration in days
     String? description,
-    FreezeModel? freeze,
+    List<FreezeModel>? freeze,
   }) {
     final startDate = DateTime.now();
     final endDate = startDate.add(Duration(days: duration));

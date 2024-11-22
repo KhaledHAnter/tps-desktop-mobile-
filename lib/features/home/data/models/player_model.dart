@@ -5,7 +5,7 @@ class PlayerModel {
   final String? description;
   final int money, subsDuration, remainingDuration;
   final DateTime startDate, endDate;
-  final FreezeModel? freeze;
+  final List<FreezeModel>? freeze;
 
   PlayerModel({
     required this.name,

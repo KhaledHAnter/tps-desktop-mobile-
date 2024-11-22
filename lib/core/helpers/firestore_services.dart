@@ -21,18 +21,27 @@ class FirestoreService {
         'endDate': player.endDate.toIso8601String(),
         'remainingDuration': player.remainingDuration,
         'description': player.description,
-        'freeze': player.freeze != null
-            ? {
-                'isFreeze': player.freeze!.isFreeze,
-                'freezeTime': player.freeze!.freezeTime,
-              }
-            : null,
+        'freeze': null,
       });
       print('Player added successfully!');
       return true;
     } catch (e) {
       print('Error adding player: $e');
       return false;
+    }
+  }
+
+  /// Fetches all player documents from Firestore
+  Future<List<Map<String, dynamic>>?> fetchPlayers() async {
+    try {
+      final snapshot = await _firestore
+          .collection('players')
+          .orderBy('startDate', descending: true)
+          .get();
+      return snapshot.docs.map((doc) => doc.data()).toList();
+    } catch (e) {
+      print('Error fetching players: $e');
+      return null;
     }
   }
 }
