@@ -129,6 +129,9 @@ class _CatigorySectionState extends State<CatigorySection> {
                 //   _selectedIndex = index;
                 // });
                 context.read<CategoryCubit>().changeIndex(index);
+                context
+                    .read<FetchPlayersCubit>()
+                    .filterPlayersByPhase(categories[index].name);
               },
               child: BlocBuilder<CategoryCubit, CategoryState>(
                 builder: (context, state) {
