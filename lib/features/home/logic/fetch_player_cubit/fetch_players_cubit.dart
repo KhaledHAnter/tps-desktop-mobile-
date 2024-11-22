@@ -74,4 +74,13 @@ class FetchPlayersCubit extends Cubit<FetchPlayersState> {
       emit(FetchPlayersState.fetchSuccess(filteredPlayers));
     }
   }
+
+  /// Search players by name
+  void searchPlayersByName(String query) {
+    final filteredPlayers = allPlayers
+        .where(
+            (player) => player.name.toLowerCase().contains(query.toLowerCase()))
+        .toList();
+    emit(FetchPlayersState.fetchSuccess(filteredPlayers));
+  }
 }
