@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tps/core/routing/app_router.dart';
-import 'package:tps/core/routing/routes.dart';
-import 'package:tps/core/theming/colors.dart';
-import 'package:tps/generated/l10n.dart';
+import 'core/routing/app_router.dart';
+import 'core/routing/routes.dart';
+import 'core/theming/colors.dart';
+import 'generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 class Tps extends StatelessWidget {

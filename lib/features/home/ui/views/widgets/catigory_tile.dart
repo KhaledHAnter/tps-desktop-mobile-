@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tps/core/theming/colors.dart';
-import 'package:tps/core/theming/styles.dart';
+import '../../../../../core/theming/colors.dart';
+import '../../../../../core/theming/styles.dart';
 
 class CategoryTile extends StatelessWidget {
   const CategoryTile({

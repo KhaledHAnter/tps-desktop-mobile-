@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:tps/core/theming/colors.dart';
-import 'package:tps/features/home/logic/fetch_player_cubit/fetch_players_cubit.dart';
-import 'package:tps/features/home/ui/views/widgets/player_section.dart';
+import '../../../../../core/theming/colors.dart';
+import '../../../logic/fetch_player_cubit/fetch_players_cubit.dart';
+import 'player_section.dart';
 
 class PlayersSectionBlocBuilder extends StatelessWidget {
   const PlayersSectionBlocBuilder({super.key});

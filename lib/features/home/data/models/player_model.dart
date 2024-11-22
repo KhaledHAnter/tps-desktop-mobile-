@@ -1,4 +1,4 @@
-import 'package:tps/features/home/data/models/freeze_model.dart';
+import 'freeze_model.dart';
 
 class PlayerModel {
   final String name, sport, phase, phone;

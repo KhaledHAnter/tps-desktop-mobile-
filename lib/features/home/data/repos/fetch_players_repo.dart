@@ -1,7 +1,7 @@
-import 'package:tps/core/helpers/firestore_services.dart';
-import 'package:tps/core/networking/fetch_players_result.dart';
-import 'package:tps/features/home/data/models/player_model.dart';
-import 'package:tps/features/home/data/models/freeze_model.dart';
+import '../../../../core/helpers/firestore_services.dart';
+import '../../../../core/networking/fetch_players_result.dart';
+import '../models/player_model.dart';
+import '../models/freeze_model.dart';
 
 class FetchPlayersRepo {
   final FirestoreService _firestoreService;

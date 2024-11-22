@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:tps/core/theming/styles.dart';
-import 'package:tps/features/home/data/models/category_model.dart';
-import 'package:tps/features/home/data/models/sort_criteria_enum.dart';
-import 'package:tps/features/home/logic/category_cubit/category_cubit.dart';
-import 'package:tps/features/home/logic/fetch_player_cubit/fetch_players_cubit.dart';
-import 'package:tps/features/home/ui/views/widgets/catigory_tile.dart';
-import 'package:tps/generated/l10n.dart';
+import '../../../../../core/theming/styles.dart';
+import '../../../data/models/category_model.dart';
+import '../../../data/models/sort_criteria_enum.dart';
+import '../../../logic/category_cubit/category_cubit.dart';
+import '../../../logic/fetch_player_cubit/fetch_players_cubit.dart';
+import 'catigory_tile.dart';
+import '../../../../../generated/l10n.dart';
 
 class CatigorySection extends StatefulWidget {
   const CatigorySection({

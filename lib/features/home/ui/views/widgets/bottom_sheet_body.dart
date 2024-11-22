@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:tps/core/helpers/validator_utils.dart';
-import 'package:tps/core/theming/colors.dart';
-import 'package:tps/core/theming/styles.dart';
-import 'package:tps/core/widgets/app_text_form_feild.dart';
-import 'package:tps/features/home/logic/add_player_cubit/add_player_cubit.dart';
-import 'package:tps/features/home/ui/views/widgets/add_player_bloc_listener.dart';
-import 'package:tps/features/home/ui/views/widgets/phase_drop_down_button.dart';
-import 'package:tps/generated/l10n.dart';
+import '../../../../../core/helpers/validator_utils.dart';
+import '../../../../../core/theming/colors.dart';
+import '../../../../../core/theming/styles.dart';
+import '../../../../../core/widgets/app_text_form_feild.dart';
+import '../../../logic/add_player_cubit/add_player_cubit.dart';
+import 'add_player_bloc_listener.dart';
+import 'phase_drop_down_button.dart';
+import '../../../../../generated/l10n.dart';
 
 class BottomSheetBody extends StatelessWidget {
   const BottomSheetBody({

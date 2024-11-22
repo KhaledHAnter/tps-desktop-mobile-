@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tps/core/theming/colors.dart';
-import 'package:tps/features/home/data/models/category_model.dart';
-import 'package:tps/features/home/logic/add_player_cubit/add_player_cubit.dart';
-import 'package:tps/generated/l10n.dart';
+import '../../../../../core/theming/colors.dart';
+import '../../../data/models/category_model.dart';
+import '../../../logic/add_player_cubit/add_player_cubit.dart';
+import '../../../../../generated/l10n.dart';
 
 class PhaseDropDownButton extends StatefulWidget {
   const PhaseDropDownButton({super.key});

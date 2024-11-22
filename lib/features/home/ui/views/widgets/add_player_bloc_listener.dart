@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:tps/core/helpers/extentions.dart';
-import 'package:tps/core/theming/colors.dart';
-import 'package:tps/core/widgets/show_snackbar.dart';
-import 'package:tps/features/home/logic/add_player_cubit/add_player_cubit.dart';
-import 'package:tps/features/home/logic/add_player_cubit/add_player_state.dart';
-import 'package:tps/features/home/logic/fetch_player_cubit/fetch_players_cubit.dart';
+import '../../../../../core/helpers/extentions.dart';
+import '../../../../../core/theming/colors.dart';
+import '../../../../../core/widgets/show_snackbar.dart';
+import '../../../logic/add_player_cubit/add_player_cubit.dart';
+import '../../../logic/add_player_cubit/add_player_state.dart';
+import '../../../logic/fetch_player_cubit/fetch_players_cubit.dart';
 
 class AddPlayerBlocListener extends StatelessWidget {
   const AddPlayerBlocListener({super.key});

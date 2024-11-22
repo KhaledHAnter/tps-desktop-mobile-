@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:tps/features/home/data/repos/add_player_repo.dart';
-import 'package:tps/features/home/logic/add_player_cubit/add_player_state.dart';
+import '../../data/repos/add_player_repo.dart';
+import 'add_player_state.dart';
 
 class AddPlayerCubit extends Cubit<AddPlayerState> {
   final TextEditingController nameController = TextEditingController();
