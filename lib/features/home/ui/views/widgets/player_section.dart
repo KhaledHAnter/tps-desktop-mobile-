@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import 'package:tps/core/theming/colors.dart';
-import 'package:tps/core/theming/styles.dart';
+import 'package:tps/features/home/data/models/category_model.dart';
 import 'package:tps/features/home/data/models/player_model.dart';
+import 'package:tps/features/home/ui/views/widgets/player_tile.dart';
+import 'package:tps/generated/l10n.dart';
 
 class PlayersSection extends StatelessWidget {
   final void Function()? onTap;
@@ -23,60 +23,6 @@ class PlayersSection extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-}
-
-class PlayerTile extends StatelessWidget {
-  final PlayerModel player;
-  const PlayerTile({
-    super.key,
-    required this.player,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
-      decoration: BoxDecoration(
-        color: ColorsManager.containergray,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Column(
-        children: [
-          Text(
-            player.name,
-            style: Styles.font16medium.copyWith(fontWeight: FontWeight.w600),
-          ),
-          const Gap(4),
-          Text(
-            player.sport,
-            style: Styles.font16medium,
-          ),
-          const Gap(4),
-          Text(
-            player.phase,
-            style: Styles.font14medium,
-          ),
-          const Spacer(
-            flex: 3,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Row(
-              children: [
-                Text("${player.money}ج.م", style: Styles.font14medium),
-                const Spacer(),
-                Text(
-                  "${player.remainingDuration}يوم",
-                  style: Styles.font14medium.copyWith(color: Colors.redAccent),
-                ),
-              ],
-            ),
-          ),
-          const Spacer(),
-        ],
-      ),
     );
   }
 }

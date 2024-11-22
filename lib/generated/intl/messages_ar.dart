@@ -54,6 +54,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "home_hi": MessageLookupByLibrary.simpleMessage("اهلا كابتن طه"),
         "home_search":
             MessageLookupByLibrary.simpleMessage("البحث في قائمة اللاعبين..."),
+        "home_sort_cri1": MessageLookupByLibrary.simpleMessage("الأحدث"),
+        "home_sort_cri2": MessageLookupByLibrary.simpleMessage("سعر الاشتراك"),
+        "home_sort_cri3": MessageLookupByLibrary.simpleMessage("باقي المده"),
+        "home_sort_cri4": MessageLookupByLibrary.simpleMessage("الاسم"),
+        "home_sort_cri5": MessageLookupByLibrary.simpleMessage("الرياضة"),
         "home_subHi":
             MessageLookupByLibrary.simpleMessage("سعداء برويتك مرة اخري"),
         "home_title":
