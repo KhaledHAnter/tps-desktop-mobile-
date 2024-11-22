@@ -28,8 +28,23 @@ class Styles {
     fontWeight: FontWeightsHelper.medium,
     color: Colors.black,
   );
-  static TextStyle font24blod = const TextStyle(
+  static TextStyle font22bold = const TextStyle(
+    fontSize: 22,
+    fontWeight: FontWeightsHelper.bold,
+    color: Colors.black,
+  );
+  static TextStyle font24bold = const TextStyle(
     fontSize: 24,
+    fontWeight: FontWeightsHelper.bold,
+    color: Colors.black,
+  );
+  static TextStyle font20medium = const TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeightsHelper.medium,
+    color: Colors.black,
+  );
+  static TextStyle font20bold = const TextStyle(
+    fontSize: 20,
     fontWeight: FontWeightsHelper.bold,
     color: Colors.black,
   );

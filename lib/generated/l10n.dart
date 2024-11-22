@@ -329,6 +329,16 @@ class S {
       args: [],
     );
   }
+
+  /// `تفاصيل اللاعب`
+  String get details_head {
+    return Intl.message(
+      'تفاصيل اللاعب',
+      name: 'details_head',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tps/features/home/data/models/player_model.dart';
+import 'package:tps/features/player_details/logic/cubit/player_details_cubit.dart';
+import 'package:tps/features/player_details/ui/views/player_details_screen.dart';
 import '../di/dependency_injection.dart';
 import 'routes.dart';
 import '../../features/home/logic/category_cubit/category_cubit.dart';
@@ -22,6 +25,16 @@ class AppRouter {
               create: (context) => getIt<FetchPlayersCubit>()..fetchPlayers(),
             ),
           ], child: const HomeScreen()),
+        );
+      case Routes.palyerDetailsScreen:
+        arrguments as PlayerModel;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => PlayerDetailsCubit(),
+            child: PlayerDetailsScreen(
+              player: arrguments,
+            ),
+          ),
         );
 
       default:

@@ -26,6 +26,7 @@
     "home_sort_cri2" : "سعر الاشتراك",
     "home_sort_cri3" : "باقي المده",
     "home_sort_cri4" : "الاسم",
-    "home_sort_cri5" : "الرياضة"
+    "home_sort_cri5" : "الرياضة",
+    "details_head" : "تفاصيل اللاعب"
     
 }
