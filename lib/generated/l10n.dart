@@ -279,6 +279,56 @@ class S {
       args: [],
     );
   }
+
+  /// `الأحدث`
+  String get home_sort_cri1 {
+    return Intl.message(
+      'الأحدث',
+      name: 'home_sort_cri1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `سعر الاشتراك`
+  String get home_sort_cri2 {
+    return Intl.message(
+      'سعر الاشتراك',
+      name: 'home_sort_cri2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `باقي المده`
+  String get home_sort_cri3 {
+    return Intl.message(
+      'باقي المده',
+      name: 'home_sort_cri3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `الاسم`
+  String get home_sort_cri4 {
+    return Intl.message(
+      'الاسم',
+      name: 'home_sort_cri4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `الرياضة`
+  String get home_sort_cri5 {
+    return Intl.message(
+      'الرياضة',
+      name: 'home_sort_cri5',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

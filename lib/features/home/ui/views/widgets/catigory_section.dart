@@ -3,15 +3,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:tps/core/theming/styles.dart';
 import 'package:tps/features/home/data/models/category_model.dart';
+import 'package:tps/features/home/data/models/sort_criteria_enum.dart';
 import 'package:tps/features/home/logic/category_cubit/category_cubit.dart';
+import 'package:tps/features/home/logic/fetch_player_cubit/fetch_players_cubit.dart';
 import 'package:tps/features/home/ui/views/widgets/catigory_tile.dart';
 import 'package:tps/generated/l10n.dart';
 
-class CatigorySection extends StatelessWidget {
+class CatigorySection extends StatefulWidget {
   const CatigorySection({
     super.key,
   });
 
+  @override
+  State<CatigorySection> createState() => _CatigorySectionState();
+}
+
+class _CatigorySectionState extends State<CatigorySection> {
+  SortCriteria selectedCriteria = SortCriteria.newest;
   @override
   Widget build(BuildContext context) {
     List<CategoryModel> categories = [
@@ -63,9 +71,51 @@ class CatigorySection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
-          S.of(context).home_title,
-          style: Styles.font16medium,
+        Row(
+          children: [
+            Expanded(
+              flex: 2,
+              child: Text(
+                S.of(context).home_title,
+                style: Styles.font16medium,
+              ),
+            ),
+            const Spacer(),
+            Expanded(
+              child: DropdownButton<SortCriteria>(
+                isExpanded: true,
+                underline: const SizedBox.shrink(),
+                value: selectedCriteria,
+                items: [
+                  DropdownMenuItem(
+                      value: SortCriteria.newest,
+                      child: Text(S.of(context).home_sort_cri1)),
+                  DropdownMenuItem(
+                      value: SortCriteria.money,
+                      child: Text(S.of(context).home_sort_cri2)),
+                  DropdownMenuItem(
+                      value: SortCriteria.remainingDuration,
+                      child: Text(S.of(context).home_sort_cri3)),
+                  DropdownMenuItem(
+                      value: SortCriteria.name,
+                      child: Text(S.of(context).home_sort_cri4)),
+                  DropdownMenuItem(
+                      value: SortCriteria.sport,
+                      child: Text(S.of(context).home_sort_cri5)),
+                ],
+                onChanged: (criteria) {
+                  if (criteria != null) {
+                    setState(() {
+                      selectedCriteria = criteria;
+                    });
+                    context
+                        .read<FetchPlayersCubit>()
+                        .fetchAndSortPlayers(criteria);
+                  }
+                },
+              ),
+            ),
+          ],
         ),
         const Gap(16),
         SizedBox(

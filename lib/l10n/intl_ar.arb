@@ -26,5 +26,11 @@
     "home_add_lbl5" : "رقم التلفون",
     "home_add_lbl6" : "ملاحظات",
 
-    "home_add_action" : "إضافة اللاعب"
+    "home_add_action" : "إضافة اللاعب",
+
+    "home_sort_cri1" : "الأحدث",
+    "home_sort_cri2" : "سعر الاشتراك",
+    "home_sort_cri3" : "باقي المده",
+    "home_sort_cri4" : "الاسم",
+    "home_sort_cri5" : "الرياضة"
 }

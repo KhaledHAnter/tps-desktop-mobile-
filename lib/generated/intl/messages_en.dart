@@ -53,6 +53,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "home_hi": MessageLookupByLibrary.simpleMessage("Hello Captain Taha"),
         "home_search": MessageLookupByLibrary.simpleMessage(
             "Searching for nearby clubs..."),
+        "home_sort_cri1": MessageLookupByLibrary.simpleMessage("الأحدث"),
+        "home_sort_cri2": MessageLookupByLibrary.simpleMessage("سعر الاشتراك"),
+        "home_sort_cri3": MessageLookupByLibrary.simpleMessage("باقي المده"),
+        "home_sort_cri4": MessageLookupByLibrary.simpleMessage("الاسم"),
+        "home_sort_cri5": MessageLookupByLibrary.simpleMessage("الرياضة"),
         "home_subHi":
             MessageLookupByLibrary.simpleMessage("Happy to see you again"),
         "home_title": MessageLookupByLibrary.simpleMessage(
