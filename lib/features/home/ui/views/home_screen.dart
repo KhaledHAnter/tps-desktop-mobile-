@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'widgets/app_search_bar.dart';
 import 'widgets/catigory_section.dart';
-import 'widgets/player_section.dart';
 import 'widgets/player_section_bloc_builder.dart';
 import 'widgets/welcome_header.dart';
 

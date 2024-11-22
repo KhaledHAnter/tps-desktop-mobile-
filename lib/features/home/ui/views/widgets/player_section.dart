@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../data/models/category_model.dart';
 import '../../../data/models/player_model.dart';
 import 'player_tile.dart';
-import '../../../../../generated/l10n.dart';
 
 class PlayersSection extends StatelessWidget {
   final void Function()? onTap;
