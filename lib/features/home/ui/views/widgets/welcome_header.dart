@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:tps/core/widgets/app_bar_button.dart';
 import '../../../../../core/di/dependency_injection.dart';
 import '../../../../../core/helpers/assets.dart';
 import '../../../../../core/theming/styles.dart';
@@ -40,19 +41,10 @@ class WelcomeHeader extends StatelessWidget {
           ],
         ),
         const Spacer(),
-        GestureDetector(
+        AppBarButton(
           onTap: () => showPlayerAddSheet(context),
-          child: Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(
-                color: const Color(0XFFEDEDED),
-              ),
-            ),
-            child: const Icon(Icons.add),
-          ),
-        )
+          icon: Icons.add,
+        ),
       ],
     );
   }

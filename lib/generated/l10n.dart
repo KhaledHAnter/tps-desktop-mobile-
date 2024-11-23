@@ -329,6 +329,76 @@ class S {
       args: [],
     );
   }
+
+  /// `تفاصيل اللاعب`
+  String get details_head {
+    return Intl.message(
+      'تفاصيل اللاعب',
+      name: 'details_head',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `قائمة التجميد للاعب`
+  String get details_freeze {
+    return Intl.message(
+      'قائمة التجميد للاعب',
+      name: 'details_freeze',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `لا يوجد سجل تجميد للاعب`
+  String get details_no_freeze {
+    return Intl.message(
+      'لا يوجد سجل تجميد للاعب',
+      name: 'details_no_freeze',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تفاصيل عن اللاعب`
+  String get details_desc {
+    return Intl.message(
+      'تفاصيل عن اللاعب',
+      name: 'details_desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `لا توجد تفاصيل عن اللاعب`
+  String get details_no_desc {
+    return Intl.message(
+      'لا توجد تفاصيل عن اللاعب',
+      name: 'details_no_desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تعديل اللاعب`
+  String get edit_player {
+    return Intl.message(
+      'تعديل اللاعب',
+      name: 'edit_player',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تعديل اللاعب`
+  String get edit_button_lbl {
+    return Intl.message(
+      'تعديل اللاعب',
+      name: 'edit_button_lbl',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

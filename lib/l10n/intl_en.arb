@@ -26,6 +26,14 @@
     "home_sort_cri2" : "سعر الاشتراك",
     "home_sort_cri3" : "باقي المده",
     "home_sort_cri4" : "الاسم",
-    "home_sort_cri5" : "الرياضة"
+    "home_sort_cri5" : "الرياضة",
+    "details_head" : "تفاصيل اللاعب",
+    "details_freeze" : "قائمة التجميد للاعب",
+    "details_no_freeze" : "لا يوجد سجل تجميد للاعب",
+    "details_desc" : "تفاصيل عن اللاعب",
+    "details_no_desc" : "لا توجد تفاصيل عن اللاعب",
+    "edit_player" : "تعديل اللاعب",
+    "edit_button_lbl" : "تعديل اللاعب"
+
     
 }

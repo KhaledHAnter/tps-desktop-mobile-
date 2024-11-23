@@ -17,28 +17,30 @@ class AppTextFormFeild extends StatelessWidget {
   final String? Function(String?)? validator;
   final bool? readOnly;
   final void Function()? onTap;
+  final String? initialValue;
 
-  const AppTextFormFeild({
-    super.key,
-    required this.hintText,
-    this.contentPadding,
-    this.enabledBorder,
-    this.focusedBorder,
-    this.hintStyle,
-    this.inputTextStyle,
-    this.isObscureText = false,
-    this.suffixIcon,
-    this.keyboardType,
-    this.fillColor,
-    this.controller,
-    this.validator,
-    this.readOnly,
-    this.onTap,
-  });
+  const AppTextFormFeild(
+      {super.key,
+      required this.hintText,
+      this.contentPadding,
+      this.enabledBorder,
+      this.focusedBorder,
+      this.hintStyle,
+      this.inputTextStyle,
+      this.isObscureText = false,
+      this.suffixIcon,
+      this.keyboardType,
+      this.fillColor,
+      this.controller,
+      this.validator,
+      this.readOnly,
+      this.onTap,
+      this.initialValue});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: initialValue,
       controller: controller,
       validator: validator,
       keyboardType: keyboardType,
