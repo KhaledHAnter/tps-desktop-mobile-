@@ -1,4 +1,6 @@
 import 'package:get_it/get_it.dart';
+import 'package:tps/features/player_details/data/repos/fetch_single_player_repo.dart';
+import 'package:tps/features/player_details/logic/fetch_single_player_cubit/fetch_single_player_cubit.dart';
 import '../helpers/firestore_services.dart';
 import '../../features/home/data/repos/add_player_repo.dart';
 import '../../features/home/data/repos/fetch_players_repo.dart';
@@ -20,4 +22,10 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<FetchPlayersRepo>(
       () => FetchPlayersRepo(firestoreService));
   getIt.registerFactory<FetchPlayersCubit>(() => FetchPlayersCubit(getIt()));
+
+  // Fetch Single Player
+  getIt.registerLazySingleton<FetchSinglePlayerRepo>(
+      () => FetchSinglePlayerRepo(firestoreService));
+  getIt.registerFactory<FetchSinglePlayerCubit>(
+      () => FetchSinglePlayerCubit(getIt()));
 }

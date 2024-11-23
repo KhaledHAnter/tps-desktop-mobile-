@@ -22,7 +22,17 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "details_desc":
+            MessageLookupByLibrary.simpleMessage("تفاصيل عن اللاعب"),
+        "details_freeze":
+            MessageLookupByLibrary.simpleMessage("قائمة التجميد للاعب"),
         "details_head": MessageLookupByLibrary.simpleMessage("تفاصيل اللاعب"),
+        "details_no_desc":
+            MessageLookupByLibrary.simpleMessage("لا توجد تفاصيل عن اللاعب"),
+        "details_no_freeze":
+            MessageLookupByLibrary.simpleMessage("لا يوجد سجل تجميد للاعب"),
+        "edit_button_lbl": MessageLookupByLibrary.simpleMessage("تعديل اللاعب"),
+        "edit_player": MessageLookupByLibrary.simpleMessage("تعديل اللاعب"),
         "home_add_action": MessageLookupByLibrary.simpleMessage("إضافة اللاعب"),
         "home_add_lbl1": MessageLookupByLibrary.simpleMessage("اسم اللاعب"),
         "home_add_lbl2": MessageLookupByLibrary.simpleMessage("الرياضة"),

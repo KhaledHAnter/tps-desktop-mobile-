@@ -44,4 +44,20 @@ class FirestoreService {
       return null;
     }
   }
+
+  /// Fetches a player by document ID
+  Future<Map<String, dynamic>?> fetchPlayerById(String documentId) async {
+    try {
+      final doc = await _firestore.collection('players').doc(documentId).get();
+      if (doc.exists) {
+        return doc.data();
+      } else {
+        print('Player not found for ID: $documentId');
+        return null;
+      }
+    } catch (e) {
+      print('Error fetching player: $e');
+      return null;
+    }
+  }
 }

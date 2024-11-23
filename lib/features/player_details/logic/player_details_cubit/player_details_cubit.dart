@@ -8,9 +8,8 @@ class PlayerDetailsCubit extends Cubit<PlayerDetailsState> {
   PlayerDetailsCubit() : super(const PlayerDetailsState.initial());
 
   String formatDateTime(DateTime dateTime) {
-    final day = dateTime.day.toString().padLeft(2, '0'); // Ensure two digits
-    final month =
-        dateTime.month.toString().padLeft(2, '0'); // Ensure two digits
+    final day = dateTime.day.toString().padLeft(2, '0');
+    final month = dateTime.month.toString().padLeft(2, '0');
     final year = dateTime.year.toString();
     return '$day-$month-$year';
   }
