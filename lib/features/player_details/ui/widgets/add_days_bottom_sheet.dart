@@ -1,48 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:tps/core/widgets/date_picker_widget.dart';
 import 'package:tps/features/home/data/models/player_model.dart';
-import 'package:tps/features/player_details/logic/edit_player_cubit/edit_player_cubit.dart';
-import 'package:tps/features/player_details/ui/widgets/edit_phase_drop_down_button.dart';
+import 'package:tps/features/player_details/logic/add_days_cubit/add_days_cubit.dart';
+import 'package:tps/features/player_details/ui/widgets/add_days_bloc_listener.dart';
 import 'package:tps/features/player_details/ui/widgets/edit_player_bloc_listener.dart';
-import '../../../../../core/helpers/validator_utils.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../core/widgets/app_text_form_feild.dart';
 import '../../../../../generated/l10n.dart';
 
-class EditBottomSheetBody extends StatefulWidget {
+class AddDaysBottomSheet extends StatefulWidget {
   final PlayerModel player;
-  const EditBottomSheetBody({
+  const AddDaysBottomSheet({
     super.key,
     required this.player,
   });
 
   @override
-  State<EditBottomSheetBody> createState() => _EditBottomSheetBodyState();
+  State<AddDaysBottomSheet> createState() => _AddDaysBottomSheetState();
 }
 
-class _EditBottomSheetBodyState extends State<EditBottomSheetBody> {
-  @override
-  void initState() {
-    final cubit = context.read<EditPlayerCubit>();
-    cubit.nameController.text = widget.player.name;
-    cubit.moneyController.text = widget.player.money.toString();
-    cubit.sportController.text = widget.player.sport;
-    cubit.descriptionController.text = widget.player.description ?? "";
-    cubit.durationController.text = widget.player.subsDuration.toString();
-    context.read<EditPlayerCubit>().startDate = widget.player.startDate;
-    super.initState();
-  }
-
-  DateTime? selectedDate;
+class _AddDaysBottomSheetState extends State<AddDaysBottomSheet> {
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<EditPlayerCubit>();
+    final cubit = context.read<AddDaysCubit>();
 
     return Container(
-      height: MediaQuery.sizeOf(context).height / 1.5,
+      height: MediaQuery.sizeOf(context).height / 3,
       width: MediaQuery.sizeOf(context).width,
       padding: const EdgeInsets.all(16),
       decoration: const BoxDecoration(
@@ -66,38 +51,12 @@ class _EditBottomSheetBodyState extends State<EditBottomSheetBody> {
             ),
             const Gap(32),
             Text(
-              S.of(context).edit_player,
+              S.of(context).add_days,
               style: Styles.font16medium.copyWith(
                 fontWeight: FontWeight.w600,
               ),
             ),
             const Spacer(),
-            const Gap(16),
-            AppTextFormFeild(
-              hintText: S.of(context).home_add_lbl1,
-              controller: cubit.nameController,
-              validator: ValidatorUtils.validateName,
-              // initialValue: player.name,
-            ),
-            const Gap(8),
-            Row(
-              children: [
-                Expanded(
-                  child: AppTextFormFeild(
-                    hintText: S.of(context).home_add_lbl2,
-                    controller: cubit.sportController,
-                    validator: ValidatorUtils.requiredField,
-                  ),
-                ),
-                const Gap(8),
-                Expanded(
-                  child: EditPhaseDropDownButton(
-                    initialPhase: widget.player.phase,
-                  ),
-                )
-              ],
-            ),
-            const Gap(8),
             Row(
               children: [
                 Expanded(
@@ -117,28 +76,10 @@ class _EditBottomSheetBodyState extends State<EditBottomSheetBody> {
                 ),
               ],
             ),
-            const Gap(8),
-            DatePickerWidget(
-              label: 'Pick a Date',
-              initialDate: widget.player.startDate,
-              firstDate: DateTime(2000),
-              lastDate: DateTime(2100),
-              onDateSelected: (date) {
-                setState(() {
-                  selectedDate = date;
-                  cubit.startDate = selectedDate ?? widget.player.startDate;
-                });
-              },
-            ),
-            const Gap(8),
-            AppTextFormFeild(
-              hintText: S.of(context).home_add_lbl6,
-              controller: cubit.descriptionController,
-            ),
             const Spacer(),
             GestureDetector(
               onTap: () {
-                cubit.updatePlayerDetails(widget.player.phone);
+                cubit.addDays(widget.player.phone, widget.player);
               },
               child: Container(
                 padding: const EdgeInsets.symmetric(
@@ -151,7 +92,7 @@ class _EditBottomSheetBodyState extends State<EditBottomSheetBody> {
                 ),
                 child: Center(
                   child: Text(
-                    S.of(context).edit_button_lbl,
+                    S.of(context).add_days,
                     style: Styles.font16medium
                         .copyWith(fontWeight: FontWeight.w600),
                   ),
@@ -159,7 +100,7 @@ class _EditBottomSheetBodyState extends State<EditBottomSheetBody> {
               ),
             ),
             const Spacer(),
-            EditPlayerBlocListener(
+            AddDaysBlocListener(
               documentId: widget.player.phone,
             ),
           ],

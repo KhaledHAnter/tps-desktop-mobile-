@@ -22,6 +22,22 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "actions_add_days":
+            MessageLookupByLibrary.simpleMessage("تمديد الاشتراك"),
+        "actions_cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
+        "actions_confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
+        "actions_delete": MessageLookupByLibrary.simpleMessage("حذف اللاعب"),
+        "actions_delete_confirm":
+            MessageLookupByLibrary.simpleMessage("تأكيد حذف اللاعب"),
+        "actions_delete_desc":
+            MessageLookupByLibrary.simpleMessage("هل تريد حذف اللاعب؟"),
+        "actions_freeze": MessageLookupByLibrary.simpleMessage("تجميد اللاعب"),
+        "actions_unfreeze":
+            MessageLookupByLibrary.simpleMessage("استرجاع اللاعب"),
+        "actions_unfreeze_desc":
+            MessageLookupByLibrary.simpleMessage("هل تريد استرجاع اللاعب؟"),
+        "actions_whatsapp": MessageLookupByLibrary.simpleMessage("واتساب"),
+        "add_days": MessageLookupByLibrary.simpleMessage("تمديد الاشتراك"),
         "details_desc":
             MessageLookupByLibrary.simpleMessage("تفاصيل عن اللاعب"),
         "details_freeze":

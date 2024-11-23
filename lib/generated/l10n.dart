@@ -399,6 +399,116 @@ class S {
       args: [],
     );
   }
+
+  /// `تجميد اللاعب`
+  String get actions_freeze {
+    return Intl.message(
+      'تجميد اللاعب',
+      name: 'actions_freeze',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `استرجاع اللاعب`
+  String get actions_unfreeze {
+    return Intl.message(
+      'استرجاع اللاعب',
+      name: 'actions_unfreeze',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `حذف اللاعب`
+  String get actions_delete {
+    return Intl.message(
+      'حذف اللاعب',
+      name: 'actions_delete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `هل تريد استرجاع اللاعب؟`
+  String get actions_unfreeze_desc {
+    return Intl.message(
+      'هل تريد استرجاع اللاعب؟',
+      name: 'actions_unfreeze_desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `هل تريد حذف اللاعب؟`
+  String get actions_delete_desc {
+    return Intl.message(
+      'هل تريد حذف اللاعب؟',
+      name: 'actions_delete_desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `واتساب`
+  String get actions_whatsapp {
+    return Intl.message(
+      'واتساب',
+      name: 'actions_whatsapp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تمديد الاشتراك`
+  String get actions_add_days {
+    return Intl.message(
+      'تمديد الاشتراك',
+      name: 'actions_add_days',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تأكيد حذف اللاعب`
+  String get actions_delete_confirm {
+    return Intl.message(
+      'تأكيد حذف اللاعب',
+      name: 'actions_delete_confirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تأكيد`
+  String get actions_confirm {
+    return Intl.message(
+      'تأكيد',
+      name: 'actions_confirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `الغاء`
+  String get actions_cancel {
+    return Intl.message(
+      'الغاء',
+      name: 'actions_cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تمديد الاشتراك`
+  String get add_days {
+    return Intl.message(
+      'تمديد الاشتراك',
+      name: 'add_days',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

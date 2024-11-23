@@ -60,4 +60,14 @@ class FirestoreService {
       return null;
     }
   }
+
+  /// Delete a player document by its ID (phone)
+  Future<void> deletePlayer(String documentId) async {
+    try {
+      await _firestore.collection('players').doc(documentId).delete();
+    } catch (e) {
+      print('Error deleting player: $e');
+      throw Exception('Failed to delete player');
+    }
+  }
 }
