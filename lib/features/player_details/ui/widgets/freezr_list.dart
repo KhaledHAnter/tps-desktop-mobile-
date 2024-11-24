@@ -62,7 +62,9 @@ class _FreezeListState extends State<FreezeList> {
                         const Gap(12),
                       ]
                     : widget.freezes
-                        .map((freeze) => Text(freeze.freezeTime.toString()))
+                        .map((freeze) => Text(
+                              freeze.freezeReason,
+                            ))
                         .toList(),
               )
           ],

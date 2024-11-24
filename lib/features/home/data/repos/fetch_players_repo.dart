@@ -37,9 +37,8 @@ class FetchPlayersRepo {
           description: data['description'],
           freeze: (data['freeze'] as List<dynamic>?)
               ?.map((freezeData) => FreezeModel(
-                    isFreeze: freezeData['isFreeze'],
-                    freezeTime: freezeData['freezeTime'],
-                    reason: freezeData['reason'],
+                    freezeDays: freezeData['freezeDays'],
+                    freezeReason: freezeData['freezeReason'],
                   ))
               .toList(),
         );
