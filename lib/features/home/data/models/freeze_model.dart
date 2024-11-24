@@ -1,8 +1,8 @@
 class FreezeModel {
-  final bool isFreeze;
-  final int freezeTime;
+  final int freezeDays;
+  final String freezeReason;
   FreezeModel({
-    required this.isFreeze,
-    required this.freezeTime,
+    required this.freezeDays,
+    required this.freezeReason,
   });
 }

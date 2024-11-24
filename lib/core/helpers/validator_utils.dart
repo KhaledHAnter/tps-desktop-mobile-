@@ -1,7 +1,7 @@
 class ValidatorUtils {
   static String? requiredField(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'This field is required';
+      return 'حقل مطلوب';
     }
 
     return null;
@@ -20,11 +20,11 @@ class ValidatorUtils {
 
   static String? validateName(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Name is required';
+      return 'الاسم مطلوب';
     } else if (!RegExp(r"^[\p{L} ,.'-]*$",
             caseSensitive: false, unicode: true, dotAll: true)
         .hasMatch(value)) {
-      return 'Invalid name';
+      return 'الاسم غير صحيح';
     }
     return null;
   }
@@ -63,9 +63,9 @@ class ValidatorUtils {
 
   static String? validatePhoneNumberEG(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Phone number is required';
+      return 'رقم الجوال مطلوب';
     } else if (!RegExp(r'^(010|011|012|015)[0-9]{8}$').hasMatch(value)) {
-      return 'Invalid phone number';
+      return 'رقم الجوال غير صحيح';
     }
     return null;
   }

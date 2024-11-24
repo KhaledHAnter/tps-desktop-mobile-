@@ -4,7 +4,6 @@ import 'package:gap/gap.dart';
 import 'package:tps/core/widgets/date_picker_widget.dart';
 import 'package:tps/features/home/data/models/player_model.dart';
 import 'package:tps/features/player_details/logic/edit_player_cubit/edit_player_cubit.dart';
-import 'package:tps/features/player_details/logic/player_details_cubit/player_details_cubit.dart';
 import 'package:tps/features/player_details/ui/widgets/edit_phase_drop_down_button.dart';
 import 'package:tps/features/player_details/ui/widgets/edit_player_bloc_listener.dart';
 import '../../../../../core/helpers/validator_utils.dart';

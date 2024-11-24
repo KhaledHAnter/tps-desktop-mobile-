@@ -33,7 +33,21 @@
     "details_desc" : "تفاصيل عن اللاعب",
     "details_no_desc" : "لا توجد تفاصيل عن اللاعب",
     "edit_player" : "تعديل اللاعب",
-    "edit_button_lbl" : "تعديل اللاعب"
+    "edit_button_lbl" : "تعديل اللاعب",
+    "actions_freeze" : "تجميد اللاعب",
+    "actions_unfreeze" : "استرجاع اللاعب",
+    "actions_delete" : "حذف اللاعب",
+    "actions_unfreeze_desc" : "هل تريد استرجاع اللاعب؟",
+    "actions_delete_desc" : "هل تريد حذف اللاعب؟",
+    "actions_whatsapp" : "واتساب",
+    "actions_add_days" : "تمديد الاشتراك",
+    "actions_delete_confirm" : "تأكيد حذف اللاعب",
+    "actions_confirm" : "تأكيد",
+    "actions_cancel" : "الغاء",
+     "add_days" : "تمديد الاشتراك",
+     "freeze_reason" : "سبب التجميد",
+     "freeze_freeze" : "تجميد اللاعب",
+    "freeze_days" : "عدد الايام التي تم تجميدها"
 
     
 }
