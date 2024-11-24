@@ -4,7 +4,6 @@ import 'package:tps/core/helpers/extentions.dart';
 import 'package:tps/core/theming/styles.dart';
 import 'package:tps/core/widgets/app_bar_button.dart';
 import 'package:tps/features/home/data/models/player_model.dart';
-import 'package:tps/features/home/ui/views/widgets/bottom_sheet_body.dart';
 import 'package:tps/features/player_details/logic/edit_player_cubit/edit_player_cubit.dart';
 import 'package:tps/features/player_details/ui/widgets/edit_bottom_sheet_body.dart';
 import 'package:tps/generated/l10n.dart';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:tps/core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../data/models/category_model.dart';
 import '../../../data/models/sort_criteria_enum.dart';
@@ -85,6 +86,8 @@ class _CatigorySectionState extends State<CatigorySection> {
               child: DropdownButton<SortCriteria>(
                 isExpanded: true,
                 underline: const SizedBox.shrink(),
+                dropdownColor: ColorsManager.containergray,
+                borderRadius: BorderRadius.circular(16),
                 value: selectedCriteria,
                 items: [
                   DropdownMenuItem(

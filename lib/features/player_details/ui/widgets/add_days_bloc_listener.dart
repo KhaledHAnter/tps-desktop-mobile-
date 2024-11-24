@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:tps/features/player_details/logic/add_days_cubit/add_days_cubit.dart';
-import 'package:tps/features/player_details/logic/edit_player_cubit/edit_player_cubit.dart';
 import 'package:tps/features/player_details/logic/fetch_single_player_cubit/fetch_single_player_cubit.dart';
 import '../../../../../core/helpers/extentions.dart';
 import '../../../../../core/theming/colors.dart';
