@@ -44,7 +44,10 @@
     "actions_delete_confirm" : "تأكيد حذف اللاعب",
     "actions_confirm" : "تأكيد",
     "actions_cancel" : "الغاء",
-     "add_days" : "تمديد الاشتراك"
+     "add_days" : "تمديد الاشتراك",
+     "freeze_reason" : "سبب التجميد",
+     "freeze_freeze" : "تجميد اللاعب",
+    "freeze_days" : "عدد الايام التي تم تجميدها"
 
     
 }

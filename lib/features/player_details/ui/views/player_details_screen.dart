@@ -4,7 +4,7 @@ import 'package:tps/features/home/data/models/player_model.dart';
 import 'package:tps/features/player_details/ui/widgets/delete_player_bloc_listener.dart';
 import 'package:tps/features/player_details/ui/widgets/details_header.dart';
 import 'package:tps/features/player_details/ui/widgets/fetch_single_player_bloc_listener.dart';
-import 'package:tps/features/player_details/ui/widgets/freezr_list.dart';
+import 'package:tps/features/player_details/ui/widgets/freeze_list.dart';
 import 'package:tps/features/player_details/ui/widgets/name_and_money.dart';
 import 'package:tps/features/player_details/ui/widgets/player_action_buttons.dart';
 import 'package:tps/features/player_details/ui/widgets/player_description.dart';

@@ -509,6 +509,36 @@ class S {
       args: [],
     );
   }
+
+  /// `سبب التجميد`
+  String get freeze_reason {
+    return Intl.message(
+      'سبب التجميد',
+      name: 'freeze_reason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تجميد اللاعب`
+  String get freeze_freeze {
+    return Intl.message(
+      'تجميد اللاعب',
+      name: 'freeze_freeze',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `عدد الايام التي تم تجميدها`
+  String get freeze_days {
+    return Intl.message(
+      'عدد الايام التي تم تجميدها',
+      name: 'freeze_days',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

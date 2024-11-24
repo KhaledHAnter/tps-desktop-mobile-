@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:tps/features/home/data/models/freeze_model.dart';
 import '../../features/home/data/models/player_model.dart';
 
 class FirestoreService {
@@ -68,6 +69,46 @@ class FirestoreService {
     } catch (e) {
       print('Error deleting player: $e');
       throw Exception('Failed to delete player');
+    }
+  }
+
+  /// Add a freeze to the player's freeze list
+  Future<void> addPlayerFreeze(String documentId, FreezeModel newFreeze) async {
+    try {
+      final playerRef = _firestore.collection('players').doc(documentId);
+      final snapshot = await playerRef.get();
+
+      if (!snapshot.exists) {
+        throw Exception('Player not found');
+      }
+
+      final currentData = snapshot.data()!;
+      List<dynamic>? freezeList = currentData['freeze'];
+
+      // Initialize freeze list if null
+      freezeList ??= [];
+
+      // Add the new freeze to the list
+      freezeList.add({
+        'freezeDays': newFreeze.freezeDays,
+        'freezeReason': newFreeze.freezeReason,
+      });
+
+      // Update subsDuration and endDate
+      final subsDuration =
+          (currentData['subsDuration'] as int) + newFreeze.freezeDays;
+      final startDate = DateTime.parse(currentData['startDate']);
+      final newEndDate = startDate.add(Duration(days: subsDuration));
+
+      // Update Firestore document
+      await playerRef.update({
+        'freeze': freezeList,
+        'subsDuration': subsDuration,
+        'endDate': newEndDate.toIso8601String(),
+      });
+    } catch (e) {
+      print('Error adding player freeze: $e');
+      throw Exception('Failed to add freeze');
     }
   }
 }
