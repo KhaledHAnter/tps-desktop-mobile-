@@ -25,6 +25,7 @@
     "home_add_lbl4" : "سعر الاشتراك",
     "home_add_lbl5" : "رقم التلفون",
     "home_add_lbl6" : "ملاحظات",
+    "home_add_lbl7" : "عمر اللاعب",
 
     "home_add_action" : "إضافة اللاعب",
 
@@ -49,6 +50,8 @@
     "actions_delete" : "حذف اللاعب",
     "actions_unfreeze_desc" : "هل تريد استرجاع اللاعب؟",
     "actions_delete_confirm" : "تأكيد حذف اللاعب",
+    "actions_freeze_delete_confirm" : "تأكيد حذف عملية التجميد",
+    "actions_freeze_delete_desc" : "هل تريد حذف عملية التجميد؟",
     "actions_confirm" : "تأكيد",
     "actions_cancel" : "الغاء",
     "actions_delete_desc" : "هل تريد حذف اللاعب؟",

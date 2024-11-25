@@ -20,6 +20,7 @@ class FetchSinglePlayerRepo {
 
         final player = PlayerModel(
           name: rawData['name'],
+          age: rawData['age'],
           sport: rawData['sport'],
           phase: rawData['phase'],
           phone: rawData['phone'],

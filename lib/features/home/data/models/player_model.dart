@@ -3,7 +3,7 @@ import 'freeze_model.dart';
 class PlayerModel {
   final String name, sport, phase, phone;
   final String? description;
-  final int money, subsDuration, remainingDuration;
+  final int money, subsDuration, remainingDuration, age;
   final DateTime startDate, endDate;
   final List<FreezeModel>? freeze;
 
@@ -19,5 +19,6 @@ class PlayerModel {
     this.freeze,
     required this.remainingDuration,
     this.description,
+    required this.age,
   });
 }

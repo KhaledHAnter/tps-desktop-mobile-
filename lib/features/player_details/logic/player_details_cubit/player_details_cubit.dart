@@ -17,7 +17,7 @@ class PlayerDetailsCubit extends Cubit<PlayerDetailsState> {
 
   Future<void> sendMessageOnWhatsApp(String phoneNumber, String message) async {
     final Uri whatsappUrl = Uri.parse(
-        'https://wa.me/+2$phoneNumber?text=${Uri.encodeComponent(message)}');
+        'https://wa.me/$phoneNumber?text=${Uri.encodeComponent(message)}');
 
     if (await canLaunchUrl(whatsappUrl)) {
       await launchUrl(whatsappUrl, mode: LaunchMode.externalApplication);

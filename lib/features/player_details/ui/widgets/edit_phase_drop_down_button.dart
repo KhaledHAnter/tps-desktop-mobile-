@@ -19,9 +19,11 @@ class _EditPhaseDropDownButtonState extends State<EditPhaseDropDownButton> {
 
   @override
   void initState() {
+    if (widget.initialPhase.isEmpty) return;
     selectedCategory = widget.initialPhase;
     context.read<EditPlayerCubit>().phaseController =
         selectedCategory ?? widget.initialPhase;
+
     super.initState();
   }
 

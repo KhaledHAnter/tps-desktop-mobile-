@@ -16,6 +16,7 @@ class AddPlayerRepo {
     required String phone,
     required int money,
     required int duration, // Subscription duration in days
+    required int age,
     String? description,
     List<FreezeModel>? freeze,
   }) {
@@ -25,6 +26,7 @@ class AddPlayerRepo {
 
     return PlayerModel(
       name: name,
+      age: age,
       sport: sport,
       phase: phase,
       phone: phone,

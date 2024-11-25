@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../theming/colors.dart';
 import '../theming/styles.dart';
 
@@ -18,24 +19,27 @@ class AppTextFormFeild extends StatelessWidget {
   final bool? readOnly;
   final void Function()? onTap;
   final String? initialValue;
+  final bool? digitsOnly;
 
-  const AppTextFormFeild(
-      {super.key,
-      required this.hintText,
-      this.contentPadding,
-      this.enabledBorder,
-      this.focusedBorder,
-      this.hintStyle,
-      this.inputTextStyle,
-      this.isObscureText = false,
-      this.suffixIcon,
-      this.keyboardType,
-      this.fillColor,
-      this.controller,
-      this.validator,
-      this.readOnly,
-      this.onTap,
-      this.initialValue});
+  const AppTextFormFeild({
+    super.key,
+    required this.hintText,
+    this.contentPadding,
+    this.enabledBorder,
+    this.focusedBorder,
+    this.hintStyle,
+    this.inputTextStyle,
+    this.isObscureText = false,
+    this.suffixIcon,
+    this.keyboardType,
+    this.fillColor,
+    this.controller,
+    this.validator,
+    this.readOnly,
+    this.onTap,
+    this.initialValue,
+    this.digitsOnly = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -81,6 +85,11 @@ class AppTextFormFeild extends StatelessWidget {
       onTap: onTap,
       textInputAction: TextInputAction.next,
       style: inputTextStyle,
+      inputFormatters: digitsOnly!
+          ? [
+              FilteringTextInputFormatter.digitsOnly, // Allow digits only
+            ]
+          : null,
     );
   }
 }

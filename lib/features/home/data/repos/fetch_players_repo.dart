@@ -22,6 +22,7 @@ class FetchPlayersRepo {
 
         return PlayerModel(
           name: data['name'],
+          age: data['age'] ?? 0,
           sport: data['sport'],
           phase: data['phase'],
           phone: data['phone'],

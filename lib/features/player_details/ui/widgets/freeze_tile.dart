@@ -4,16 +4,26 @@ import 'package:tps/features/home/data/models/freeze_model.dart';
 
 class FreezeTile extends StatelessWidget {
   final FreezeModel freeze;
-  const FreezeTile({super.key, required this.freeze});
+  final void Function()? onPressed;
+  const FreezeTile({super.key, required this.freeze, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-      child: Align(
-        alignment: Alignment.centerRight,
-        child: Text("* ${freeze.freezeDays} ايام - ${freeze.freezeReason}",
-            style: Styles.font14medium, textAlign: TextAlign.start),
+      child: Row(
+        children: [
+          Text("* ${freeze.freezeDays} ايام - ${freeze.freezeReason}",
+              style: Styles.font14medium, textAlign: TextAlign.start),
+          const Spacer(),
+          GestureDetector(
+            onTap: onPressed,
+            child: const Icon(
+              Icons.delete_outline_rounded,
+              color: Colors.redAccent,
+            ),
+          ),
+        ],
       ),
     );
   }

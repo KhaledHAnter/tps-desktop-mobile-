@@ -73,14 +73,11 @@ class PlayerActionButtons extends StatelessWidget {
     return showBottomSheet(
         context: context,
         builder: (_) {
-          return BlocProvider(
-            create: (context) => getIt<FreezePlayerCubit>(),
-            child: Builder(builder: (context) {
-              return FreezePlayerBottomSheet(
-                player: player,
-              );
-            }),
-          );
+          return Builder(builder: (context) {
+            return FreezePlayerBottomSheet(
+              player: player,
+            );
+          });
         });
   }
 }

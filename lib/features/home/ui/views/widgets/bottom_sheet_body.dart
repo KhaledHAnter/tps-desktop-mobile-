@@ -50,10 +50,26 @@ class BottomSheetBody extends StatelessWidget {
             ),
             const Spacer(),
             const Gap(16),
-            AppTextFormFeild(
-              hintText: S.of(context).home_add_lbl1,
-              controller: cubit.nameController,
-              validator: ValidatorUtils.validateName,
+            Row(
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: AppTextFormFeild(
+                    hintText: S.of(context).home_add_lbl1,
+                    controller: cubit.nameController,
+                    validator: ValidatorUtils.validateName,
+                  ),
+                ),
+                const Gap(8),
+                Expanded(
+                  child: AppTextFormFeild(
+                    hintText: S.of(context).home_add_lbl7,
+                    controller: cubit.ageController,
+                    validator: ValidatorUtils.requiredField,
+                    keyboardType: TextInputType.number,
+                  ),
+                ),
+              ],
             ),
             const Gap(8),
             Row(
@@ -79,6 +95,7 @@ class BottomSheetBody extends StatelessWidget {
                     hintText: S.of(context).home_add_lbl3,
                     keyboardType: TextInputType.number,
                     controller: cubit.durationController,
+                    digitsOnly: true,
                   ),
                 ),
                 const Gap(8),
@@ -87,6 +104,7 @@ class BottomSheetBody extends StatelessWidget {
                     hintText: S.of(context).home_add_lbl4,
                     keyboardType: TextInputType.number,
                     controller: cubit.moneyController,
+                    digitsOnly: true,
                   ),
                 ),
               ],
@@ -96,7 +114,7 @@ class BottomSheetBody extends StatelessWidget {
               hintText: S.of(context).home_add_lbl5,
               keyboardType: TextInputType.number,
               controller: cubit.phoneController,
-              validator: ValidatorUtils.validatePhoneNumberEG,
+              validator: ValidatorUtils.requiredField,
             ),
             const Gap(8),
             AppTextFormFeild(

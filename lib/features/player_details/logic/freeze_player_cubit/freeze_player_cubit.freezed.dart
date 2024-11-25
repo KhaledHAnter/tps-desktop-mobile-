@@ -21,6 +21,7 @@ mixin _$FreezePlayerState {
     required TResult Function() initial,
     required TResult Function() freezeLoading,
     required TResult Function() freezeSuccess,
+    required TResult Function() unFreezeSuccess,
     required TResult Function(String errMessage) freezeError,
   }) =>
       throw _privateConstructorUsedError;
@@ -29,6 +30,7 @@ mixin _$FreezePlayerState {
     TResult? Function()? initial,
     TResult? Function()? freezeLoading,
     TResult? Function()? freezeSuccess,
+    TResult? Function()? unFreezeSuccess,
     TResult? Function(String errMessage)? freezeError,
   }) =>
       throw _privateConstructorUsedError;
@@ -37,6 +39,7 @@ mixin _$FreezePlayerState {
     TResult Function()? initial,
     TResult Function()? freezeLoading,
     TResult Function()? freezeSuccess,
+    TResult Function()? unFreezeSuccess,
     TResult Function(String errMessage)? freezeError,
     required TResult orElse(),
   }) =>
@@ -46,6 +49,7 @@ mixin _$FreezePlayerState {
     required TResult Function(_Initial value) initial,
     required TResult Function(FreezeLoading value) freezeLoading,
     required TResult Function(FreezeSuccess value) freezeSuccess,
+    required TResult Function(UnFreezeSuccess value) unFreezeSuccess,
     required TResult Function(FreezeError value) freezeError,
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +58,7 @@ mixin _$FreezePlayerState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(FreezeLoading value)? freezeLoading,
     TResult? Function(FreezeSuccess value)? freezeSuccess,
+    TResult? Function(UnFreezeSuccess value)? unFreezeSuccess,
     TResult? Function(FreezeError value)? freezeError,
   }) =>
       throw _privateConstructorUsedError;
@@ -62,6 +67,7 @@ mixin _$FreezePlayerState {
     TResult Function(_Initial value)? initial,
     TResult Function(FreezeLoading value)? freezeLoading,
     TResult Function(FreezeSuccess value)? freezeSuccess,
+    TResult Function(UnFreezeSuccess value)? unFreezeSuccess,
     TResult Function(FreezeError value)? freezeError,
     required TResult orElse(),
   }) =>
@@ -133,6 +139,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() freezeLoading,
     required TResult Function() freezeSuccess,
+    required TResult Function() unFreezeSuccess,
     required TResult Function(String errMessage) freezeError,
   }) {
     return initial();
@@ -144,6 +151,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? freezeLoading,
     TResult? Function()? freezeSuccess,
+    TResult? Function()? unFreezeSuccess,
     TResult? Function(String errMessage)? freezeError,
   }) {
     return initial?.call();
@@ -155,6 +163,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? freezeLoading,
     TResult Function()? freezeSuccess,
+    TResult Function()? unFreezeSuccess,
     TResult Function(String errMessage)? freezeError,
     required TResult orElse(),
   }) {
@@ -170,6 +179,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(FreezeLoading value) freezeLoading,
     required TResult Function(FreezeSuccess value) freezeSuccess,
+    required TResult Function(UnFreezeSuccess value) unFreezeSuccess,
     required TResult Function(FreezeError value) freezeError,
   }) {
     return initial(this);
@@ -181,6 +191,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(FreezeLoading value)? freezeLoading,
     TResult? Function(FreezeSuccess value)? freezeSuccess,
+    TResult? Function(UnFreezeSuccess value)? unFreezeSuccess,
     TResult? Function(FreezeError value)? freezeError,
   }) {
     return initial?.call(this);
@@ -192,6 +203,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(FreezeLoading value)? freezeLoading,
     TResult Function(FreezeSuccess value)? freezeSuccess,
+    TResult Function(UnFreezeSuccess value)? unFreezeSuccess,
     TResult Function(FreezeError value)? freezeError,
     required TResult orElse(),
   }) {
@@ -250,6 +262,7 @@ class _$FreezeLoadingImpl implements FreezeLoading {
     required TResult Function() initial,
     required TResult Function() freezeLoading,
     required TResult Function() freezeSuccess,
+    required TResult Function() unFreezeSuccess,
     required TResult Function(String errMessage) freezeError,
   }) {
     return freezeLoading();
@@ -261,6 +274,7 @@ class _$FreezeLoadingImpl implements FreezeLoading {
     TResult? Function()? initial,
     TResult? Function()? freezeLoading,
     TResult? Function()? freezeSuccess,
+    TResult? Function()? unFreezeSuccess,
     TResult? Function(String errMessage)? freezeError,
   }) {
     return freezeLoading?.call();
@@ -272,6 +286,7 @@ class _$FreezeLoadingImpl implements FreezeLoading {
     TResult Function()? initial,
     TResult Function()? freezeLoading,
     TResult Function()? freezeSuccess,
+    TResult Function()? unFreezeSuccess,
     TResult Function(String errMessage)? freezeError,
     required TResult orElse(),
   }) {
@@ -287,6 +302,7 @@ class _$FreezeLoadingImpl implements FreezeLoading {
     required TResult Function(_Initial value) initial,
     required TResult Function(FreezeLoading value) freezeLoading,
     required TResult Function(FreezeSuccess value) freezeSuccess,
+    required TResult Function(UnFreezeSuccess value) unFreezeSuccess,
     required TResult Function(FreezeError value) freezeError,
   }) {
     return freezeLoading(this);
@@ -298,6 +314,7 @@ class _$FreezeLoadingImpl implements FreezeLoading {
     TResult? Function(_Initial value)? initial,
     TResult? Function(FreezeLoading value)? freezeLoading,
     TResult? Function(FreezeSuccess value)? freezeSuccess,
+    TResult? Function(UnFreezeSuccess value)? unFreezeSuccess,
     TResult? Function(FreezeError value)? freezeError,
   }) {
     return freezeLoading?.call(this);
@@ -309,6 +326,7 @@ class _$FreezeLoadingImpl implements FreezeLoading {
     TResult Function(_Initial value)? initial,
     TResult Function(FreezeLoading value)? freezeLoading,
     TResult Function(FreezeSuccess value)? freezeSuccess,
+    TResult Function(UnFreezeSuccess value)? unFreezeSuccess,
     TResult Function(FreezeError value)? freezeError,
     required TResult orElse(),
   }) {
@@ -367,6 +385,7 @@ class _$FreezeSuccessImpl implements FreezeSuccess {
     required TResult Function() initial,
     required TResult Function() freezeLoading,
     required TResult Function() freezeSuccess,
+    required TResult Function() unFreezeSuccess,
     required TResult Function(String errMessage) freezeError,
   }) {
     return freezeSuccess();
@@ -378,6 +397,7 @@ class _$FreezeSuccessImpl implements FreezeSuccess {
     TResult? Function()? initial,
     TResult? Function()? freezeLoading,
     TResult? Function()? freezeSuccess,
+    TResult? Function()? unFreezeSuccess,
     TResult? Function(String errMessage)? freezeError,
   }) {
     return freezeSuccess?.call();
@@ -389,6 +409,7 @@ class _$FreezeSuccessImpl implements FreezeSuccess {
     TResult Function()? initial,
     TResult Function()? freezeLoading,
     TResult Function()? freezeSuccess,
+    TResult Function()? unFreezeSuccess,
     TResult Function(String errMessage)? freezeError,
     required TResult orElse(),
   }) {
@@ -404,6 +425,7 @@ class _$FreezeSuccessImpl implements FreezeSuccess {
     required TResult Function(_Initial value) initial,
     required TResult Function(FreezeLoading value) freezeLoading,
     required TResult Function(FreezeSuccess value) freezeSuccess,
+    required TResult Function(UnFreezeSuccess value) unFreezeSuccess,
     required TResult Function(FreezeError value) freezeError,
   }) {
     return freezeSuccess(this);
@@ -415,6 +437,7 @@ class _$FreezeSuccessImpl implements FreezeSuccess {
     TResult? Function(_Initial value)? initial,
     TResult? Function(FreezeLoading value)? freezeLoading,
     TResult? Function(FreezeSuccess value)? freezeSuccess,
+    TResult? Function(UnFreezeSuccess value)? unFreezeSuccess,
     TResult? Function(FreezeError value)? freezeError,
   }) {
     return freezeSuccess?.call(this);
@@ -426,6 +449,7 @@ class _$FreezeSuccessImpl implements FreezeSuccess {
     TResult Function(_Initial value)? initial,
     TResult Function(FreezeLoading value)? freezeLoading,
     TResult Function(FreezeSuccess value)? freezeSuccess,
+    TResult Function(UnFreezeSuccess value)? unFreezeSuccess,
     TResult Function(FreezeError value)? freezeError,
     required TResult orElse(),
   }) {
@@ -438,6 +462,129 @@ class _$FreezeSuccessImpl implements FreezeSuccess {
 
 abstract class FreezeSuccess implements FreezePlayerState {
   const factory FreezeSuccess() = _$FreezeSuccessImpl;
+}
+
+/// @nodoc
+abstract class _$$UnFreezeSuccessImplCopyWith<$Res> {
+  factory _$$UnFreezeSuccessImplCopyWith(_$UnFreezeSuccessImpl value,
+          $Res Function(_$UnFreezeSuccessImpl) then) =
+      __$$UnFreezeSuccessImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UnFreezeSuccessImplCopyWithImpl<$Res>
+    extends _$FreezePlayerStateCopyWithImpl<$Res, _$UnFreezeSuccessImpl>
+    implements _$$UnFreezeSuccessImplCopyWith<$Res> {
+  __$$UnFreezeSuccessImplCopyWithImpl(
+      _$UnFreezeSuccessImpl _value, $Res Function(_$UnFreezeSuccessImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of FreezePlayerState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$UnFreezeSuccessImpl implements UnFreezeSuccess {
+  const _$UnFreezeSuccessImpl();
+
+  @override
+  String toString() {
+    return 'FreezePlayerState.unFreezeSuccess()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UnFreezeSuccessImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() freezeLoading,
+    required TResult Function() freezeSuccess,
+    required TResult Function() unFreezeSuccess,
+    required TResult Function(String errMessage) freezeError,
+  }) {
+    return unFreezeSuccess();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? freezeLoading,
+    TResult? Function()? freezeSuccess,
+    TResult? Function()? unFreezeSuccess,
+    TResult? Function(String errMessage)? freezeError,
+  }) {
+    return unFreezeSuccess?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? freezeLoading,
+    TResult Function()? freezeSuccess,
+    TResult Function()? unFreezeSuccess,
+    TResult Function(String errMessage)? freezeError,
+    required TResult orElse(),
+  }) {
+    if (unFreezeSuccess != null) {
+      return unFreezeSuccess();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(FreezeLoading value) freezeLoading,
+    required TResult Function(FreezeSuccess value) freezeSuccess,
+    required TResult Function(UnFreezeSuccess value) unFreezeSuccess,
+    required TResult Function(FreezeError value) freezeError,
+  }) {
+    return unFreezeSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(FreezeLoading value)? freezeLoading,
+    TResult? Function(FreezeSuccess value)? freezeSuccess,
+    TResult? Function(UnFreezeSuccess value)? unFreezeSuccess,
+    TResult? Function(FreezeError value)? freezeError,
+  }) {
+    return unFreezeSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(FreezeLoading value)? freezeLoading,
+    TResult Function(FreezeSuccess value)? freezeSuccess,
+    TResult Function(UnFreezeSuccess value)? unFreezeSuccess,
+    TResult Function(FreezeError value)? freezeError,
+    required TResult orElse(),
+  }) {
+    if (unFreezeSuccess != null) {
+      return unFreezeSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UnFreezeSuccess implements FreezePlayerState {
+  const factory UnFreezeSuccess() = _$UnFreezeSuccessImpl;
 }
 
 /// @nodoc
@@ -512,6 +659,7 @@ class _$FreezeErrorImpl implements FreezeError {
     required TResult Function() initial,
     required TResult Function() freezeLoading,
     required TResult Function() freezeSuccess,
+    required TResult Function() unFreezeSuccess,
     required TResult Function(String errMessage) freezeError,
   }) {
     return freezeError(errMessage);
@@ -523,6 +671,7 @@ class _$FreezeErrorImpl implements FreezeError {
     TResult? Function()? initial,
     TResult? Function()? freezeLoading,
     TResult? Function()? freezeSuccess,
+    TResult? Function()? unFreezeSuccess,
     TResult? Function(String errMessage)? freezeError,
   }) {
     return freezeError?.call(errMessage);
@@ -534,6 +683,7 @@ class _$FreezeErrorImpl implements FreezeError {
     TResult Function()? initial,
     TResult Function()? freezeLoading,
     TResult Function()? freezeSuccess,
+    TResult Function()? unFreezeSuccess,
     TResult Function(String errMessage)? freezeError,
     required TResult orElse(),
   }) {
@@ -549,6 +699,7 @@ class _$FreezeErrorImpl implements FreezeError {
     required TResult Function(_Initial value) initial,
     required TResult Function(FreezeLoading value) freezeLoading,
     required TResult Function(FreezeSuccess value) freezeSuccess,
+    required TResult Function(UnFreezeSuccess value) unFreezeSuccess,
     required TResult Function(FreezeError value) freezeError,
   }) {
     return freezeError(this);
@@ -560,6 +711,7 @@ class _$FreezeErrorImpl implements FreezeError {
     TResult? Function(_Initial value)? initial,
     TResult? Function(FreezeLoading value)? freezeLoading,
     TResult? Function(FreezeSuccess value)? freezeSuccess,
+    TResult? Function(UnFreezeSuccess value)? unFreezeSuccess,
     TResult? Function(FreezeError value)? freezeError,
   }) {
     return freezeError?.call(this);
@@ -571,6 +723,7 @@ class _$FreezeErrorImpl implements FreezeError {
     TResult Function(_Initial value)? initial,
     TResult Function(FreezeLoading value)? freezeLoading,
     TResult Function(FreezeSuccess value)? freezeSuccess,
+    TResult Function(UnFreezeSuccess value)? unFreezeSuccess,
     TResult Function(FreezeError value)? freezeError,
     required TResult orElse(),
   }) {

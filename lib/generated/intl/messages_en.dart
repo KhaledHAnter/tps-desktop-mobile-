@@ -32,6 +32,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "actions_delete_desc":
             MessageLookupByLibrary.simpleMessage("هل تريد حذف اللاعب؟"),
         "actions_freeze": MessageLookupByLibrary.simpleMessage("تجميد اللاعب"),
+        "actions_freeze_delete_confirm":
+            MessageLookupByLibrary.simpleMessage("تأكيد حذف عملية التجميد"),
+        "actions_freeze_delete_desc":
+            MessageLookupByLibrary.simpleMessage("هل تريد حذف عملية التجميد؟"),
         "actions_unfreeze":
             MessageLookupByLibrary.simpleMessage("استرجاع اللاعب"),
         "actions_unfreeze_desc":
@@ -60,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "home_add_lbl4": MessageLookupByLibrary.simpleMessage("سعر الاشتراك"),
         "home_add_lbl5": MessageLookupByLibrary.simpleMessage("رقم التلفون"),
         "home_add_lbl6": MessageLookupByLibrary.simpleMessage("ملاحظات"),
+        "home_add_lbl7": MessageLookupByLibrary.simpleMessage("عمر اللاعب"),
         "home_add_player":
             MessageLookupByLibrary.simpleMessage("إضافة لاعب جديد"),
         "home_cat1": MessageLookupByLibrary.simpleMessage("اجمالي اللاعبين"),

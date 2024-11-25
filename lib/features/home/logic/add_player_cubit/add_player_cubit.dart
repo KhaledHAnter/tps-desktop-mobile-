@@ -7,6 +7,7 @@ import 'add_player_state.dart';
 
 class AddPlayerCubit extends Cubit<AddPlayerState> {
   final TextEditingController nameController = TextEditingController();
+  final TextEditingController ageController = TextEditingController();
   final TextEditingController sportController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey();
 
@@ -30,9 +31,11 @@ class AddPlayerCubit extends Cubit<AddPlayerState> {
       final money = int.tryParse(moneyController.text) ?? 0;
       final duration = int.tryParse(durationController.text) ?? 0;
       final description = descriptionController.text;
+      final age = int.tryParse(ageController.text) ?? 0;
 
       final player = addPlayerRepo.createPlayer(
         name: name,
+        age: age,
         sport: sport,
         phase: phase,
         phone: phone,

@@ -270,6 +270,16 @@ class S {
     );
   }
 
+  /// `عمر اللاعب`
+  String get home_add_lbl7 {
+    return Intl.message(
+      'عمر اللاعب',
+      name: 'home_add_lbl7',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `إضافة اللاعب`
   String get home_add_action {
     return Intl.message(
@@ -535,6 +545,26 @@ class S {
     return Intl.message(
       'عدد الايام التي تم تجميدها',
       name: 'freeze_days',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تأكيد حذف عملية التجميد`
+  String get actions_freeze_delete_confirm {
+    return Intl.message(
+      'تأكيد حذف عملية التجميد',
+      name: 'actions_freeze_delete_confirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `هل تريد حذف عملية التجميد؟`
+  String get actions_freeze_delete_desc {
+    return Intl.message(
+      'هل تريد حذف عملية التجميد؟',
+      name: 'actions_freeze_delete_desc',
       desc: '',
       args: [],
     );

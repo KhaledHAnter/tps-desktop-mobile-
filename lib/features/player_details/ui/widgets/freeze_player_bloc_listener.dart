@@ -17,6 +17,7 @@ class FreezePlayerBlocListener extends StatelessWidget {
       listenWhen: (previous, current) =>
           current is FreezeLoading ||
           current is FreezeSuccess ||
+          current is UnFreezeSuccess ||
           current is FreezeError,
       listener: (context, state) {
         state.whenOrNull(
@@ -28,6 +29,13 @@ class FreezePlayerBlocListener extends StatelessWidget {
                     color: ColorsManager.mainBage, size: 100),
               ),
             );
+          },
+          unFreezeSuccess: () {
+            context.pop();
+            showSnackbar(context, "تم تجميد اشتراك اللاعب", Colors.green);
+            context
+                .read<FetchSinglePlayerCubit>()
+                .fetchPlayerDetails(documentId);
           },
           freezeSuccess: () {
             context.pop();
