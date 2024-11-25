@@ -15,4 +15,9 @@ class FreezePlayerRepo {
     );
     await _firestoreService.addPlayerFreeze(documentId, newFreeze);
   }
+
+  Future<void> deletePlayerFreeze(
+      String documentId, int freezeIndex, FreezeModel freeze) async {
+    await _firestoreService.deletePlayerFreeze(documentId, freezeIndex, freeze);
+  }
 }

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tps/features/home/data/models/player_model.dart';
 import 'package:tps/features/player_details/logic/delete_player_cubit/delete_player_cubit.dart';
 import 'package:tps/features/player_details/logic/fetch_single_player_cubit/fetch_single_player_cubit.dart';
+import 'package:tps/features/player_details/logic/freeze_player_cubit/freeze_player_cubit.dart';
 import 'package:tps/features/player_details/logic/player_details_cubit/player_details_cubit.dart';
 import 'package:tps/features/player_details/ui/views/player_details_screen.dart';
 import '../di/dependency_injection.dart';
@@ -41,6 +42,9 @@ class AppRouter {
               ),
               BlocProvider(
                 create: (context) => getIt<DeletePlayerCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<FreezePlayerCubit>(),
               ),
             ],
             child: PlayerDetailsScreen(

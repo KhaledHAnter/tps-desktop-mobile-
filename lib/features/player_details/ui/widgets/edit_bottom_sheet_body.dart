@@ -29,6 +29,7 @@ class _EditBottomSheetBodyState extends State<EditBottomSheetBody> {
     final cubit = context.read<EditPlayerCubit>();
     cubit.nameController.text = widget.player.name;
     cubit.moneyController.text = widget.player.money.toString();
+    cubit.ageController.text = widget.player.age.toString();
     cubit.sportController.text = widget.player.sport;
     cubit.descriptionController.text = widget.player.description ?? "";
     cubit.durationController.text = widget.player.subsDuration.toString();
@@ -73,11 +74,28 @@ class _EditBottomSheetBodyState extends State<EditBottomSheetBody> {
             ),
             const Spacer(),
             const Gap(16),
-            AppTextFormFeild(
-              hintText: S.of(context).home_add_lbl1,
-              controller: cubit.nameController,
-              validator: ValidatorUtils.validateName,
-              // initialValue: player.name,
+            Row(
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: AppTextFormFeild(
+                    hintText: S.of(context).home_add_lbl1,
+                    controller: cubit.nameController,
+                    validator: ValidatorUtils.validateName,
+                    // initialValue: player.name,
+                  ),
+                ),
+                const Gap(8),
+                Expanded(
+                  child: AppTextFormFeild(
+                    hintText: S.of(context).home_add_lbl7,
+                    keyboardType: TextInputType.number,
+                    controller: cubit.ageController,
+                    validator: ValidatorUtils.requiredField,
+                    // initialValue: player.name,
+                  ),
+                ),
+              ],
             ),
             const Gap(8),
             Row(

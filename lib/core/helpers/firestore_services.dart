@@ -13,6 +13,7 @@ class FirestoreService {
           .doc(player.phone) // Use phone number as the document ID
           .set({
         'name': player.name,
+        'age': player.age,
         'sport': player.sport,
         'phase': player.phase,
         'phone': player.phone,
@@ -109,6 +110,44 @@ class FirestoreService {
     } catch (e) {
       print('Error adding player freeze: $e');
       throw Exception('Failed to add freeze');
+    }
+  }
+
+  // Delete a specific freeze from the player's freeze list
+  Future<void> deletePlayerFreeze(
+      String documentId, int freezeIndex, FreezeModel freeze) async {
+    try {
+      final playerRef = _firestore.collection('players').doc(documentId);
+      final snapshot = await playerRef.get();
+
+      if (!snapshot.exists) {
+        throw Exception('Player not found');
+      }
+
+      final currentData = snapshot.data()!;
+      List<dynamic>? freezeList = currentData['freeze'];
+
+      if (freezeList == null || freezeList.isEmpty) {
+        throw Exception('No freezes found for the player');
+      }
+
+      // Remove the specific freeze by index
+      freezeList.removeAt(freezeIndex);
+
+      final subsDuration =
+          (currentData['subsDuration'] as int) - freeze.freezeDays;
+      final startDate = DateTime.parse(currentData['startDate']);
+      final newEndDate = startDate.add(Duration(days: subsDuration));
+
+      // Update the Firestore document
+      await playerRef.update({
+        'freeze': freezeList,
+        'subsDuration': subsDuration,
+        'endDate': newEndDate.toIso8601String(),
+      });
+    } catch (e) {
+      print('Error deleting player freeze: $e');
+      throw Exception('Failed to delete freeze');
     }
   }
 }

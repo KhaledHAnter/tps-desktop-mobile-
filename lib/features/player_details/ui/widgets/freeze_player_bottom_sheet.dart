@@ -94,9 +94,9 @@ class _FreezePlayerBottomSheetState extends State<FreezePlayerBottomSheet> {
               ),
             ),
             const Spacer(),
-            FreezePlayerBlocListener(
-              documentId: widget.player.phone,
-            ),
+            // FreezePlayerBlocListener(
+            //   documentId: widget.player.phone,
+            // ),
           ],
         ),
       ),

@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:tps/features/home/data/models/player_model.dart';
+import 'package:tps/features/player_details/logic/freeze_player_cubit/freeze_player_cubit.dart';
 import 'package:tps/features/player_details/ui/widgets/delete_player_bloc_listener.dart';
 import 'package:tps/features/player_details/ui/widgets/details_header.dart';
 import 'package:tps/features/player_details/ui/widgets/fetch_single_player_bloc_listener.dart';
 import 'package:tps/features/player_details/ui/widgets/freeze_list.dart';
+import 'package:tps/features/player_details/ui/widgets/freeze_player_bloc_listener.dart';
 import 'package:tps/features/player_details/ui/widgets/name_and_money.dart';
 import 'package:tps/features/player_details/ui/widgets/player_action_buttons.dart';
 import 'package:tps/features/player_details/ui/widgets/player_description.dart';
 import 'package:tps/features/player_details/ui/widgets/player_period.dart';
 import 'package:tps/features/player_details/ui/widgets/player_phase.dart';
 import 'package:tps/features/player_details/ui/widgets/sport_and_remaining.dart';
+
+import '../../../../core/di/dependency_injection.dart';
 
 class PlayerDetailsScreen extends StatelessWidget {
   final PlayerModel player;
@@ -38,8 +43,12 @@ class PlayerDetailsScreen extends StatelessWidget {
                 const Gap(32),
                 PlayerPhase(player: player),
                 const Gap(32),
-                FreezeList(
-                  freezes: player.freeze ?? [],
+                BlocProvider(
+                  create: (context) => getIt<FreezePlayerCubit>(),
+                  child: FreezeList(
+                    playerId: player.phone,
+                    freezes: player.freeze ?? [],
+                  ),
                 ),
                 const Gap(16),
                 PlayerDescription(
@@ -52,6 +61,7 @@ class PlayerDetailsScreen extends StatelessWidget {
                 const Gap(64),
                 const FetchSinglePlayerBlocListener(),
                 const DeletePlayerBlocListener(),
+                FreezePlayerBlocListener(documentId: player.phone),
               ],
             ),
           ),

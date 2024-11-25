@@ -19,6 +19,7 @@ class EditPlayerCubit extends Cubit<EditPlayerState> {
   final TextEditingController moneyController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
+  final TextEditingController ageController = TextEditingController();
 
   /// Update player details in Firestore
   Future<void> updatePlayerDetails(String documentId) async {
@@ -34,6 +35,7 @@ class EditPlayerCubit extends Cubit<EditPlayerState> {
       'phase': phaseController,
       'money': int.tryParse(moneyController.text) ?? 0,
       'subsDuration': int.tryParse(durationController.text) ?? 0,
+      'age': int.tryParse(ageController.text) ?? 0,
       'startDate': startDate.toIso8601String(),
       'endDate': startDate
           .add(Duration(days: int.tryParse(durationController.text)!))
