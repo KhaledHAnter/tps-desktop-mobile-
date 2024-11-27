@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:tps/core/widgets/app_bar_button.dart';
+import 'package:tps/features/home/logic/fetch_player_cubit/fetch_players_cubit.dart';
 import '../../../../../core/di/dependency_injection.dart';
 import '../../../../../core/helpers/assets.dart';
 import '../../../../../core/theming/styles.dart';
@@ -16,6 +17,7 @@ class WelcomeHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<FetchPlayersCubit>();
     return Row(
       children: <Widget>[
         CircleAvatar(
@@ -41,6 +43,11 @@ class WelcomeHeader extends StatelessWidget {
           ],
         ),
         const Spacer(),
+        AppBarButton(
+          onTap: () => cubit.generateExcelFile(cubit.allPlayers),
+          icon: Icons.document_scanner_outlined,
+        ),
+        const Gap(8),
         AppBarButton(
           onTap: () => showPlayerAddSheet(context),
           icon: Icons.add,
