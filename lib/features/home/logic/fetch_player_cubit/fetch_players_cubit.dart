@@ -1,6 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:tps/core/di/dependency_injection.dart';
 import 'package:tps/core/helpers/excel_gen_utils.dart';
+import 'package:tps/features/home/data/repos/excel_generation_repo.dart';
 import '../../data/models/player_model.dart';
 import '../../data/repos/fetch_players_repo.dart';
 import '../../data/models/sort_criteria_enum.dart';
@@ -88,7 +90,7 @@ class FetchPlayersCubit extends Cubit<FetchPlayersState> {
 
   /// Generate the Excel file
   Future<void> generateExcelFile(List<PlayerModel> players) async {
-    final excelGenUtils = ExcelGenUtils();
-    excelGenUtils.generateExcel(players);
+    final excelGenerationRepo = getIt<ExcelGenerationRepo>();
+    excelGenerationRepo.generateExcelFile(players);
   }
 }
