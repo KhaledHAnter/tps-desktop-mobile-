@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:tps/core/helpers/directory_utils.dart';
 import 'package:tps/core/widgets/app_bar_button.dart';
 import 'package:tps/features/home/logic/fetch_player_cubit/fetch_players_cubit.dart';
 import '../../../../../core/di/dependency_injection.dart';
@@ -43,6 +46,20 @@ class WelcomeHeader extends StatelessWidget {
           ],
         ),
         const Spacer(),
+        AppBarButton(
+          onTap: () async {
+            DirectoryUtils directoryUtils = DirectoryUtils();
+            final path = await directoryUtils.getGlobalDirectoryPath(
+                fileName: 'players.xlsx');
+            directoryUtils.openFile(
+              File(path),
+              fileType:
+                  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            );
+          },
+          icon: Icons.file_open_outlined,
+        ),
+        const Gap(8),
         AppBarButton(
           onTap: () => cubit.generateExcelFile(cubit.allPlayers),
           icon: Icons.document_scanner_outlined,
