@@ -70,6 +70,15 @@ class ValidatorUtils {
     return null;
   }
 
+  static String? validateNumberOnly(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'رقم الجوال مطلوب';
+    } else if (!RegExp(r'^\d+$').hasMatch(value)) {
+      return 'رقم الجوال غير صحيح';
+    }
+    return null;
+  }
+
   static bool hasLowerCase(String password) {
     return RegExp(r'^(?=.*[a-z])').hasMatch(password);
   }

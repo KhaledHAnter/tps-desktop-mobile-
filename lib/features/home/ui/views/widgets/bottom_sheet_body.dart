@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import '../../../../../core/helpers/validator_utils.dart';
@@ -18,8 +19,18 @@ class BottomSheetBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<AddPlayerCubit>();
+
+    Future<void> pasteText() async {
+      try {
+        final clipboardData = await Clipboard.getData(Clipboard.kTextPlain);
+        cubit.phaseController = clipboardData?.text ?? "Clipboard is empty";
+      } catch (e) {
+        cubit.phaseController = "00";
+      }
+    }
+
     return Container(
-      height: MediaQuery.sizeOf(context).height / 1.5,
+      height: MediaQuery.sizeOf(context).height / 1.6,
       width: MediaQuery.sizeOf(context).width,
       padding: const EdgeInsets.all(16),
       decoration: const BoxDecoration(
@@ -53,7 +64,6 @@ class BottomSheetBody extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  flex: 2,
                   child: AppTextFormFeild(
                     hintText: S.of(context).home_add_lbl1,
                     controller: cubit.nameController,
@@ -110,11 +120,30 @@ class BottomSheetBody extends StatelessWidget {
               ],
             ),
             const Gap(8),
-            AppTextFormFeild(
-              hintText: S.of(context).home_add_lbl5,
-              keyboardType: TextInputType.number,
-              controller: cubit.phoneController,
-              validator: ValidatorUtils.requiredField,
+            Row(
+              children: [
+                Expanded(
+                  child: AppTextFormFeild(
+                    hintText: S.of(context).home_add_lbl5,
+                    keyboardType: TextInputType.number,
+                    controller: cubit.phoneController,
+                    validator: ValidatorUtils.validateNumberOnly,
+                    digitsOnly: true,
+                  ),
+                ),
+                const Gap(8),
+                IconButton(
+                    style: IconButton.styleFrom(
+                      backgroundColor: ColorsManager.mainBage.withOpacity(0.2),
+                    ),
+                    onPressed: () {
+                      cubit.pasteText();
+                    },
+                    icon: const Icon(
+                      Icons.paste_rounded,
+                      color: ColorsManager.mainBage,
+                    ))
+              ],
             ),
             const Gap(8),
             AppTextFormFeild(

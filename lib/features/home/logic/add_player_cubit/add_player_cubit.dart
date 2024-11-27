@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../../data/repos/add_player_repo.dart';
 import 'add_player_state.dart';
 
@@ -60,6 +61,15 @@ class AddPlayerCubit extends Cubit<AddPlayerState> {
           AddPlayerState.error(errMessage),
         ),
       );
+    }
+  }
+
+  Future<void> pasteText() async {
+    try {
+      final clipboardData = await Clipboard.getData(Clipboard.kTextPlain);
+      phoneController.text = clipboardData?.text ?? "00";
+    } catch (e) {
+      phoneController.text = "00";
     }
   }
 

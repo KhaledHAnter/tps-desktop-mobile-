@@ -4,7 +4,6 @@ import 'package:gap/gap.dart';
 import 'package:tps/core/helpers/validator_utils.dart';
 import 'package:tps/features/home/data/models/player_model.dart';
 import 'package:tps/features/player_details/logic/freeze_player_cubit/freeze_player_cubit.dart';
-import 'package:tps/features/player_details/ui/widgets/freeze_player_bloc_listener.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../core/widgets/app_text_form_feild.dart';
