@@ -18,7 +18,6 @@ class FetchPlayersRepo {
       return FetchPlayersResult.success(rawData.map((data) {
         final endDate = DateTime.parse(data['endDate']);
         final remainingDays = endDate.difference(DateTime.now()).inDays;
-        final dataRemainingDays = data['remainingDuration'];
 
         return PlayerModel(
           name: data['name'],
@@ -30,11 +29,8 @@ class FetchPlayersRepo {
           subsDuration: data['subsDuration'],
           startDate: DateTime.parse(data['startDate']),
           endDate: endDate,
-          remainingDuration: dataRemainingDays == 0
-              ? remainingDays > 0
-                  ? remainingDays
-                  : 0
-              : dataRemainingDays, // Ensure no negative durations
+          remainingDuration: remainingDays > 0 ? remainingDays : 0,
+          // Ensure no negative durations
           description: data['description'],
           freeze: (data['freeze'] as List<dynamic>?)
               ?.map((freezeData) => FreezeModel(

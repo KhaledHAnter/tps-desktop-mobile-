@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:tps/core/helpers/excel_gen_utils.dart';
 import '../../data/models/player_model.dart';
 import '../../data/repos/fetch_players_repo.dart';
 import '../../data/models/sort_criteria_enum.dart';
@@ -8,6 +9,7 @@ part 'fetch_players_cubit.freezed.dart';
 
 class FetchPlayersCubit extends Cubit<FetchPlayersState> {
   final FetchPlayersRepo repository;
+
   List<PlayerModel> allPlayers =
       []; // To store all players for resetting filters
 
@@ -82,5 +84,11 @@ class FetchPlayersCubit extends Cubit<FetchPlayersState> {
             (player) => player.name.toLowerCase().contains(query.toLowerCase()))
         .toList();
     emit(FetchPlayersState.fetchSuccess(filteredPlayers));
+  }
+
+  /// Generate the Excel file
+  Future<void> generateExcelFile(List<PlayerModel> players) async {
+    final excelGenUtils = ExcelGenUtils();
+    excelGenUtils.generateExcel(players);
   }
 }
