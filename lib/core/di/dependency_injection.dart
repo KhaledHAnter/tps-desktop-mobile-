@@ -1,4 +1,7 @@
 import 'package:get_it/get_it.dart';
+import 'package:tps/core/helpers/directory_utils.dart';
+import 'package:tps/core/helpers/excel_gen_utils.dart';
+import 'package:tps/features/home/data/repos/excel_generation_repo.dart';
 import 'package:tps/features/player_details/data/repos/delete_player_repo.dart';
 import 'package:tps/features/player_details/data/repos/fetch_single_player_repo.dart';
 import 'package:tps/features/player_details/data/repos/freeze_player_repo.dart';
@@ -16,6 +19,12 @@ final getIt = GetIt.instance;
 Future<void> setupGetIt() async {
   // FireStore
   FirestoreService firestoreService = FirestoreService();
+
+  // exxel generation
+  ExcelGenUtils excelGenUtils = ExcelGenUtils();
+
+  // Directory Utils
+  DirectoryUtils directoryUtils = DirectoryUtils();
 
   // Add Player
   getIt.registerLazySingleton<AddPlayerRepo>(
@@ -42,4 +51,8 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<FreezePlayerRepo>(
       () => FreezePlayerRepo(firestoreService));
   getIt.registerFactory<FreezePlayerCubit>(() => FreezePlayerCubit(getIt()));
+
+  // excel gen
+  getIt.registerLazySingleton<ExcelGenerationRepo>(() => ExcelGenerationRepo(
+      excelGenUtils: excelGenUtils, directoryUtils: directoryUtils));
 }
