@@ -11,7 +11,7 @@ class PlayersSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
-    int crossAxisCount = width ~/ 200;
+    int crossAxisCount = width < 400 ? 2 : width ~/ 200;
     return SliverGrid.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: crossAxisCount,
