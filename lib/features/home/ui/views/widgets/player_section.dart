@@ -12,7 +12,7 @@ class PlayersSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverGrid.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, mainAxisSpacing: 8, crossAxisSpacing: 8),
+          crossAxisCount: 3, mainAxisSpacing: 8, crossAxisSpacing: 8),
       itemCount: players.length,
       itemBuilder: (context, index) {
         return GestureDetector(
