@@ -60,7 +60,9 @@
     "add_days" : "تمديد الاشتراك",
     "freeze_reason" : "سبب التجميد",
     "freeze_freeze" : "تجميد اللاعب",
-    "freeze_days" : "عدد الايام التي تم تجميدها"
+    "freeze_days" : "عدد الايام التي تم تجميدها",
+    "exercises_button" : "متابعة تمارين اللاعب",
+    "exercises_headers" : "تمارين اللاعب"
 
 
 }

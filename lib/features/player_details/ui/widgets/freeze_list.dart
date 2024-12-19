@@ -23,25 +23,25 @@ class _FreezeListState extends State<FreezeList> {
   bool _isExpanded = false;
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-      decoration: BoxDecoration(
-        color: ColorsManager.containergray,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Column(
-        children: [
-          FreezePlayerBlocListener(documentId: widget.playerId),
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                _isExpanded = !_isExpanded;
-              });
-            },
-            child: Row(
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _isExpanded = !_isExpanded;
+        });
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+        decoration: BoxDecoration(
+          color: ColorsManager.containergray,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Column(
+          children: [
+            FreezePlayerBlocListener(documentId: widget.playerId),
+            Row(
               children: <Widget>[
                 Icon(
                   Icons.ac_unit,
@@ -60,33 +60,33 @@ class _FreezeListState extends State<FreezeList> {
                 ),
               ],
             ),
-          ),
-          if (_isExpanded)
-            Column(
-              children: widget.freezes.isEmpty
-                  ? [
-                      const Gap(24),
-                      Text(S.of(context).details_no_freeze),
-                      const Gap(24),
-                    ]
-                  : widget.freezes
-                      .map((freeze) => FreezeTile(
-                            freeze: freeze,
-                            onPressed: () async {
-                              final confirmed =
-                                  await showFreezeDeleteConfirmationDialog(
-                                      context);
-                              if (!confirmed) return;
-                              if (context.mounted) {}
-                              context
-                                  .read<FreezePlayerCubit>()
-                                  .deletePlayerFreeze(widget.playerId,
-                                      widget.freezes.indexOf(freeze), freeze);
-                            },
-                          ))
-                      .toList(),
-            )
-        ],
+            if (_isExpanded)
+              Column(
+                children: widget.freezes.isEmpty
+                    ? [
+                        const Gap(24),
+                        Text(S.of(context).details_no_freeze),
+                        const Gap(24),
+                      ]
+                    : widget.freezes
+                        .map((freeze) => FreezeTile(
+                              freeze: freeze,
+                              onPressed: () async {
+                                final confirmed =
+                                    await showFreezeDeleteConfirmationDialog(
+                                        context);
+                                if (!confirmed) return;
+                                if (context.mounted) {}
+                                context
+                                    .read<FreezePlayerCubit>()
+                                    .deletePlayerFreeze(widget.playerId,
+                                        widget.freezes.indexOf(freeze), freeze);
+                              },
+                            ))
+                        .toList(),
+              )
+          ],
+        ),
       ),
     );
   }

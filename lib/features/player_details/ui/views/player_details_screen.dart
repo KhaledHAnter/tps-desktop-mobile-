@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:tps/core/helpers/extentions.dart';
+import 'package:tps/core/routing/routes.dart';
+import 'package:tps/core/theming/styles.dart';
+import 'package:tps/core/widgets/app_text_button.dart';
 import 'package:tps/features/home/data/models/player_model.dart';
 import 'package:tps/features/player_details/logic/freeze_player_cubit/freeze_player_cubit.dart';
 import 'package:tps/features/player_details/ui/widgets/delete_player_bloc_listener.dart';
@@ -14,6 +18,7 @@ import 'package:tps/features/player_details/ui/widgets/player_description.dart';
 import 'package:tps/features/player_details/ui/widgets/player_period.dart';
 import 'package:tps/features/player_details/ui/widgets/player_phase.dart';
 import 'package:tps/features/player_details/ui/widgets/sport_and_remaining.dart';
+import 'package:tps/generated/l10n.dart';
 
 import '../../../../core/di/dependency_injection.dart';
 
@@ -58,6 +63,13 @@ class PlayerDetailsScreen extends StatelessWidget {
                 PlayerActionButtons(
                   player: player,
                 ),
+                const Gap(64),
+                AppTextButton(
+                    text: S.of(context).exercises_button,
+                    textStyle: Styles.font16medium,
+                    onPressed: () {
+                      context.pushNamed(Routes.palyerExercisesScreen);
+                    }),
                 const Gap(64),
                 const FetchSinglePlayerBlocListener(),
                 const DeletePlayerBlocListener(),

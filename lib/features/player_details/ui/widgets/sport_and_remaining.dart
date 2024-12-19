@@ -17,8 +17,8 @@ class SportAndRemaining extends StatelessWidget {
     return Row(
       children: [
         const Icon(
-          Icons.fitness_center,
-          color: ColorsManager.mainBage,
+          Icons.sports_soccer_outlined,
+          color: Colors.redAccent,
         ),
         const Gap(4),
         Text(player.sport, style: Styles.font20bold),

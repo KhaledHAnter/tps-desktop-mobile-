@@ -46,10 +46,6 @@ class AddPlayerCubit extends Cubit<AddPlayerState> {
         freeze: null, // Optional: Add FreezeModel if needed
       );
 
-      log(
-        "Player: $player , phone: ${player.phone}, name: ${player.name}, sport: ${player.sport}, phase: ${player.phase}, phone: ${player.phone}, money: ${player.money}, duration: ${player.subsDuration}, description: ${player.description}",
-      );
-
       emit(const AddPlayerState.loading());
       final response = await addPlayerRepo.savePlayer(player);
 

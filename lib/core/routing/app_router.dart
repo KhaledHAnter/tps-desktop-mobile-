@@ -7,6 +7,7 @@ import 'package:tps/features/player_details/logic/fetch_single_player_cubit/fetc
 import 'package:tps/features/player_details/logic/freeze_player_cubit/freeze_player_cubit.dart';
 import 'package:tps/features/player_details/logic/player_details_cubit/player_details_cubit.dart';
 import 'package:tps/features/player_details/ui/views/player_details_screen.dart';
+import 'package:tps/features/player_exercises/ui/views/player_exercises_screen.dart';
 import '../di/dependency_injection.dart';
 import 'routes.dart';
 import '../../features/home/logic/category_cubit/category_cubit.dart';
@@ -58,6 +59,10 @@ class AppRouter {
           ),
         );
 
+      case Routes.palyerExercisesScreen:
+        return MaterialPageRoute(
+          builder: (_) => const PlayerExercisesScreen(),
+        );
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
