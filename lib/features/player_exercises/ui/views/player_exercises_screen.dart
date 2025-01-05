@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:tps/features/player_exercises/ui/widgets/exercises_header.dart';
-import 'package:tps/features/player_exercises/ui/widgets/exercises_item_container.dart';
+import 'package:tps/features/player_exercises/ui/widgets/exercises_item_container2.dart';
 
 class PlayerExercisesScreen extends StatelessWidget {
   const PlayerExercisesScreen({super.key});
@@ -17,17 +17,8 @@ class PlayerExercisesScreen extends StatelessWidget {
               children: <Widget>[
                 ExercisesHeader(),
                 Gap(18),
-                ExercisesItemContainer(),
-                Gap(12),
-                ExercisesItemContainer(),
-                Gap(12),
-                ExercisesItemContainer(),
-                Gap(12),
-                ExercisesItemContainer(),
-                Gap(12),
-                ExercisesItemContainer(),
-                Gap(12),
-                ExercisesItemContainer(),
+                ExercisesItemContainer2(),
+                // Gap(12),
               ],
             ),
           ),

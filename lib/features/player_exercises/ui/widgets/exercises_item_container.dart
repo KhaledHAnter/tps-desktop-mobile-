@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:tps/core/theming/colors.dart';
 import 'package:tps/core/theming/styles.dart';
-import 'package:tps/generated/l10n.dart';
 
 class ExercisesItemContainer extends StatefulWidget {
   // final List<FreezeModel> freezes;

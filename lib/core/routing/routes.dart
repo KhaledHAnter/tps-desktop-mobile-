@@ -3,4 +3,5 @@ class Routes {
   static const String homeScreen = '/homeScreen';
   static const String palyerDetailsScreen = '/palyerDetailsScreen';
   static const String palyerExercisesScreen = '/palyerExercisesScreen';
+  static const String exerciseDetailsScreen = '/exerciseDetailsScreen';
 }
