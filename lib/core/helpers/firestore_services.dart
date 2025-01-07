@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:tps/features/home/data/models/freeze_model.dart';
+import 'package:tps/features/player_exercises/data/models/exercise_model.dart';
 import '../../features/home/data/models/player_model.dart';
 
 class FirestoreService {
@@ -32,6 +35,24 @@ class FirestoreService {
       return false;
     }
   }
+
+  Future addExerciseToFirestore(ExerciseModel exercise, String phone) async {
+  try {
+    await _firestore
+        .collection('exercises')
+        .doc(phone) // Use phone number as the document ID
+        .set({
+      'name': exercise.name,
+      'reps': exercise.reps,
+      'sets': exercise.sets,
+      'history': exercise.history,
+    });
+    print('Player added successfully!');
+  } catch (e) {
+    print('Error adding exercise: $e');
+    rethrow; // Propagate the error
+  }
+}
 
   /// Fetches all player documents from Firestore
   Future<List<Map<String, dynamic>>?> fetchPlayers() async {

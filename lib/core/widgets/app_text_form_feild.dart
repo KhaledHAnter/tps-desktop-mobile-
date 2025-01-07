@@ -20,6 +20,7 @@ class AppTextFormFeild extends StatelessWidget {
   final void Function()? onTap;
   final String? initialValue;
   final bool? digitsOnly;
+  final FocusNode? focusNode;
 
   const AppTextFormFeild({
     super.key,
@@ -39,11 +40,13 @@ class AppTextFormFeild extends StatelessWidget {
     this.onTap,
     this.initialValue,
     this.digitsOnly = false,
+    this.focusNode,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      focusNode: focusNode,
       initialValue: initialValue,
       controller: controller,
       validator: validator,

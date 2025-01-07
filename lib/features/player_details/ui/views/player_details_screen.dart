@@ -68,7 +68,8 @@ class PlayerDetailsScreen extends StatelessWidget {
                     text: S.of(context).exercises_button,
                     textStyle: Styles.font16medium,
                     onPressed: () {
-                      context.pushNamed(Routes.palyerExercisesScreen);
+                      context.pushNamed(Routes.palyerExercisesScreen,
+                          arguments: player.phone);
                     }),
                 const Gap(64),
                 const FetchSinglePlayerBlocListener(),

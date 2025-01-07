@@ -61,8 +61,11 @@ class AppRouter {
         );
 
       case Routes.palyerExercisesScreen:
+        arrguments as String;
         return MaterialPageRoute(
-          builder: (_) => const PlayerExercisesScreen(),
+          builder: (_) => PlayerExercisesScreen(
+            phone: arrguments,
+          ),
         );
       case Routes.exerciseDetailsScreen:
         return MaterialPageRoute(

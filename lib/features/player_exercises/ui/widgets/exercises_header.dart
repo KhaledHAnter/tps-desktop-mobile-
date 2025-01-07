@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tps/core/di/dependency_injection.dart';
 import 'package:tps/core/helpers/extentions.dart';
 import 'package:tps/core/theming/styles.dart';
 import 'package:tps/core/widgets/app_bar_button.dart';
+import 'package:tps/features/player_exercises/logic/cubit/add_exercise_cubit.dart';
+import 'package:tps/features/player_exercises/ui/widgets/add_exercise_bottom_sheet.dart';
 import 'package:tps/generated/l10n.dart';
 
 class ExercisesHeader extends StatelessWidget {
+  final String phone;
   const ExercisesHeader({
-    super.key,
+    super.key, required this.phone,
   });
 
   @override
@@ -23,23 +28,23 @@ class ExercisesHeader extends StatelessWidget {
           style: Styles.font24bold,
         ),
         const Spacer(),
-        AppBarButton(icon: Icons.add, onTap: () {}),
+        AppBarButton(icon: Icons.add, onTap: () => _showBottomSheet(context, phone)),
       ],
     );
   }
 
-  // PersistentBottomSheetController showPlayerEditSheet(BuildContext context) {
-  //   return showBottomSheet(
-  //       context: context,
-  //       builder: (_) {
-  //         return BlocProvider(
-  //           create: (context) => EditPlayerCubit(),
-  //           child: Builder(builder: (context) {
-  //             return EditBottomSheetBody(
-  //               player: player,
-  //             );
-  //           }),
-  //         );
-  //       });
-  // }
+  void _showBottomSheet(BuildContext context, String phone) {
+    showBottomSheet(
+      context: context,
+      backgroundColor: Colors.white,
+      builder: (BuildContext context) {
+        return BlocProvider(
+          create: (context) => AddExerciseCubit(getIt()),
+          child: AddExerciseBottomSheet(
+            phone: phone,
+          ),
+        );
+      },
+    );
+  }
 }
