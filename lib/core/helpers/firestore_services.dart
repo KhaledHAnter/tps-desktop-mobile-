@@ -1,8 +1,7 @@
-import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:tps/features/home/data/models/freeze_model.dart';
 import 'package:tps/features/player_exercises/data/models/exercise_model.dart';
+
 import '../../features/home/data/models/player_model.dart';
 
 class FirestoreService {
@@ -36,23 +35,49 @@ class FirestoreService {
     }
   }
 
-  Future addExerciseToFirestore(ExerciseModel exercise, String phone) async {
-  try {
-    await _firestore
-        .collection('exercises')
-        .doc(phone) // Use phone number as the document ID
-        .set({
-      'name': exercise.name,
-      'reps': exercise.reps,
-      'sets': exercise.sets,
-      'history': exercise.history,
-    });
-    print('Player added successfully!');
-  } catch (e) {
-    print('Error adding exercise: $e');
-    rethrow; // Propagate the error
+  /// Saves an exercise to Firestore
+  Future<void> addExerciseToFirestore(
+      ExerciseModel exercise, String phone) async {
+    try {
+      final exerciseRef =
+          FirebaseFirestore.instance.collection('exercises').doc(phone);
+
+      // Add or update the exercise for the player (overwrites if the document already exists)
+      await exerciseRef.set({
+        'exercises': FieldValue.arrayUnion([exercise.toMap()]),
+      }, SetOptions(merge: true));
+
+      print('Exercise added successfully!');
+    } catch (e) {
+      print('Error adding exercise: $e');
+      rethrow;
+    }
   }
-}
+
+  /// Fetches exercises for a player from Firestore
+  Future<List<ExerciseModel>> fetchExercisesFromFirestore(String phone) async {
+    try {
+      final docSnapshot = await FirebaseFirestore.instance
+          .collection('exercises')
+          .doc(phone)
+          .get();
+
+      if (docSnapshot.exists) {
+        // Get the exercises from the document's 'exercises' field
+        final exercisesData = docSnapshot.data()?['exercises'] as List<dynamic>;
+
+        return exercisesData
+            .map((exerciseData) => ExerciseModel.fromMap(exerciseData))
+            .toList();
+      } else {
+        print('No exercises found for player $phone.');
+        return [];
+      }
+    } catch (e) {
+      print('Error fetching exercises: $e');
+      rethrow;
+    }
+  }
 
   /// Fetches all player documents from Firestore
   Future<List<Map<String, dynamic>>?> fetchPlayers() async {

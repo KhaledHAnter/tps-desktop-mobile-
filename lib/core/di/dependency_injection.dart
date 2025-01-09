@@ -8,8 +8,8 @@ import 'package:tps/features/player_details/data/repos/freeze_player_repo.dart';
 import 'package:tps/features/player_details/logic/delete_player_cubit/delete_player_cubit.dart';
 import 'package:tps/features/player_details/logic/fetch_single_player_cubit/fetch_single_player_cubit.dart';
 import 'package:tps/features/player_details/logic/freeze_player_cubit/freeze_player_cubit.dart';
-import 'package:tps/features/player_exercises/data/repos/add_exercise_repo.dart';
-import 'package:tps/features/player_exercises/logic/cubit/add_exercise_cubit.dart';
+import 'package:tps/features/player_exercises/data/repos/exercises_repo.dart';
+import 'package:tps/features/player_exercises/logic/cubit/exercises_cubit.dart';
 import '../helpers/firestore_services.dart';
 import '../../features/home/data/repos/add_player_repo.dart';
 import '../../features/home/data/repos/fetch_players_repo.dart';
@@ -59,7 +59,7 @@ Future<void> setupGetIt() async {
       excelGenUtils: excelGenUtils, directoryUtils: directoryUtils));
 
   // Add Player
-  getIt.registerLazySingleton<AddExerciseRepo>(
-      () => AddExerciseRepo(firestoreService));
-  getIt.registerFactory<AddExerciseCubit>(() => AddExerciseCubit(getIt()));
+  getIt.registerLazySingleton<ExercisesRepo>(
+      () => ExercisesRepo(firestoreService));
+  getIt.registerFactory<ExercisesCubit>(() => ExercisesCubit(getIt()));
 }

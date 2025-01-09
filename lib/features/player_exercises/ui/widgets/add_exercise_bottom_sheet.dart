@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:tps/core/helpers/validator_utils.dart';
-import 'package:tps/features/player_details/ui/widgets/add_days_bloc_listener.dart';
-import 'package:tps/features/player_exercises/logic/cubit/add_exercise_cubit.dart';
+import 'package:tps/features/player_exercises/logic/cubit/exercises_cubit.dart';
 import 'package:tps/features/player_exercises/ui/widgets/add_exercise_bloc_listener.dart';
 
 import '../../../../../core/theming/colors.dart';
@@ -21,7 +20,7 @@ class AddExerciseBottomSheet extends StatefulWidget {
 class _AddExerciseBottomSheetState extends State<AddExerciseBottomSheet> {
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<AddExerciseCubit>();
+    final cubit = context.read<ExercisesCubit>();
 
     return Padding(
       padding: const EdgeInsets.all(16),
@@ -96,7 +95,9 @@ class _AddExerciseBottomSheetState extends State<AddExerciseBottomSheet> {
                 ),
               ),
             ),
-            const AddExerciseBlocListener(),
+            AddExerciseBlocListener(
+              phone: widget.phone,
+            ),
           ],
         ),
       ),

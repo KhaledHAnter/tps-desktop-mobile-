@@ -1,52 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:tps/core/helpers/extentions.dart';
-import 'package:tps/core/routing/routes.dart';
-import 'package:tps/core/theming/colors.dart';
-import 'package:tps/core/theming/styles.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tps/core/widgets/loading_indicator.dart';
+import 'package:tps/features/player_exercises/logic/cubit/exercises_cubit.dart';
+import 'package:tps/features/player_exercises/ui/widgets/exercises_list_sep.dart';
 
 class ExercisesItemContainer2 extends StatelessWidget {
   const ExercisesItemContainer2({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-      decoration: BoxDecoration(
-        color: ColorsManager.containergray,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: ListView.separated(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: 3,
-        separatorBuilder: (context, index) => const Divider(
-          height: 16,
-        ),
-        itemBuilder: (context, index) => GestureDetector(
-          onTap: () {
-            context.pushNamed(Routes.exerciseDetailsScreen);
-          },
-          child: ListTile(
-            leading: const Icon(
-              Icons.fitness_center,
-              color: Colors.redAccent,
-            ),
-            title: Text(
-              "Lat-Pulldown",
-              style: Styles.font16medium.copyWith(fontWeight: FontWeight.bold),
-            ),
-            subtitle: Text(
-              "3 مجموعات  -  10 عدات",
-              style: Styles.font14medium,
-            ),
-            trailing: const Icon(
-              Icons.arrow_forward_ios,
-              color: Colors.redAccent,
-            ),
+    return BlocBuilder<ExercisesCubit, ExercisesState>(
+      buildWhen: (previous, current) =>
+          current is FecthLoading ||
+          current is FecthSuccess ||
+          current is FecthError,
+      builder: (context, state) {
+        return state.maybeWhen(
+          orElse: () => const SizedBox.shrink(),
+          fecthLoading: () => const LoadingIndicator(),
+          fecthSuccess: (exercises) => ExercisesListSep(
+            exercises: exercises,
           ),
-        ),
-      ),
+          fecthError: (message) => Text(message),
+        );
+      },
     );
   }
 }

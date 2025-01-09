@@ -1,9 +1,8 @@
-import 'package:tps/features/player_exercises/data/models/exercise_history_model.dart';
-
 class ExerciseModel {
   final String name;
-  final int reps, sets;
-  final List<ExerciseHistoryModel> history;
+  final int reps;
+  final int sets;
+  final List<HistoryModel> history;
 
   ExerciseModel({
     required this.name,
@@ -11,4 +10,60 @@ class ExerciseModel {
     required this.sets,
     required this.history,
   });
+
+  // Convert ExerciseModel to a map (for Firestore storage)
+  Map<String, dynamic> toMap() {
+    return {
+      'name': name,
+      'reps': reps,
+      'sets': sets,
+      'history': history.map((historyItem) => historyItem.toMap()).toList(),
+    };
+  }
+
+  // Convert a map back to ExerciseModel (for Firestore retrieval)
+  factory ExerciseModel.fromMap(Map<String, dynamic> map) {
+    return ExerciseModel(
+      name: map['name'],
+      reps: map['reps'],
+      sets: map['sets'],
+      history: List<HistoryModel>.from(
+        map['history']?.map((item) => HistoryModel.fromMap(item)) ?? [],
+      ),
+    );
+  }
+}
+
+class HistoryModel {
+  final int weight;
+  final int reps;
+  final int sets;
+  final DateTime date;
+
+  HistoryModel({
+    required this.weight,
+    required this.reps,
+    required this.sets,
+    required this.date,
+  });
+
+  // Convert HistoryModel to a map (for Firestore storage)
+  Map<String, dynamic> toMap() {
+    return {
+      'weight': weight,
+      'reps': reps,
+      'sets': sets,
+      'date': date.toIso8601String(), // Store date as a string in ISO format
+    };
+  }
+
+  // Convert a map back to HistoryModel (for Firestore retrieval)
+  factory HistoryModel.fromMap(Map<String, dynamic> map) {
+    return HistoryModel(
+      weight: map['weight'],
+      reps: map['reps'],
+      sets: map['sets'],
+      date: DateTime.parse(map['date']),
+    );
+  }
 }
