@@ -10,6 +10,7 @@ import 'package:tps/core/widgets/gray_container.dart';
 import 'package:tps/features/player_exercises/data/models/exercise_model.dart';
 import 'package:tps/features/player_exercises/logic/cubit/exercises_cubit.dart';
 import 'package:tps/features/player_exercises/ui/widgets/exercise_details_header.dart';
+import 'package:tps/features/player_exercises/ui/widgets/exercise_history_bloc_listener.dart';
 import 'package:tps/features/player_exercises/ui/widgets/exercise_history_card.dart';
 import 'package:tps/features/player_exercises/ui/widgets/record_new_reps.dart';
 import 'package:tps/features/player_exercises/ui/widgets/record_new_sets.dart';
@@ -139,7 +140,8 @@ class ExerciseDetailsScreen extends StatelessWidget {
                       );
                     },
                   ),
-                  const Gap(72)
+                  const Gap(72),
+                  const ExerciseHistoryBlocListener(),
                 ],
               ),
               addHistory(width, context)
