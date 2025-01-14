@@ -8,6 +8,12 @@ part 'exercises_state.dart';
 part 'exercises_cubit.freezed.dart';
 
 class ExercisesCubit extends Cubit<ExercisesState> {
+  @override
+  Future<void> close() {
+    // Clean up resources if needed
+    return super.close();
+  }
+
   final ExercisesRepo repo;
 
   ExercisesCubit(this.repo) : super(const ExercisesState.initial());
@@ -16,6 +22,21 @@ class ExercisesCubit extends Cubit<ExercisesState> {
   final TextEditingController repsController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey();
   String? phone;
+  int? weight;
+  int? sets;
+  int? reps;
+
+  void incrementReps(int value) => reps = (reps ?? 0) + value;
+  void decrementReps(int value) =>
+      reps! > 0 ? reps = (reps ?? 0) - value : null;
+
+  void incrementSets(int value) => sets = (sets ?? 0) + value;
+  void decrementSets(int value) =>
+      sets! > 0 ? sets = (sets ?? 0) - value : null;
+
+  void incrementWeight(int value) => weight = (weight ?? 0) + value;
+  void decrementWeight(int value) =>
+      weight! > 0 ? weight = (weight ?? 0) - value : null;
 
   Future<void> addExercise(String phone) async {
     if (formKey.currentState!.validate()) {
@@ -83,13 +104,17 @@ class ExercisesCubit extends Cubit<ExercisesState> {
     }
   }
 
-  //  Future<void> addHistory(String phone, String exerciseName, HistoryModel history) async {
-  //   try {
-  //     emit(ExercisesLoading());
-  //     await _repository.addHistoryToExercise(phone, exerciseName, history);
-  //     emit(ExercisesSuccess());  // On success, emit the success state
-  //   } catch (e) {
-  //     emit(ExercisesFailure(error: 'Failed to add history.'));
-  //   }
-  // }
+  
+
+  Future<void> addHistory(
+      String phone, String exerciseName, HistoryModel history) async {
+    try {
+      emit(const ExercisesState.addHistoryLoading());
+      await repo.addHistory(phone, exerciseName, history);
+      emit(const ExercisesState
+          .addHistorySuccess()); // On success, emit the success state
+    } catch (e) {
+      emit(const ExercisesState.addHistoryError('Failed to add history.'));
+    }
+  }
 }

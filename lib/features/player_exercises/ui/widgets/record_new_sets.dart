@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:tps/core/theming/styles.dart';
+import 'package:tps/features/player_exercises/logic/cubit/exercises_cubit.dart';
 import 'package:tps/features/player_exercises/ui/widgets/change_number_circle_avatar.dart';
 
 class RecordNewSets extends StatefulWidget {
-  final int sets;
-  const RecordNewSets({
-    super.key,
-    required this.sets,
-  });
+  const RecordNewSets({super.key});
 
   @override
   State<RecordNewSets> createState() => _RecordNewWeightState();
@@ -17,13 +15,9 @@ class RecordNewSets extends StatefulWidget {
 class _RecordNewWeightState extends State<RecordNewSets> {
   int sets = 0;
   @override
-  void initState() {
-    sets = widget.sets;
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final cubit = context.read<ExercisesCubit>();
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
@@ -41,22 +35,24 @@ class _RecordNewWeightState extends State<RecordNewSets> {
           ChangeNumberCircleAvatar(
             number: 1,
             onTap: () {
+              cubit.incrementSets(1);
               setState(() {
-                sets++;
+                sets = cubit.sets!;
               });
             },
           ),
           const Spacer(),
           Text(
-            "$sets مجموعة",
+            "${cubit.sets} مجموعة",
             style: Styles.font16medium,
           ),
           const Spacer(),
           ChangeNumberCircleAvatar(
             number: 1,
             onTap: () {
+              cubit.decrementSets(1);
               setState(() {
-                sets--;
+                sets = cubit.sets!;
               });
             },
           ),

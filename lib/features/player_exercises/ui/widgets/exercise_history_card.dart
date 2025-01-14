@@ -1,20 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tps/core/theming/styles.dart';
 import 'package:tps/core/widgets/gray_container.dart';
+import 'package:tps/features/player_exercises/data/models/exercise_model.dart';
+import 'package:tps/features/player_exercises/logic/cubit/exercises_cubit.dart';
 
 class ExerciseHistoryCard extends StatelessWidget {
+  final HistoryModel history;
   const ExerciseHistoryCard({
     super.key,
+    required this.history,
   });
 
   @override
   Widget build(BuildContext context) {
+    String formatDateTime(DateTime dateTime) {
+      final day = dateTime.day.toString().padLeft(2, '0');
+      final month = dateTime.month.toString().padLeft(2, '0');
+      final year = dateTime.year.toString();
+      return '$day-$month-$year';
+    }
+
     return GrayContainer(
-      
       child: Row(
         children: <Widget>[
           Text(
-            "09-10-2020",
+            formatDateTime(history.date),
             style: Styles.font16medium,
           ),
           const Spacer(
@@ -24,7 +35,7 @@ class ExerciseHistoryCard extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: "45",
+                  text: "${history.weight}",
                   style: Styles.font20bold.copyWith(color: Colors.green),
                 ),
                 TextSpan(
@@ -40,7 +51,7 @@ class ExerciseHistoryCard extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                    text: "8",
+                    text: "${history.reps}",
                     style: Styles.font20bold.copyWith(
                       color: Colors.orange,
                     )),
@@ -48,16 +59,16 @@ class ExerciseHistoryCard extends StatelessWidget {
                     text: "عدات",
                     style: Styles.font14regular.copyWith(color: Colors.orange)),
                 TextSpan(
-                    text: " 3X",
+                    text: " ${history.sets}X",
                     style: Styles.font20bold.copyWith(color: Colors.orange)),
               ],
             ),
           ),
-          const Spacer(),
-          const Icon(
-            Icons.arrow_forward_ios,
-            size: 16,
-          )
+          // const Spacer(),
+          // const Icon(
+          //   Icons.arrow_forward_ios,
+          //   size: 16,
+          // )
         ],
       ),
     );

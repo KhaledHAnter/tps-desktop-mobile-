@@ -18,6 +18,7 @@ import '../../features/home/logic/fetch_player_cubit/fetch_players_cubit.dart';
 import '../../features/home/ui/views/home_screen.dart';
 
 class AppRouter {
+  ExercisesCubit exercisesCubit = getIt<ExercisesCubit>();
   Route generateRoute(RouteSettings settings) {
     // this arguments to be passed in any screen like this (arguments: arguments as ClassName)
     final arrguments = settings.arguments;
@@ -66,17 +67,20 @@ class AppRouter {
         arrguments as String;
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
-            value: ExercisesCubit(getIt())..fetchExercises(arrguments),
+            value: exercisesCubit..fetchExercises(arrguments),
             child: PlayerExercisesScreen(
               phone: arrguments,
             ),
           ),
         );
       case Routes.exerciseDetailsScreen:
-      arrguments as ExerciseModel;
+        arrguments as ExerciseModel;
         return MaterialPageRoute(
-          builder: (_) =>  ExerciseDetailsScreen(
-            exercise: arrguments,
+          builder: (_) => BlocProvider.value(
+            value: exercisesCubit,
+            child: ExerciseDetailsScreen(
+              exercise: arrguments,
+            ),
           ),
         );
       default:

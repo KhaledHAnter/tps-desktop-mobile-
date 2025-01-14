@@ -254,20 +254,24 @@ class FirestoreService {
         );
 
         if (exerciseToUpdate != null) {
-          // Add new history entry to the exercise
+          // Insert the new history entry at the top (index 0) of the history list
           final updatedHistory = List.from(exerciseToUpdate['history'])
-            ..add(history.toMap()); // Add new history entry
+            ..insert(0, history.toMap()); // Insert at the top (index 0)
 
-          // Update the exercise with the new history
+          // Update the exercise with the new history list (without adding a new exercise)
           await exerciseRef.update({
-            'exercises': FieldValue.arrayUnion([
-              {
-                'name': exerciseName,
-                'history': updatedHistory,
-                'reps': exerciseToUpdate['reps'],
-                'sets': exerciseToUpdate['sets'],
+            'exercises': exercises.map((exercise) {
+              // If the exercise name matches, update its history field
+              if (exercise['name'] == exerciseName) {
+                return {
+                  'name': exerciseName,
+                  'history': updatedHistory,
+                  'reps': exercise['reps'],
+                  'sets': exercise['sets'],
+                };
               }
-            ]),
+              return exercise; // Otherwise, return the exercise as it is
+            }).toList(),
           });
 
           print('History added to exercise successfully!');

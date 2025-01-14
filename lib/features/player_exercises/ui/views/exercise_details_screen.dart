@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:tps/core/helpers/extentions.dart';
 import 'package:tps/core/theming/colors.dart';
@@ -6,6 +7,7 @@ import 'package:tps/core/theming/styles.dart';
 import 'package:tps/core/widgets/app_text_button.dart';
 import 'package:tps/core/widgets/gray_container.dart';
 import 'package:tps/features/player_exercises/data/models/exercise_model.dart';
+import 'package:tps/features/player_exercises/logic/cubit/exercises_cubit.dart';
 import 'package:tps/features/player_exercises/ui/widgets/exercise_details_header.dart';
 import 'package:tps/features/player_exercises/ui/widgets/exercise_history_card.dart';
 import 'package:tps/features/player_exercises/ui/widgets/record_new_reps.dart';
@@ -19,6 +21,7 @@ class ExerciseDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width / 2 - 48;
+    final exercisesCubit = context.read<ExercisesCubit>();
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -61,10 +64,12 @@ class ExerciseDetailsScreen extends StatelessWidget {
                   ),
                   const Gap(12),
                   ...List.generate(
-                      3,
-                      (index) => const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 4),
-                            child: ExerciseHistoryCard(),
+                      exercise.history.length,
+                      (index) => Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 4),
+                            child: ExerciseHistoryCard(
+                              history: exercise.history[index],
+                            ),
                           )),
                 ],
               ),
@@ -81,20 +86,39 @@ class ExerciseDetailsScreen extends StatelessWidget {
       bottom: 16,
       left: width,
       right: width,
-      child: IconButton(
-        style: const ButtonStyle(
-          padding: WidgetStatePropertyAll(EdgeInsets.all(16)),
-          backgroundColor: WidgetStatePropertyAll(ColorsManager.mainBage),
-        ),
-        onPressed: () {
-          _showBottomSheet(context);
-        },
-        icon: const Icon(Icons.add),
+      child: BlocProvider.value(
+        // create: (context) => getIt<ExercisesCubit>(),
+        value: context.read<ExercisesCubit>(),
+        child: Builder(builder: (context) {
+          return IconButton(
+            style: const ButtonStyle(
+              padding: WidgetStatePropertyAll(EdgeInsets.all(16)),
+              backgroundColor: WidgetStatePropertyAll(ColorsManager.mainBage),
+            ),
+            onPressed: () {
+              _showBottomSheet(context);
+            },
+            icon: const Icon(Icons.add),
+          );
+        }),
       ),
     );
   }
 
   void _showBottomSheet(BuildContext context) {
+    final cubit = context.read<ExercisesCubit>();
+    if (exercise.history.isNotEmpty) {
+      cubit.weight = exercise.history.first.weight;
+      cubit.sets = exercise.history.first.sets;
+      cubit.reps = exercise.history.first.reps;
+    } else {
+      cubit.weight = 5;
+      cubit.sets = 2;
+      cubit.reps = 8;
+    }
+    print(" ${cubit.weight} ${cubit.sets} ${cubit.reps}");
+    print(cubit.phone);
+
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -102,31 +126,45 @@ class ExerciseDetailsScreen extends StatelessWidget {
       builder: (BuildContext context) {
         return Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const GrayContainer(
-                child: Column(
-                  children: <Widget>[
-                    RecordNewWeight(
-                      weight: 45,
+          child: BlocProvider.value(
+            // create: (context) => cubit,
+            value: cubit,
+            child: Builder(builder: (context) {
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const GrayContainer(
+                    child: Column(
+                      children: <Widget>[
+                        RecordNewWeight(),
+                        Gap(12),
+                        RecordNewReps(),
+                        Gap(12),
+                        RecordNewSets(),
+                      ],
                     ),
-                    Gap(12),
-                    RecordNewSets(sets: 3),
-                    Gap(12),
-                    RecordNewReps(reps: 10),
-                  ],
-                ),
-              ),
-              const Gap(12),
-              AppTextButton(
-                text: "حفظ",
-                textStyle: Styles.font16medium,
-                onPressed: () {
-                  context.pop();
-                },
-              )
-            ],
+                  ),
+                  const Gap(12),
+                  AppTextButton(
+                    text: "حفظ",
+                    textStyle: Styles.font16medium,
+                    onPressed: () {
+                      final history = HistoryModel(
+                        weight: cubit.weight!,
+                        reps: cubit.reps!,
+                        sets: cubit.sets!,
+                        date: DateTime.now(),
+                      );
+                      context
+                          .read<ExercisesCubit>()
+                          .addHistory(cubit.phone!, exercise.name, history);
+
+                      context.pop();
+                    },
+                  )
+                ],
+              );
+            }),
           ),
         );
       },

@@ -13,6 +13,7 @@ class PlayerExercisesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<ExercisesCubit>().phone = phone;
+    print(context.read<ExercisesCubit>().phone);
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: SafeArea(

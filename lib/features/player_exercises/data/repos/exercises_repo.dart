@@ -36,4 +36,15 @@ class ExercisesRepo {
       rethrow;
     }
   }
+
+  Future<void> addHistory(
+      String phone, String exerciseName, HistoryModel history) async {
+    try {
+      await _firestoreService.addHistoryToExercise(
+          phone, exerciseName, history);
+    } catch (e) {
+      print('Failed to add history: $e');
+      rethrow;
+    }
+  }
 }

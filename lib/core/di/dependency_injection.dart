@@ -61,5 +61,5 @@ Future<void> setupGetIt() async {
   // Add Player
   getIt.registerLazySingleton<ExercisesRepo>(
       () => ExercisesRepo(firestoreService));
-  getIt.registerFactory<ExercisesCubit>(() => ExercisesCubit(getIt()));
+  getIt.registerSingleton<ExercisesCubit>(ExercisesCubit(getIt()));
 }
