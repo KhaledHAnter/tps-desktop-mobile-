@@ -7,6 +7,10 @@ import 'package:tps/features/player_details/logic/fetch_single_player_cubit/fetc
 import 'package:tps/features/player_details/logic/freeze_player_cubit/freeze_player_cubit.dart';
 import 'package:tps/features/player_details/logic/player_details_cubit/player_details_cubit.dart';
 import 'package:tps/features/player_details/ui/views/player_details_screen.dart';
+import 'package:tps/features/player_exercises/data/models/exercise_model.dart';
+import 'package:tps/features/player_exercises/logic/cubit/exercises_cubit.dart';
+import 'package:tps/features/player_exercises/ui/views/exercise_details_screen.dart';
+import 'package:tps/features/player_exercises/ui/views/player_exercises_screen.dart';
 import '../di/dependency_injection.dart';
 import 'routes.dart';
 import '../../features/home/logic/category_cubit/category_cubit.dart';
@@ -14,6 +18,7 @@ import '../../features/home/logic/fetch_player_cubit/fetch_players_cubit.dart';
 import '../../features/home/ui/views/home_screen.dart';
 
 class AppRouter {
+  ExercisesCubit exercisesCubit = getIt<ExercisesCubit>();
   Route generateRoute(RouteSettings settings) {
     // this arguments to be passed in any screen like this (arguments: arguments as ClassName)
     final arrguments = settings.arguments;
@@ -58,6 +63,26 @@ class AppRouter {
           ),
         );
 
+      case Routes.palyerExercisesScreen:
+        arrguments as String;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+            value: exercisesCubit..fetchExercises(arrguments),
+            child: PlayerExercisesScreen(
+              phone: arrguments,
+            ),
+          ),
+        );
+      case Routes.exerciseDetailsScreen:
+        arrguments as ExerciseModel;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+            value: exercisesCubit,
+            child: ExerciseDetailsScreen(
+              exercise: arrguments,
+            ),
+          ),
+        );
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(

@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:tps/features/home/data/models/freeze_model.dart';
+import 'package:tps/features/player_exercises/data/models/exercise_model.dart';
+
 import '../../features/home/data/models/player_model.dart';
 
 class FirestoreService {
@@ -30,6 +32,50 @@ class FirestoreService {
     } catch (e) {
       print('Error adding player: $e');
       return false;
+    }
+  }
+
+  /// Saves an exercise to Firestore
+  Future<void> addExerciseToFirestore(
+      ExerciseModel exercise, String phone) async {
+    try {
+      final exerciseRef =
+          FirebaseFirestore.instance.collection('exercises').doc(phone);
+
+      // Add or update the exercise for the player (overwrites if the document already exists)
+      await exerciseRef.set({
+        'exercises': FieldValue.arrayUnion([exercise.toMap()]),
+      }, SetOptions(merge: true));
+
+      print('Exercise added successfully!');
+    } catch (e) {
+      print('Error adding exercise: $e');
+      rethrow;
+    }
+  }
+
+  /// Fetches exercises for a player from Firestore
+  Future<List<ExerciseModel>> fetchExercisesFromFirestore(String phone) async {
+    try {
+      final docSnapshot = await FirebaseFirestore.instance
+          .collection('exercises')
+          .doc(phone)
+          .get();
+
+      if (docSnapshot.exists) {
+        // Get the exercises from the document's 'exercises' field
+        final exercisesData = docSnapshot.data()?['exercises'] as List<dynamic>;
+
+        return exercisesData
+            .map((exerciseData) => ExerciseModel.fromMap(exerciseData))
+            .toList();
+      } else {
+        print('No exercises found for player $phone.');
+        return [];
+      }
+    } catch (e) {
+      print('Error fetching exercises: $e');
+      rethrow;
     }
   }
 
@@ -148,6 +194,148 @@ class FirestoreService {
     } catch (e) {
       print('Error deleting player freeze: $e');
       throw Exception('Failed to delete freeze');
+    }
+  }
+
+  Future<void> deleteExerciseFromFirestore(
+      String phone, String exerciseName) async {
+    try {
+      final exerciseRef =
+          FirebaseFirestore.instance.collection('exercises').doc(phone);
+
+      // Fetch the document to find the exercise
+      final docSnapshot = await exerciseRef.get();
+
+      if (docSnapshot.exists) {
+        // Get the list of exercises
+        final exercises = List.from(docSnapshot.data()?['exercises'] ?? []);
+
+        // Find the exercise to remove
+        final exerciseToDelete = exercises.firstWhere(
+          (exercise) => exercise['name'] == exerciseName,
+          orElse: () => null, // If no matching exercise is found, return null
+        );
+
+        if (exerciseToDelete != null) {
+          // Use arrayRemove to delete the exact exercise object from the 'exercises' array
+          await exerciseRef.update({
+            'exercises': FieldValue.arrayRemove([exerciseToDelete]),
+          });
+
+          print('Exercise deleted successfully!');
+        } else {
+          print('Exercise with name "$exerciseName" not found!');
+        }
+      } else {
+        print('Player document does not exist!');
+      }
+    } catch (e) {
+      print('Error deleting exercise: $e');
+      rethrow; // Propagate the error
+    }
+  }
+
+  Future<void> addHistoryToExercise(
+      String phone, String exerciseName, HistoryModel history) async {
+    try {
+      final exerciseRef =
+          FirebaseFirestore.instance.collection('exercises').doc(phone);
+
+      // Fetch the current exercise document
+      final docSnapshot = await exerciseRef.get();
+
+      if (docSnapshot.exists) {
+        final exercises = List.from(docSnapshot.data()?['exercises'] ?? []);
+
+        // Find the exercise to update
+        final exerciseToUpdate = exercises.firstWhere(
+          (exercise) => exercise['name'] == exerciseName,
+          orElse: () => null,
+        );
+
+        if (exerciseToUpdate != null) {
+          // Insert the new history entry at the top (index 0) of the history list
+          final updatedHistory = List.from(exerciseToUpdate['history'])
+            ..insert(0, history.toMap()); // Insert at the top (index 0)
+
+          // Update the exercise with the new history list (without adding a new exercise)
+          await exerciseRef.update({
+            'exercises': exercises.map((exercise) {
+              // If the exercise name matches, update its history field
+              if (exercise['name'] == exerciseName) {
+                return {
+                  'name': exerciseName,
+                  'history': updatedHistory,
+                  'reps': exercise['reps'],
+                  'sets': exercise['sets'],
+                };
+              }
+              return exercise; // Otherwise, return the exercise as it is
+            }).toList(),
+          });
+
+          print('History added to exercise successfully!');
+        } else {
+          print('Exercise not found!');
+        }
+      } else {
+        print('No exercises found for the player.');
+      }
+    } catch (e) {
+      print('Error adding history to exercise: $e');
+      rethrow;
+    }
+  }
+
+  // Method to delete history entry
+  Future<void> deleteHistoryEntry(
+      String phone, String exerciseName, int historyIndex) async {
+    try {
+      final exerciseRef = _firestore.collection('exercises').doc(phone);
+
+      // Fetch the current exercise document
+      final docSnapshot = await exerciseRef.get();
+
+      if (docSnapshot.exists) {
+        final exercises = List.from(docSnapshot.data()?['exercises'] ?? []);
+
+        // Find the exercise to update
+        final exerciseToUpdate = exercises.firstWhere(
+          (exercise) => exercise['name'] == exerciseName,
+          orElse: () => null,
+        );
+
+        if (exerciseToUpdate != null) {
+          // Remove the history entry at the specified index
+          final updatedHistory = List.from(exerciseToUpdate['history']);
+          updatedHistory.removeAt(
+              historyIndex); // Remove the entry at the specified index
+
+          // Update the exercise with the modified history
+          await exerciseRef.update({
+            'exercises': exercises.map((exercise) {
+              if (exercise['name'] == exerciseName) {
+                return {
+                  'name': exerciseName,
+                  'history': updatedHistory,
+                  'reps': exercise['reps'],
+                  'sets': exercise['sets'],
+                };
+              }
+              return exercise; // Otherwise, return the exercise as it is
+            }).toList(),
+          });
+
+          print('History entry deleted successfully!');
+        } else {
+          print('Exercise not found!');
+        }
+      } else {
+        print('No exercises found for the player.');
+      }
+    } catch (e) {
+      print('Error deleting history entry: $e');
+      rethrow;
     }
   }
 }

@@ -51,7 +51,11 @@
      "freeze_freeze" : "تجميد اللاعب",
     "freeze_days" : "عدد الايام التي تم تجميدها",
     "actions_freeze_delete_confirm" : "تأكيد حذف عملية التجميد",
-    "actions_freeze_delete_desc" : "هل تريد حذف عملية التجميد؟"
+    "actions_freeze_delete_desc" : "هل تريد حذف عملية التجميد؟",
+    "exercises_button" : "متابعة تمارين اللاعب",
+    "exercises_headers" : "تمارين اللاعب"
+
+
 
     
 }

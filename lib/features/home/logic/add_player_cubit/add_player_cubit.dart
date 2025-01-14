@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
@@ -44,10 +43,6 @@ class AddPlayerCubit extends Cubit<AddPlayerState> {
         duration: duration,
         description: description,
         freeze: null, // Optional: Add FreezeModel if needed
-      );
-
-      log(
-        "Player: $player , phone: ${player.phone}, name: ${player.name}, sport: ${player.sport}, phase: ${player.phase}, phone: ${player.phone}, money: ${player.money}, duration: ${player.subsDuration}, description: ${player.description}",
       );
 
       emit(const AddPlayerState.loading());

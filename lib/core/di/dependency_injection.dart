@@ -8,6 +8,8 @@ import 'package:tps/features/player_details/data/repos/freeze_player_repo.dart';
 import 'package:tps/features/player_details/logic/delete_player_cubit/delete_player_cubit.dart';
 import 'package:tps/features/player_details/logic/fetch_single_player_cubit/fetch_single_player_cubit.dart';
 import 'package:tps/features/player_details/logic/freeze_player_cubit/freeze_player_cubit.dart';
+import 'package:tps/features/player_exercises/data/repos/exercises_repo.dart';
+import 'package:tps/features/player_exercises/logic/cubit/exercises_cubit.dart';
 import '../helpers/firestore_services.dart';
 import '../../features/home/data/repos/add_player_repo.dart';
 import '../../features/home/data/repos/fetch_players_repo.dart';
@@ -55,4 +57,9 @@ Future<void> setupGetIt() async {
   // excel gen
   getIt.registerLazySingleton<ExcelGenerationRepo>(() => ExcelGenerationRepo(
       excelGenUtils: excelGenUtils, directoryUtils: directoryUtils));
+
+  // Add Player
+  getIt.registerLazySingleton<ExercisesRepo>(
+      () => ExercisesRepo(firestoreService));
+  getIt.registerSingleton<ExercisesCubit>(ExercisesCubit(getIt()));
 }

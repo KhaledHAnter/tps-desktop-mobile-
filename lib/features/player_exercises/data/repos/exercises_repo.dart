@@ -1,0 +1,57 @@
+import 'package:tps/core/helpers/firestore_services.dart';
+import 'package:tps/features/player_exercises/data/models/exercise_model.dart';
+
+class ExercisesRepo {
+  final FirestoreService _firestoreService;
+
+  ExercisesRepo(this._firestoreService);
+
+  ExerciseModel createExercise(String name, int reps, int sets) {
+    return ExerciseModel(name: name, reps: reps, sets: sets, history: []);
+  }
+
+  Future<void> addExercise(ExerciseModel exercise, String phone) async {
+    try {
+      await _firestoreService.addExerciseToFirestore(exercise, phone);
+    } catch (e) {
+      print('Failed to add exercise: $e');
+      rethrow;
+    }
+  }
+
+  Future<void> deleteExercise(String phone, String exerciseName) async {
+    try {
+      await _firestoreService.deleteExerciseFromFirestore(phone, exerciseName);
+    } catch (e) {
+      print('Failed to delete exercise: $e');
+      rethrow;
+    }
+  }
+
+  Future<List<ExerciseModel>> getExercises(String phone) async {
+    try {
+      return await _firestoreService.fetchExercisesFromFirestore(phone);
+    } catch (e) {
+      print('Failed to fetch exercises: $e');
+      rethrow;
+    }
+  }
+
+  Future<void> addHistory(
+      String phone, String exerciseName, HistoryModel history) async {
+    try {
+      await _firestoreService.addHistoryToExercise(
+          phone, exerciseName, history);
+    } catch (e) {
+      print('Failed to add history: $e');
+      rethrow;
+    }
+  }
+
+  // Method to delete history entry
+  Future<void> deleteHistoryEntry(
+      String phone, String exerciseName, int historyIndex) async {
+    await _firestoreService.deleteHistoryEntry(
+        phone, exerciseName, historyIndex);
+  }
+}

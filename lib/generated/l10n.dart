@@ -569,6 +569,26 @@ class S {
       args: [],
     );
   }
+
+  /// `متابعة تمارين اللاعب`
+  String get exercises_button {
+    return Intl.message(
+      'متابعة تمارين اللاعب',
+      name: 'exercises_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تمارين اللاعب`
+  String get exercises_headers {
+    return Intl.message(
+      'تمارين اللاعب',
+      name: 'exercises_headers',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

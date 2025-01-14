@@ -53,6 +53,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لا يوجد سجل تجميد للاعب"),
         "edit_button_lbl": MessageLookupByLibrary.simpleMessage("تعديل اللاعب"),
         "edit_player": MessageLookupByLibrary.simpleMessage("تعديل اللاعب"),
+        "exercises_button":
+            MessageLookupByLibrary.simpleMessage("متابعة تمارين اللاعب"),
+        "exercises_headers":
+            MessageLookupByLibrary.simpleMessage("تمارين اللاعب"),
         "freeze_days":
             MessageLookupByLibrary.simpleMessage("عدد الايام التي تم تجميدها"),
         "freeze_freeze": MessageLookupByLibrary.simpleMessage("تجميد اللاعب"),
