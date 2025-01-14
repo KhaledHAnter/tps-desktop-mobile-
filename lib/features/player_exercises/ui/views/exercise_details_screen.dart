@@ -21,7 +21,6 @@ class ExerciseDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width / 2 - 48;
-    final exercisesCubit = context.read<ExercisesCubit>();
     return Scaffold(
       body: SafeArea(
         child: Padding(

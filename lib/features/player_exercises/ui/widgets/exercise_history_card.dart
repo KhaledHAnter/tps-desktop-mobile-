@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tps/core/theming/styles.dart';
 import 'package:tps/core/widgets/gray_container.dart';
 import 'package:tps/features/player_exercises/data/models/exercise_model.dart';
-import 'package:tps/features/player_exercises/logic/cubit/exercises_cubit.dart';
 
 class ExerciseHistoryCard extends StatelessWidget {
   final HistoryModel history;
