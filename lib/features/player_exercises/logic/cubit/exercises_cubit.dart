@@ -25,6 +25,7 @@ class ExercisesCubit extends Cubit<ExercisesState> {
   int? weight;
   int? sets;
   int? reps;
+  List<HistoryModel> history = [];
 
   void incrementReps(int value) => reps = (reps ?? 0) + value;
   void decrementReps(int value) =>
@@ -103,8 +104,6 @@ class ExercisesCubit extends Cubit<ExercisesState> {
       emit(const ExercisesState.deleteError('خطأ في حذف التمرين'));
     }
   }
-
-  
 
   Future<void> addHistory(
       String phone, String exerciseName, HistoryModel history) async {

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -16,11 +17,14 @@ import 'package:tps/features/player_exercises/ui/widgets/record_new_weight.dart'
 
 class ExerciseDetailsScreen extends StatelessWidget {
   final ExerciseModel exercise;
+
   const ExerciseDetailsScreen({super.key, required this.exercise});
 
   @override
   Widget build(BuildContext context) {
+    final exerciseName = exercise.name;
     double width = MediaQuery.sizeOf(context).width / 2 - 48;
+    final cubit = context.read<ExercisesCubit>();
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -28,6 +32,7 @@ class ExerciseDetailsScreen extends StatelessWidget {
           child: Stack(
             children: [
               ListView(
+                physics: const BouncingScrollPhysics(),
                 children: [
                   ExersiceDetailsHeader(
                     exerciseName: exercise.name,
@@ -62,14 +67,62 @@ class ExerciseDetailsScreen extends StatelessWidget {
                     ),
                   ),
                   const Gap(12),
-                  ...List.generate(
-                      exercise.history.length,
-                      (index) => Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 4),
-                            child: ExerciseHistoryCard(
-                              history: exercise.history[index],
-                            ),
-                          )),
+                  StreamBuilder<DocumentSnapshot>(
+                    stream: FirebaseFirestore.instance
+                        .collection('exercises')
+                        .doc(cubit.phone)
+                        .snapshots(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(child: CircularProgressIndicator());
+                      }
+
+                      if (snapshot.hasError) {
+                        return Center(child: Text('Error: ${snapshot.error}'));
+                      }
+
+                      if (!snapshot.hasData || !snapshot.data!.exists) {
+                        return const Center(child: Text('No data found'));
+                      }
+
+                      // Safely cast the data to a Map<String, dynamic>
+                      final data =
+                          snapshot.data!.data() as Map<String, dynamic>;
+
+                      // Fetch exercises from the data
+                      final exercises = List.from(data['exercises'] ?? []);
+
+                      // Find the exercise with the matching name
+                      final exercise = exercises.firstWhere(
+                        (exercisee) => exercisee['name'] == exerciseName,
+                        orElse: () => null,
+                      );
+
+                      if (exercise == null) {
+                        return const Center(child: Text('Exercise not found'));
+                      }
+
+                      // Map the history data to a list of HistoryModel objects
+                      final historyList = (exercise['history'] as List)
+                          .map((item) => HistoryModel.fromMap(item))
+                          .toList();
+
+                      cubit.history = historyList;
+
+                      return Column(
+                        children: List.generate(
+                            cubit.history.length,
+                            (index) => Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 4),
+                                  child: ExerciseHistoryCard(
+                                    history: historyList[index],
+                                  ),
+                                )),
+                      );
+                    },
+                  ),
+                  const Gap(72)
                 ],
               ),
               addHistory(width, context)
@@ -106,10 +159,10 @@ class ExerciseDetailsScreen extends StatelessWidget {
 
   void _showBottomSheet(BuildContext context) {
     final cubit = context.read<ExercisesCubit>();
-    if (exercise.history.isNotEmpty) {
-      cubit.weight = exercise.history.first.weight;
-      cubit.sets = exercise.history.first.sets;
-      cubit.reps = exercise.history.first.reps;
+    if (cubit.history.isNotEmpty) {
+      cubit.weight = cubit.history.first.weight;
+      cubit.sets = cubit.history.first.sets;
+      cubit.reps = cubit.history.first.reps;
     } else {
       cubit.weight = 5;
       cubit.sets = 2;
