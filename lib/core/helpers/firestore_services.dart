@@ -286,4 +286,56 @@ class FirestoreService {
       rethrow;
     }
   }
+
+  // Method to delete history entry
+  Future<void> deleteHistoryEntry(
+      String phone, String exerciseName, int historyIndex) async {
+    try {
+      final exerciseRef = _firestore.collection('exercises').doc(phone);
+
+      // Fetch the current exercise document
+      final docSnapshot = await exerciseRef.get();
+
+      if (docSnapshot.exists) {
+        final exercises = List.from(docSnapshot.data()?['exercises'] ?? []);
+
+        // Find the exercise to update
+        final exerciseToUpdate = exercises.firstWhere(
+          (exercise) => exercise['name'] == exerciseName,
+          orElse: () => null,
+        );
+
+        if (exerciseToUpdate != null) {
+          // Remove the history entry at the specified index
+          final updatedHistory = List.from(exerciseToUpdate['history']);
+          updatedHistory.removeAt(
+              historyIndex); // Remove the entry at the specified index
+
+          // Update the exercise with the modified history
+          await exerciseRef.update({
+            'exercises': exercises.map((exercise) {
+              if (exercise['name'] == exerciseName) {
+                return {
+                  'name': exerciseName,
+                  'history': updatedHistory,
+                  'reps': exercise['reps'],
+                  'sets': exercise['sets'],
+                };
+              }
+              return exercise; // Otherwise, return the exercise as it is
+            }).toList(),
+          });
+
+          print('History entry deleted successfully!');
+        } else {
+          print('Exercise not found!');
+        }
+      } else {
+        print('No exercises found for the player.');
+      }
+    } catch (e) {
+      print('Error deleting history entry: $e');
+      rethrow;
+    }
+  }
 }

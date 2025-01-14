@@ -116,4 +116,18 @@ class ExercisesCubit extends Cubit<ExercisesState> {
       emit(const ExercisesState.addHistoryError('Failed to add history.'));
     }
   }
+
+  // Delete history entry
+  Future<void> deleteHistory(
+      String phone, String exerciseName, int historyIndex) async {
+    try {
+      emit(const ExercisesState.deleteHistoryLoading());
+      // Call the repository to delete the history entry
+      await repo.deleteHistoryEntry(phone, exerciseName, historyIndex);
+      emit(const ExercisesState
+          .deleteHistorySuccess()); // You can pass the updated history if needed
+    } catch (e) {
+      emit(ExercisesState.deleteHistoryError('Failed to delete history: $e'));
+    }
+  }
 }

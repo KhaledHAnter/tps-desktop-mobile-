@@ -115,8 +115,25 @@ class ExerciseDetailsScreen extends StatelessWidget {
                             (index) => Padding(
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 4),
-                                  child: ExerciseHistoryCard(
-                                    history: historyList[index],
+                                  child: Dismissible(
+                                    confirmDismiss: (direction) async => cubit
+                                        .showDeleteConfirmationDialog(context),
+                                    key: UniqueKey(),
+                                    background: Container(
+                                      alignment: Alignment.centerRight,
+                                      padding: const EdgeInsets.only(right: 16),
+                                      color: Colors.redAccent,
+                                      child: const Icon(
+                                        Icons.delete,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    onDismissed: (direction) =>
+                                        cubit.deleteHistory(cubit.phone ?? "",
+                                            exerciseName, index),
+                                    child: ExerciseHistoryCard(
+                                      history: historyList[index],
+                                    ),
                                   ),
                                 )),
                       );

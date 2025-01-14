@@ -51,8 +51,8 @@ class ExercisesListSep extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  onDismissed: (direction) => cubit.deleteExercise(
-                      cubit.phone ?? "", exercises[index].name),
+                  onDismissed: (direction) => cubit.deleteHistory(
+                      cubit.phone ?? "", exercises[index].name, index),
                   child: ListTile(
                     leading: const Icon(
                       Icons.fitness_center,

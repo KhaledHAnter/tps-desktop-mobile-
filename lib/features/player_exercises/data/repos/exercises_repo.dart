@@ -47,4 +47,11 @@ class ExercisesRepo {
       rethrow;
     }
   }
+
+  // Method to delete history entry
+  Future<void> deleteHistoryEntry(
+      String phone, String exerciseName, int historyIndex) async {
+    await _firestoreService.deleteHistoryEntry(
+        phone, exerciseName, historyIndex);
+  }
 }
