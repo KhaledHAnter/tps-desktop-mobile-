@@ -10,6 +10,7 @@ class ExerciseHistoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GrayContainer(
+      
       child: Row(
         children: <Widget>[
           Text(

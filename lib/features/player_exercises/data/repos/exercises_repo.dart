@@ -19,6 +19,15 @@ class ExercisesRepo {
     }
   }
 
+  Future<void> deleteExercise(String phone, String exerciseName) async {
+    try {
+      await _firestoreService.deleteExerciseFromFirestore(phone, exerciseName);
+    } catch (e) {
+      print('Failed to delete exercise: $e');
+      rethrow;
+    }
+  }
+
   Future<List<ExerciseModel>> getExercises(String phone) async {
     try {
       return await _firestoreService.fetchExercisesFromFirestore(phone);

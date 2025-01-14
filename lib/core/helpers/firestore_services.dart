@@ -196,4 +196,90 @@ class FirestoreService {
       throw Exception('Failed to delete freeze');
     }
   }
+
+  Future<void> deleteExerciseFromFirestore(
+      String phone, String exerciseName) async {
+    try {
+      final exerciseRef =
+          FirebaseFirestore.instance.collection('exercises').doc(phone);
+
+      // Fetch the document to find the exercise
+      final docSnapshot = await exerciseRef.get();
+
+      if (docSnapshot.exists) {
+        // Get the list of exercises
+        final exercises = List.from(docSnapshot.data()?['exercises'] ?? []);
+
+        // Find the exercise to remove
+        final exerciseToDelete = exercises.firstWhere(
+          (exercise) => exercise['name'] == exerciseName,
+          orElse: () => null, // If no matching exercise is found, return null
+        );
+
+        if (exerciseToDelete != null) {
+          // Use arrayRemove to delete the exact exercise object from the 'exercises' array
+          await exerciseRef.update({
+            'exercises': FieldValue.arrayRemove([exerciseToDelete]),
+          });
+
+          print('Exercise deleted successfully!');
+        } else {
+          print('Exercise with name "$exerciseName" not found!');
+        }
+      } else {
+        print('Player document does not exist!');
+      }
+    } catch (e) {
+      print('Error deleting exercise: $e');
+      rethrow; // Propagate the error
+    }
+  }
+
+  Future<void> addHistoryToExercise(
+      String phone, String exerciseName, HistoryModel history) async {
+    try {
+      final exerciseRef =
+          FirebaseFirestore.instance.collection('exercises').doc(phone);
+
+      // Fetch the current exercise document
+      final docSnapshot = await exerciseRef.get();
+
+      if (docSnapshot.exists) {
+        final exercises = List.from(docSnapshot.data()?['exercises'] ?? []);
+
+        // Find the exercise to update
+        final exerciseToUpdate = exercises.firstWhere(
+          (exercise) => exercise['name'] == exerciseName,
+          orElse: () => null,
+        );
+
+        if (exerciseToUpdate != null) {
+          // Add new history entry to the exercise
+          final updatedHistory = List.from(exerciseToUpdate['history'])
+            ..add(history.toMap()); // Add new history entry
+
+          // Update the exercise with the new history
+          await exerciseRef.update({
+            'exercises': FieldValue.arrayUnion([
+              {
+                'name': exerciseName,
+                'history': updatedHistory,
+                'reps': exerciseToUpdate['reps'],
+                'sets': exerciseToUpdate['sets'],
+              }
+            ]),
+          });
+
+          print('History added to exercise successfully!');
+        } else {
+          print('Exercise not found!');
+        }
+      } else {
+        print('No exercises found for the player.');
+      }
+    } catch (e) {
+      print('Error adding history to exercise: $e');
+      rethrow;
+    }
+  }
 }

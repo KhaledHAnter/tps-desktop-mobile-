@@ -1,8 +1,42 @@
+class HistoryModel {
+  final int weight;
+  final int reps;
+  final int sets;
+  final DateTime date;
+
+  HistoryModel({
+    required this.weight,
+    required this.reps,
+    required this.sets,
+    required this.date,
+  });
+
+  // Convert HistoryModel to a map (for Firestore storage)
+  Map<String, dynamic> toMap() {
+    return {
+      'weight': weight,
+      'reps': reps,
+      'sets': sets,
+      'date': date.toIso8601String(),
+    };
+  }
+
+  // Convert a map back to HistoryModel (for Firestore retrieval)
+  factory HistoryModel.fromMap(Map<String, dynamic> map) {
+    return HistoryModel(
+      weight: map['weight'],
+      reps: map['reps'],
+      sets: map['sets'],
+      date: DateTime.parse(map['date']),
+    );
+  }
+}
+
 class ExerciseModel {
   final String name;
   final int reps;
   final int sets;
-  final List<HistoryModel> history;
+  List<HistoryModel> history;
 
   ExerciseModel({
     required this.name,
@@ -32,38 +66,9 @@ class ExerciseModel {
       ),
     );
   }
-}
 
-class HistoryModel {
-  final int weight;
-  final int reps;
-  final int sets;
-  final DateTime date;
-
-  HistoryModel({
-    required this.weight,
-    required this.reps,
-    required this.sets,
-    required this.date,
-  });
-
-  // Convert HistoryModel to a map (for Firestore storage)
-  Map<String, dynamic> toMap() {
-    return {
-      'weight': weight,
-      'reps': reps,
-      'sets': sets,
-      'date': date.toIso8601String(), // Store date as a string in ISO format
-    };
-  }
-
-  // Convert a map back to HistoryModel (for Firestore retrieval)
-  factory HistoryModel.fromMap(Map<String, dynamic> map) {
-    return HistoryModel(
-      weight: map['weight'],
-      reps: map['reps'],
-      sets: map['sets'],
-      date: DateTime.parse(map['date']),
-    );
+  // Add new history entry to the exercise
+  void addHistory(HistoryModel historyEntry) {
+    history.add(historyEntry);
   }
 }

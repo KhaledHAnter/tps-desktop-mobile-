@@ -5,6 +5,7 @@ import 'package:tps/core/theming/colors.dart';
 import 'package:tps/core/theming/styles.dart';
 import 'package:tps/core/widgets/app_text_button.dart';
 import 'package:tps/core/widgets/gray_container.dart';
+import 'package:tps/features/player_exercises/data/models/exercise_model.dart';
 import 'package:tps/features/player_exercises/ui/widgets/exercise_details_header.dart';
 import 'package:tps/features/player_exercises/ui/widgets/exercise_history_card.dart';
 import 'package:tps/features/player_exercises/ui/widgets/record_new_reps.dart';
@@ -12,7 +13,8 @@ import 'package:tps/features/player_exercises/ui/widgets/record_new_sets.dart';
 import 'package:tps/features/player_exercises/ui/widgets/record_new_weight.dart';
 
 class ExerciseDetailsScreen extends StatelessWidget {
-  const ExerciseDetailsScreen({super.key});
+  final ExerciseModel exercise;
+  const ExerciseDetailsScreen({super.key, required this.exercise});
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +25,11 @@ class ExerciseDetailsScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Stack(
             children: [
-              Column(
+              ListView(
                 children: [
-                  const ExersiceDetailsHeader(),
+                  ExersiceDetailsHeader(
+                    exerciseName: exercise.name,
+                  ),
                   const Gap(12),
                   GrayContainer(
                     child: Row(
@@ -56,32 +60,36 @@ class ExerciseDetailsScreen extends StatelessWidget {
                     ),
                   ),
                   const Gap(12),
-                  const ExerciseHistoryCard(),
-                  const Gap(8),
-                  const ExerciseHistoryCard(),
-                  const Gap(8),
-                  const ExerciseHistoryCard(),
+                  ...List.generate(
+                      3,
+                      (index) => const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 4),
+                            child: ExerciseHistoryCard(),
+                          )),
                 ],
               ),
-              Positioned(
-                bottom: 16,
-                left: width,
-                right: width,
-                child: IconButton(
-                  style: const ButtonStyle(
-                    padding: WidgetStatePropertyAll(EdgeInsets.all(16)),
-                    backgroundColor:
-                        WidgetStatePropertyAll(ColorsManager.mainBage),
-                  ),
-                  onPressed: () {
-                    _showBottomSheet(context);
-                  },
-                  icon: const Icon(Icons.add),
-                ),
-              )
+              addHistory(width, context)
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Positioned addHistory(double width, BuildContext context) {
+    return Positioned(
+      bottom: 16,
+      left: width,
+      right: width,
+      child: IconButton(
+        style: const ButtonStyle(
+          padding: WidgetStatePropertyAll(EdgeInsets.all(16)),
+          backgroundColor: WidgetStatePropertyAll(ColorsManager.mainBage),
+        ),
+        onPressed: () {
+          _showBottomSheet(context);
+        },
+        icon: const Icon(Icons.add),
       ),
     );
   }

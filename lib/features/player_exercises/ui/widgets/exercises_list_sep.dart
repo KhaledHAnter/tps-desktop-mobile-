@@ -1,10 +1,11 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tps/core/helpers/extentions.dart';
 import 'package:tps/core/routing/routes.dart';
 import 'package:tps/core/theming/colors.dart';
 import 'package:tps/core/theming/styles.dart';
 import 'package:tps/features/player_exercises/data/models/exercise_model.dart';
+import 'package:tps/features/player_exercises/logic/cubit/exercises_cubit.dart';
 
 class ExercisesListSep extends StatelessWidget {
   final List<ExerciseModel> exercises;
@@ -15,6 +16,7 @@ class ExercisesListSep extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<ExercisesCubit>();
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
@@ -33,25 +35,42 @@ class ExercisesListSep extends StatelessWidget {
               ),
               itemBuilder: (context, index) => GestureDetector(
                 onTap: () {
-                  context.pushNamed(Routes.exerciseDetailsScreen);
+                  context.pushNamed(Routes.exerciseDetailsScreen,
+                      arguments: exercises[index]);
                 },
-                child: ListTile(
-                  leading: const Icon(
-                    Icons.fitness_center,
+                child: Dismissible(
+                  confirmDismiss: (direction) async =>
+                      cubit.showDeleteConfirmationDialog(context),
+                  key: UniqueKey(),
+                  background: Container(
+                    alignment: Alignment.centerRight,
+                    padding: const EdgeInsets.only(right: 16),
                     color: Colors.redAccent,
+                    child: const Icon(
+                      Icons.delete,
+                      color: Colors.white,
+                    ),
                   ),
-                  title: Text(
-                    exercises[index].name,
-                    style: Styles.font16medium
-                        .copyWith(fontWeight: FontWeight.bold),
-                  ),
-                  subtitle: Text(
-                    "${exercises[index].reps} مجموعات  -  ${exercises[index].sets} عدات",
-                    style: Styles.font14medium,
-                  ),
-                  trailing: const Icon(
-                    Icons.arrow_forward_ios,
-                    color: Colors.redAccent,
+                  onDismissed: (direction) => cubit.deleteExercise(
+                      cubit.phone ?? "", exercises[index].name),
+                  child: ListTile(
+                    leading: const Icon(
+                      Icons.fitness_center,
+                      color: Colors.redAccent,
+                    ),
+                    title: Text(
+                      exercises[index].name,
+                      style: Styles.font16medium
+                          .copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    subtitle: Text(
+                      "${exercises[index].reps} مجموعات  -  ${exercises[index].sets} عدات",
+                      style: Styles.font14medium,
+                    ),
+                    trailing: const Icon(
+                      Icons.arrow_forward_ios,
+                      color: Colors.redAccent,
+                    ),
                   ),
                 ),
               ),

@@ -5,7 +5,8 @@ import 'package:tps/core/theming/styles.dart';
 import 'package:tps/core/widgets/app_bar_button.dart';
 
 class ExersiceDetailsHeader extends StatelessWidget {
-  const ExersiceDetailsHeader({super.key});
+  final String exerciseName;
+  const ExersiceDetailsHeader({super.key, required this.exerciseName});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class ExersiceDetailsHeader extends StatelessWidget {
           flex: 3,
         ),
         Text(
-          "Lat-Pulldown",
+          exerciseName,
           style: Styles.font24bold,
         ),
         const Spacer(

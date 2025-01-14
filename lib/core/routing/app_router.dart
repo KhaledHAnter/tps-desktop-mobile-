@@ -7,6 +7,7 @@ import 'package:tps/features/player_details/logic/fetch_single_player_cubit/fetc
 import 'package:tps/features/player_details/logic/freeze_player_cubit/freeze_player_cubit.dart';
 import 'package:tps/features/player_details/logic/player_details_cubit/player_details_cubit.dart';
 import 'package:tps/features/player_details/ui/views/player_details_screen.dart';
+import 'package:tps/features/player_exercises/data/models/exercise_model.dart';
 import 'package:tps/features/player_exercises/logic/cubit/exercises_cubit.dart';
 import 'package:tps/features/player_exercises/ui/views/exercise_details_screen.dart';
 import 'package:tps/features/player_exercises/ui/views/player_exercises_screen.dart';
@@ -64,17 +65,19 @@ class AppRouter {
       case Routes.palyerExercisesScreen:
         arrguments as String;
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) =>
-                ExercisesCubit(getIt())..fetchExercises(arrguments),
+          builder: (_) => BlocProvider.value(
+            value: ExercisesCubit(getIt())..fetchExercises(arrguments),
             child: PlayerExercisesScreen(
               phone: arrguments,
             ),
           ),
         );
       case Routes.exerciseDetailsScreen:
+      arrguments as ExerciseModel;
         return MaterialPageRoute(
-          builder: (_) => const ExerciseDetailsScreen(),
+          builder: (_) =>  ExerciseDetailsScreen(
+            exercise: arrguments,
+          ),
         );
       default:
         return MaterialPageRoute(
