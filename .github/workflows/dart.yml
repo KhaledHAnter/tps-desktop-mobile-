@@ -37,6 +37,6 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: build/ios/iphoneos/FlutterIpaExport.ipa
-          tag: v1.2
+          tag: v1.3
           overwrite: true
-          body: "add FaceID authentication & Excel sheets export" 
+          body: "add exercises for the player with history for each exercise & add admin pin to the app" 
