@@ -86,6 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
     if (showMoney) {
       setState(() {
         showMoney = false;
+        pinCode = '';
       });
       return null;
     } else if (_profileModel == null) {
@@ -169,6 +170,11 @@ class _HomeScreenState extends State<HomeScreen> {
       animationDuration: const Duration(milliseconds: 300),
       backgroundColor: Colors.white,
       enableActiveFill: true,
+      onChanged: (value) {
+        setState(() {
+          pinCode = value;
+        });
+      },
       onCompleted: (code) {
         pinCode = code;
         navigationOptions(context);
