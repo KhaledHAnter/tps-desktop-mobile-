@@ -27,7 +27,7 @@ class HomeScreen extends StatefulWidget {
 bool showMoney = false;
 FirestoreService _firestoreService = FirestoreService();
 ProfileModel? _profileModel;
-late String pinCode;
+String pinCode = '';
 
 void fetchProfileData(String phone) async {
   _profileModel = await _firestoreService.fetchProfileData(phone);
@@ -104,6 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
       context: context,
       builder: (context) {
         return Dialog(
+          backgroundColor: Colors.white,
           // Use Dialog to follow material design
           shape: RoundedRectangleBorder(
             borderRadius:
@@ -121,9 +122,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       Styles.font16medium, // Replace Styles with your TextStyle
                   textAlign: TextAlign.start,
                 ),
-                const SizedBox(height: 24),
+                const Gap(24),
                 _buildPinCodeField(context),
-                const SizedBox(height: 24),
+                const Gap(24),
                 AppTextButton(
                   text: "التالي",
                   textStyle: Styles.font16medium,
@@ -131,12 +132,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     navigationOptions(context);
                   },
                 ),
-                //  AppButton(
-                //   text: S.of(context).auth_button,
-                //   onTap: () {
-                //     navigationOptions(context);
-                //   },
-                // ),
               ],
             ),
           ),
@@ -200,6 +195,16 @@ class _HomeScreenState extends State<HomeScreen> {
               )),
         );
       }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            duration: Duration(seconds: 1),
+            backgroundColor: Colors.red,
+            content: Text(
+              'ادخل كود التحقق',
+              style: TextStyle(fontSize: 18, color: Colors.white),
+            )),
+      );
     }
   }
 }
