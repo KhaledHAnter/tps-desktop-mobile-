@@ -24,7 +24,9 @@ import '../../../../core/di/dependency_injection.dart';
 
 class PlayerDetailsScreen extends StatelessWidget {
   final PlayerModel player;
-  const PlayerDetailsScreen({super.key, required this.player});
+  final bool showMoney;
+  const PlayerDetailsScreen(
+      {super.key, required this.player, required this.showMoney});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,7 @@ class PlayerDetailsScreen extends StatelessWidget {
                   player: player,
                 ),
                 const Gap(32),
-                NameAndMoney(player: player),
+                NameAndMoney(player: player, showMoney: showMoney),
                 const Gap(16),
                 SportAndRemaining(player: player),
                 const Gap(32),
@@ -72,7 +74,9 @@ class PlayerDetailsScreen extends StatelessWidget {
                           arguments: player.phone);
                     }),
                 const Gap(64),
-                const FetchSinglePlayerBlocListener(),
+                FetchSinglePlayerBlocListener(
+                  showMoney: showMoney,
+                ),
                 const DeletePlayerBlocListener(),
                 FreezePlayerBlocListener(documentId: player.phone),
               ],
