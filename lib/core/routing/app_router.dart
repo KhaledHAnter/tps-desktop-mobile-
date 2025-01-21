@@ -40,7 +40,7 @@ class AppRouter {
           ], child: const HomeScreen()),
         );
       case Routes.palyerDetailsScreen:
-        arrguments as PlayerModel;
+        arrguments as Map<String, dynamic>;
         return MaterialPageRoute(
           builder: (_) => MultiBlocProvider(
             providers: [
@@ -58,7 +58,8 @@ class AppRouter {
               ),
             ],
             child: PlayerDetailsScreen(
-              player: arrguments,
+              player: arrguments["player"] as PlayerModel,
+              showMoney: arrguments["showMoney"] as bool,
             ),
           ),
         );

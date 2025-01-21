@@ -8,9 +8,11 @@ import '../../../../../generated/l10n.dart';
 
 class PlayerTile extends StatelessWidget {
   final PlayerModel player;
+  final bool showMoney;
   const PlayerTile({
     super.key,
     required this.player,
+    required this.showMoney,
   });
 
   String getCategoryText(String phase, List<CategoryModel> categories) {
@@ -94,7 +96,8 @@ class PlayerTile extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Row(
               children: [
-                Text("${player.money}ج.م", style: Styles.font14medium),
+                Text(showMoney ? "${player.money} ج.م" : "*****ج.م",
+                    style: Styles.font14medium),
                 const Spacer(),
                 Text(
                   "${player.remainingDuration}يوم",

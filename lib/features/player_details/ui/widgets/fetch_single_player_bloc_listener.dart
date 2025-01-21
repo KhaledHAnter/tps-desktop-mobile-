@@ -8,8 +8,10 @@ import '../../../../../core/theming/colors.dart';
 import '../../../../../core/widgets/show_snackbar.dart';
 
 class FetchSinglePlayerBlocListener extends StatelessWidget {
+  final bool showMoney;
   const FetchSinglePlayerBlocListener({
     super.key,
+    required this.showMoney,
   });
 
   @override
@@ -34,7 +36,7 @@ class FetchSinglePlayerBlocListener extends StatelessWidget {
             context.pop();
             showSnackbar(context, "تم تحميل بيانات اللاعب", Colors.green);
             context.pushReplacementNamed(Routes.palyerDetailsScreen,
-                arguments: player);
+                arguments: {"player": player, "showMoney": showMoney});
           },
           fetchError: (message) {
             context.pop();

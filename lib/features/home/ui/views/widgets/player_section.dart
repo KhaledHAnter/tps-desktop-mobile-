@@ -6,7 +6,9 @@ import 'player_tile.dart';
 
 class PlayersSection extends StatelessWidget {
   final List<PlayerModel> players;
-  const PlayersSection({super.key, required this.players});
+  final bool showMoney;
+  const PlayersSection(
+      {super.key, required this.players, required this.showMoney});
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +23,10 @@ class PlayersSection extends StatelessWidget {
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () => context.pushNamed(Routes.palyerDetailsScreen,
-              arguments: players[index]),
+              arguments: { 'player': players[index], 'showMoney': showMoney }),
           child: PlayerTile(
             player: players[index],
+            showMoney: showMoney,
           ),
         );
       },

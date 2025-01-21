@@ -1,11 +1,37 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:tps/features/home/data/models/freeze_model.dart';
+import 'package:tps/features/home/data/models/profile_model.dart';
 import 'package:tps/features/player_exercises/data/models/exercise_model.dart';
 
 import '../../features/home/data/models/player_model.dart';
 
 class FirestoreService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  /// Fetches exercises for a player from Firestore
+  Future<ProfileModel?> fetchProfileData(String phone) async {
+    try {
+      // Reference to the Firestore collection
+      final docSnapshot = await FirebaseFirestore.instance
+          .collection('profile') // Name of the collection
+          .doc(phone) // Document ID to fetch
+          .get();
+
+      // Check if the document exists
+      if (docSnapshot.exists) {
+        // Convert Firestore data to ProfileModel
+        return ProfileModel.fromMap(docSnapshot.data()!);
+      } else {
+        print("Document with ID $phone does not exist.");
+        return null;
+      }
+    } catch (e) {
+      print("Error fetching profile: $e");
+      return null;
+    }
+  }
 
   /// Saves a player to Firestore with phone number as the document ID
   Future<bool> addPlayerToFirestore(PlayerModel player) async {

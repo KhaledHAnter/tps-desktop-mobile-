@@ -6,7 +6,8 @@ import '../../../logic/fetch_player_cubit/fetch_players_cubit.dart';
 import 'player_section.dart';
 
 class PlayersSectionBlocBuilder extends StatelessWidget {
-  const PlayersSectionBlocBuilder({super.key});
+  final bool showMoney;
+  const PlayersSectionBlocBuilder({super.key, required this.showMoney});
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +32,7 @@ class PlayersSectionBlocBuilder extends StatelessWidget {
                 const SliverToBoxAdapter(child: SizedBox.shrink()),
             fetchSuccess: (players) => PlayersSection(
               players: players,
+              showMoney: showMoney,
             ),
           );
         });
