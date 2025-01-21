@@ -26,7 +26,7 @@ class _AddDaysBottomSheetState extends State<AddDaysBottomSheet> {
     final cubit = context.read<AddDaysCubit>();
 
     return Container(
-      height: MediaQuery.sizeOf(context).height / 3,
+      // height: MediaQuery.sizeOf(context).height / 3,
       width: MediaQuery.sizeOf(context).width,
       padding: const EdgeInsets.all(16),
       decoration: const BoxDecoration(
@@ -39,6 +39,7 @@ class _AddDaysBottomSheetState extends State<AddDaysBottomSheet> {
       child: Form(
         key: cubit.formKey,
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Container(
               height: 5,
@@ -48,14 +49,14 @@ class _AddDaysBottomSheetState extends State<AddDaysBottomSheet> {
                 color: Colors.black.withOpacity(.6),
               ),
             ),
-            const Gap(32),
+            const Gap(16),
             Text(
               S.of(context).add_days,
               style: Styles.font16medium.copyWith(
                 fontWeight: FontWeight.w600,
               ),
             ),
-            const Spacer(),
+            const Gap(16),
             Row(
               children: [
                 Expanded(
@@ -75,7 +76,7 @@ class _AddDaysBottomSheetState extends State<AddDaysBottomSheet> {
                 ),
               ],
             ),
-            const Spacer(),
+            const Gap(32),
             GestureDetector(
               onTap: () {
                 cubit.addDays(widget.player.phone, widget.player);
@@ -98,7 +99,7 @@ class _AddDaysBottomSheetState extends State<AddDaysBottomSheet> {
                 ),
               ),
             ),
-            const Spacer(),
+            const Gap(16),
             AddDaysBlocListener(
               documentId: widget.player.phone,
             ),

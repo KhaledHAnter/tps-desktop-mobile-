@@ -30,7 +30,7 @@ class BottomSheetBody extends StatelessWidget {
     }
 
     return Container(
-      height: MediaQuery.sizeOf(context).height / 1.6,
+      // height: MediaQuery.sizeOf(context).height / 1.6,
       width: MediaQuery.sizeOf(context).width,
       padding: const EdgeInsets.all(16),
       decoration: const BoxDecoration(
@@ -43,6 +43,7 @@ class BottomSheetBody extends StatelessWidget {
       child: Form(
         key: cubit.formKey,
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Container(
               height: 5,
@@ -52,14 +53,14 @@ class BottomSheetBody extends StatelessWidget {
                 color: Colors.black.withOpacity(.6),
               ),
             ),
-            const Gap(32),
+            const Gap(16),
             Text(
               S.of(context).home_add_player,
               style: Styles.font16medium.copyWith(
                 fontWeight: FontWeight.w600,
               ),
             ),
-            const Spacer(),
+            // const Spacer(),
             const Gap(16),
             Row(
               children: [
@@ -150,11 +151,10 @@ class BottomSheetBody extends StatelessWidget {
               hintText: S.of(context).home_add_lbl6,
               controller: cubit.descriptionController,
             ),
-            const Spacer(),
+            const Gap(16),
             GestureDetector(
               onTap: () {
                 cubit.addPlayer();
-                // context.pop();
               },
               child: Container(
                 padding: const EdgeInsets.symmetric(
@@ -174,7 +174,7 @@ class BottomSheetBody extends StatelessWidget {
                 ),
               ),
             ),
-            const Spacer(),
+            const Gap(16),
             const AddPlayerBlocListener(),
           ],
         ),

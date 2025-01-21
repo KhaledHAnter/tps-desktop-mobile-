@@ -43,7 +43,7 @@ class _EditBottomSheetBodyState extends State<EditBottomSheetBody> {
     final cubit = context.read<EditPlayerCubit>();
 
     return Container(
-      height: MediaQuery.sizeOf(context).height / 1.5,
+      // height: MediaQuery.sizeOf(context).height / 1.5,
       width: MediaQuery.sizeOf(context).width,
       padding: const EdgeInsets.all(16),
       decoration: const BoxDecoration(
@@ -56,6 +56,7 @@ class _EditBottomSheetBodyState extends State<EditBottomSheetBody> {
       child: Form(
         key: cubit.formKey,
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Container(
               height: 5,
@@ -65,14 +66,13 @@ class _EditBottomSheetBodyState extends State<EditBottomSheetBody> {
                 color: Colors.black.withOpacity(.6),
               ),
             ),
-            const Gap(32),
+            const Gap(16),
             Text(
               S.of(context).edit_player,
               style: Styles.font16medium.copyWith(
                 fontWeight: FontWeight.w600,
               ),
             ),
-            const Spacer(),
             const Gap(16),
             Row(
               children: [
@@ -153,7 +153,7 @@ class _EditBottomSheetBodyState extends State<EditBottomSheetBody> {
               hintText: S.of(context).home_add_lbl6,
               controller: cubit.descriptionController,
             ),
-            const Spacer(),
+            const Gap(32),
             GestureDetector(
               onTap: () {
                 cubit.updatePlayerDetails(widget.player.phone);
@@ -176,7 +176,7 @@ class _EditBottomSheetBodyState extends State<EditBottomSheetBody> {
                 ),
               ),
             ),
-            const Spacer(),
+            const Gap(16),
             EditPlayerBlocListener(
               documentId: widget.player.phone,
             ),
