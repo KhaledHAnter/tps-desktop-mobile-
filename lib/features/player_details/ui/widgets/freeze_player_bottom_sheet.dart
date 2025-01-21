@@ -27,7 +27,6 @@ class _FreezePlayerBottomSheetState extends State<FreezePlayerBottomSheet> {
     final cubit = context.read<FreezePlayerCubit>();
 
     return Container(
-      height: MediaQuery.sizeOf(context).height / 2.5,
       width: MediaQuery.sizeOf(context).width,
       padding: const EdgeInsets.all(16),
       decoration: const BoxDecoration(
@@ -40,6 +39,7 @@ class _FreezePlayerBottomSheetState extends State<FreezePlayerBottomSheet> {
       child: Form(
         key: cubit.formKey,
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Container(
               height: 5,
@@ -49,14 +49,14 @@ class _FreezePlayerBottomSheetState extends State<FreezePlayerBottomSheet> {
                 color: Colors.black.withOpacity(.6),
               ),
             ),
-            const Gap(32),
+            const Gap(16),
             Text(
               S.of(context).freeze_freeze,
               style: Styles.font16medium.copyWith(
                 fontWeight: FontWeight.w600,
               ),
             ),
-            const Spacer(),
+            const Gap(16),
             AppTextFormFeild(
               hintText: S.of(context).freeze_days,
               keyboardType: TextInputType.number,
@@ -69,7 +69,7 @@ class _FreezePlayerBottomSheetState extends State<FreezePlayerBottomSheet> {
               controller: cubit.freezeReasonController,
               validator: ValidatorUtils.requiredField,
             ),
-            const Spacer(),
+            const Gap(32),
             GestureDetector(
               onTap: () {
                 cubit.freezePlayerSubscription(widget.player.phone);
@@ -92,7 +92,7 @@ class _FreezePlayerBottomSheetState extends State<FreezePlayerBottomSheet> {
                 ),
               ),
             ),
-            const Spacer(),
+            const Gap(16),
             // FreezePlayerBlocListener(
             //   documentId: widget.player.phone,
             // ),
