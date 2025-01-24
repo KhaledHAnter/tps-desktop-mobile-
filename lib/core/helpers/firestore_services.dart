@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:tps/features/home/data/models/freeze_model.dart';
 import 'package:tps/features/home/data/models/profile_model.dart';
