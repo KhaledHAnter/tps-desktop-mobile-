@@ -1,11 +1,7 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:tps/core/helpers/directory_utils.dart';
 import 'package:tps/core/widgets/app_bar_button.dart';
-import 'package:tps/features/home/logic/fetch_player_cubit/fetch_players_cubit.dart';
 
 import '../../../../../core/di/dependency_injection.dart';
 import '../../../../../core/helpers/assets.dart';
@@ -25,7 +21,6 @@ class WebHomeHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<FetchPlayersCubit>();
     return Row(
       children: <Widget>[
         GestureDetector(
@@ -54,35 +49,6 @@ class WebHomeHeader extends StatelessWidget {
           ],
         ),
         const Spacer(),
-        // AppBarButton(
-        //   onTap: () async {
-        //     if (showSheet) {
-        //       DirectoryUtils directoryUtils = DirectoryUtils();
-        //       final path = await directoryUtils.getGlobalDirectoryPath(
-        //           fileName: 'players.xlsx');
-        //       directoryUtils.openFile(
-        //         File(path),
-        //         fileType:
-        //             'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-        //       );
-        //     } else {
-        //       showErrSnack(context);
-        //     }
-        //   },
-        //   icon: Icons.file_open_outlined,
-        // ),
-        // const Gap(8),
-        // AppBarButton(
-        //   onTap: () {
-        //     if (showSheet) {
-        //       cubit.generateExcelFile(cubit.allPlayers);
-        //     } else {
-        //       showErrSnack(context);
-        //     }
-        //   },
-        //   icon: Icons.document_scanner_outlined,
-        // ),
-        // const Gap(8),
         AppBarButton(
           onTap: () => showPlayerAddSheet(context),
           icon: Icons.add,

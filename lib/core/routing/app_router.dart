@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tps/features/home/data/models/player_model.dart';
+import 'package:tps/features/local_auth/ui/views/auth_Screen.dart';
 import 'package:tps/features/local_auth/ui/views/local_auth_screen.dart';
 import 'package:tps/features/player_details/logic/delete_player_cubit/delete_player_cubit.dart';
 import 'package:tps/features/player_details/logic/fetch_single_player_cubit/fetch_single_player_cubit.dart';
@@ -27,6 +28,10 @@ class AppRouter {
       case Routes.localAuthScreen:
         return MaterialPageRoute(
           builder: (_) => const LocalAuthScreen(),
+        );
+      case Routes.authScreen:
+        return MaterialPageRoute(
+          builder: (_) => const AuthScreen(),
         );
       case Routes.homeScreen:
         return MaterialPageRoute(
