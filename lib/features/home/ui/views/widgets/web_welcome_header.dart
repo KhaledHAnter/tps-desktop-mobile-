@@ -14,10 +14,10 @@ import '../../../../../generated/l10n.dart';
 import '../../../logic/add_player_cubit/add_player_cubit.dart';
 import 'bottom_sheet_body.dart';
 
-class WelcomeHeader extends StatelessWidget {
+class WebHomeHeader extends StatelessWidget {
   final void Function()? onTap;
   final bool showSheet;
-  const WelcomeHeader({
+  const WebHomeHeader({
     super.key,
     this.onTap,
     required this.showSheet,
@@ -54,35 +54,35 @@ class WelcomeHeader extends StatelessWidget {
           ],
         ),
         const Spacer(),
-        AppBarButton(
-          onTap: () async {
-            if (showSheet) {
-              DirectoryUtils directoryUtils = DirectoryUtils();
-              final path = await directoryUtils.getGlobalDirectoryPath(
-                  fileName: 'players.xlsx');
-              directoryUtils.openFile(
-                File(path),
-                fileType:
-                    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-              );
-            } else {
-              showErrSnack(context);
-            }
-          },
-          icon: Icons.file_open_outlined,
-        ),
-        const Gap(8),
-        AppBarButton(
-          onTap: () {
-            if (showSheet) {
-              cubit.generateExcelFile(cubit.allPlayers);
-            } else {
-              showErrSnack(context);
-            }
-          },
-          icon: Icons.document_scanner_outlined,
-        ),
-        const Gap(8),
+        // AppBarButton(
+        //   onTap: () async {
+        //     if (showSheet) {
+        //       DirectoryUtils directoryUtils = DirectoryUtils();
+        //       final path = await directoryUtils.getGlobalDirectoryPath(
+        //           fileName: 'players.xlsx');
+        //       directoryUtils.openFile(
+        //         File(path),
+        //         fileType:
+        //             'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        //       );
+        //     } else {
+        //       showErrSnack(context);
+        //     }
+        //   },
+        //   icon: Icons.file_open_outlined,
+        // ),
+        // const Gap(8),
+        // AppBarButton(
+        //   onTap: () {
+        //     if (showSheet) {
+        //       cubit.generateExcelFile(cubit.allPlayers);
+        //     } else {
+        //       showErrSnack(context);
+        //     }
+        //   },
+        //   icon: Icons.document_scanner_outlined,
+        // ),
+        // const Gap(8),
         AppBarButton(
           onTap: () => showPlayerAddSheet(context),
           icon: Icons.add,
