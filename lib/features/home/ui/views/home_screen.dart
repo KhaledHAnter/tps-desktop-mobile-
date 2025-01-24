@@ -1,5 +1,7 @@
 import 'dart:developer';
+import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -11,11 +13,12 @@ import 'package:tps/core/theming/styles.dart';
 import 'package:tps/core/widgets/app_text_button.dart';
 import 'package:tps/features/home/data/models/profile_model.dart';
 import 'package:tps/features/home/logic/fetch_player_cubit/fetch_players_cubit.dart';
+import 'package:tps/features/home/ui/views/widgets/web_welcome_header.dart';
 
 import 'widgets/app_search_bar.dart';
 import 'widgets/catigory_section.dart';
 import 'widgets/player_section_bloc_builder.dart';
-import 'widgets/welcome_header.dart';
+import 'widgets/mobile_welcome_header.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -59,10 +62,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      WelcomeHeader(
-                        onTap: () => showPinDialog(context),
-                        showSheet: showMoney,
-                      ),
+                      (!kIsWeb)
+                          ? MobileHomeHeader(
+                              onTap: () => showPinDialog(context),
+                              showSheet: showMoney,
+                            )
+                          : WebHomeHeader(
+                              onTap: () => showPinDialog(context),
+                              showSheet: showMoney,
+                            ),
                       const Gap(16),
                       const AppSearchBar(),
                       const Gap(24),
