@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:tps/core/theming/colors.dart';
 import 'package:tps/core/theming/styles.dart';
 import 'package:tps/core/widgets/app_text_button.dart';
 
@@ -60,13 +61,11 @@ class _AuthFormState extends State<AuthForm> {
         fieldHeight: 70,
         fieldWidth: pinWidth,
         borderWidth: 1,
-        activeColor:
-            Colors.blue, // Replace with ColorsManager.blue if you have it
-        inactiveColor: Colors.blue,
+        activeColor: ColorsManager.mainBage,
+        inactiveColor: ColorsManager.mainBage,
         inactiveFillColor: Colors.white,
-        activeFillColor:
-            Colors.lightBlue, // Replace with ColorsManager.lightBlue if needed
-        selectedColor: Colors.blue,
+        activeFillColor: ColorsManager.mainBage.withOpacity(0.3),
+        selectedColor: Colors.grey,
         selectedFillColor: Colors.white,
       ),
       animationDuration: const Duration(milliseconds: 300),

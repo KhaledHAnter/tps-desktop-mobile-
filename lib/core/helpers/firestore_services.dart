@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:tps/features/home/data/models/freeze_model.dart';
 import 'package:tps/features/home/data/models/profile_model.dart';
@@ -27,6 +29,36 @@ class FirestoreService {
       }
     } catch (e) {
       print("Error fetching profile: $e");
+      return null;
+    }
+  }
+
+  Future<List<ProfileModel>?> fetchallProfileData() async {
+    try {
+      // Reference to the Firestore collection
+      final docSnapshot = await FirebaseFirestore.instance
+          .collection('profile') // Name of the collection
+
+          .get();
+
+      // Check if the document exists
+      if (docSnapshot.docs.isNotEmpty) {
+        // Convert Firestore data to ProfileModel
+        final profilesData = docSnapshot.docs
+            .map(
+              (doc) => ProfileModel.fromMap(
+                doc.data(),
+              ),
+            )
+            .toList();
+        log(profilesData.toString());
+        return profilesData;
+      } else {
+        log("no data");
+        return null;
+      }
+    } catch (e) {
+      log("Error fetching profile: $e");
       return null;
     }
   }

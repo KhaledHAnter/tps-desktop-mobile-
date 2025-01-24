@@ -20,7 +20,7 @@ mixin _$AuthState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() authLoading,
-    required TResult Function(ProfileModel profile) authsuccess,
+    required TResult Function(List<ProfileModel> profile) authsuccess,
     required TResult Function(String message) autherror,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$AuthState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? authLoading,
-    TResult? Function(ProfileModel profile)? authsuccess,
+    TResult? Function(List<ProfileModel> profile)? authsuccess,
     TResult? Function(String message)? autherror,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$AuthState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? authLoading,
-    TResult Function(ProfileModel profile)? authsuccess,
+    TResult Function(List<ProfileModel> profile)? authsuccess,
     TResult Function(String message)? autherror,
     required TResult orElse(),
   }) =>
@@ -131,7 +131,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() authLoading,
-    required TResult Function(ProfileModel profile) authsuccess,
+    required TResult Function(List<ProfileModel> profile) authsuccess,
     required TResult Function(String message) autherror,
   }) {
     return initial();
@@ -142,7 +142,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? authLoading,
-    TResult? Function(ProfileModel profile)? authsuccess,
+    TResult? Function(List<ProfileModel> profile)? authsuccess,
     TResult? Function(String message)? autherror,
   }) {
     return initial?.call();
@@ -153,7 +153,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? authLoading,
-    TResult Function(ProfileModel profile)? authsuccess,
+    TResult Function(List<ProfileModel> profile)? authsuccess,
     TResult Function(String message)? autherror,
     required TResult orElse(),
   }) {
@@ -248,7 +248,7 @@ class _$AuthLoadingImpl implements AuthLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() authLoading,
-    required TResult Function(ProfileModel profile) authsuccess,
+    required TResult Function(List<ProfileModel> profile) authsuccess,
     required TResult Function(String message) autherror,
   }) {
     return authLoading();
@@ -259,7 +259,7 @@ class _$AuthLoadingImpl implements AuthLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? authLoading,
-    TResult? Function(ProfileModel profile)? authsuccess,
+    TResult? Function(List<ProfileModel> profile)? authsuccess,
     TResult? Function(String message)? autherror,
   }) {
     return authLoading?.call();
@@ -270,7 +270,7 @@ class _$AuthLoadingImpl implements AuthLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? authLoading,
-    TResult Function(ProfileModel profile)? authsuccess,
+    TResult Function(List<ProfileModel> profile)? authsuccess,
     TResult Function(String message)? autherror,
     required TResult orElse(),
   }) {
@@ -328,7 +328,7 @@ abstract class _$$AuthSuccessImplCopyWith<$Res> {
           _$AuthSuccessImpl value, $Res Function(_$AuthSuccessImpl) then) =
       __$$AuthSuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ProfileModel profile});
+  $Res call({List<ProfileModel> profile});
 }
 
 /// @nodoc
@@ -344,13 +344,13 @@ class __$$AuthSuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? profile = freezed,
+    Object? profile = null,
   }) {
     return _then(_$AuthSuccessImpl(
-      freezed == profile
-          ? _value.profile
+      null == profile
+          ? _value._profile
           : profile // ignore: cast_nullable_to_non_nullable
-              as ProfileModel,
+              as List<ProfileModel>,
     ));
   }
 }
@@ -358,10 +358,16 @@ class __$$AuthSuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AuthSuccessImpl implements AuthSuccess {
-  const _$AuthSuccessImpl(this.profile);
+  const _$AuthSuccessImpl(final List<ProfileModel> profile)
+      : _profile = profile;
 
+  final List<ProfileModel> _profile;
   @override
-  final ProfileModel profile;
+  List<ProfileModel> get profile {
+    if (_profile is EqualUnmodifiableListView) return _profile;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_profile);
+  }
 
   @override
   String toString() {
@@ -373,12 +379,12 @@ class _$AuthSuccessImpl implements AuthSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthSuccessImpl &&
-            const DeepCollectionEquality().equals(other.profile, profile));
+            const DeepCollectionEquality().equals(other._profile, _profile));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(profile));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_profile));
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -393,7 +399,7 @@ class _$AuthSuccessImpl implements AuthSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() authLoading,
-    required TResult Function(ProfileModel profile) authsuccess,
+    required TResult Function(List<ProfileModel> profile) authsuccess,
     required TResult Function(String message) autherror,
   }) {
     return authsuccess(profile);
@@ -404,7 +410,7 @@ class _$AuthSuccessImpl implements AuthSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? authLoading,
-    TResult? Function(ProfileModel profile)? authsuccess,
+    TResult? Function(List<ProfileModel> profile)? authsuccess,
     TResult? Function(String message)? autherror,
   }) {
     return authsuccess?.call(profile);
@@ -415,7 +421,7 @@ class _$AuthSuccessImpl implements AuthSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? authLoading,
-    TResult Function(ProfileModel profile)? authsuccess,
+    TResult Function(List<ProfileModel> profile)? authsuccess,
     TResult Function(String message)? autherror,
     required TResult orElse(),
   }) {
@@ -464,9 +470,10 @@ class _$AuthSuccessImpl implements AuthSuccess {
 }
 
 abstract class AuthSuccess implements AuthState {
-  const factory AuthSuccess(final ProfileModel profile) = _$AuthSuccessImpl;
+  const factory AuthSuccess(final List<ProfileModel> profile) =
+      _$AuthSuccessImpl;
 
-  ProfileModel get profile;
+  List<ProfileModel> get profile;
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -545,7 +552,7 @@ class _$AuthErrorImpl implements AuthError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() authLoading,
-    required TResult Function(ProfileModel profile) authsuccess,
+    required TResult Function(List<ProfileModel> profile) authsuccess,
     required TResult Function(String message) autherror,
   }) {
     return autherror(message);
@@ -556,7 +563,7 @@ class _$AuthErrorImpl implements AuthError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? authLoading,
-    TResult? Function(ProfileModel profile)? authsuccess,
+    TResult? Function(List<ProfileModel> profile)? authsuccess,
     TResult? Function(String message)? autherror,
   }) {
     return autherror?.call(message);
@@ -567,7 +574,7 @@ class _$AuthErrorImpl implements AuthError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? authLoading,
-    TResult Function(ProfileModel profile)? authsuccess,
+    TResult Function(List<ProfileModel> profile)? authsuccess,
     TResult Function(String message)? autherror,
     required TResult orElse(),
   }) {

@@ -165,12 +165,10 @@ class _HomeScreenState extends State<HomeScreen> {
         fieldHeight: 70,
         fieldWidth: pinWidth,
         borderWidth: 1,
-        activeColor: ColorsManager
-            .mainBage, // Replace with ColorsManager.blue if you have it
+        activeColor: ColorsManager.mainBage,
         inactiveColor: ColorsManager.mainBage,
         inactiveFillColor: Colors.white,
-        activeFillColor: ColorsManager.mainBage
-            .withOpacity(0.3), // Replace with ColorsManager.lightBlue if needed
+        activeFillColor: ColorsManager.mainBage.withOpacity(0.3),
         selectedColor: Colors.grey,
         selectedFillColor: Colors.white,
       ),
