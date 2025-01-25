@@ -1,22 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:tps/core/helpers/extentions.dart';
+import 'package:tps/core/routing/routes.dart';
 import 'package:tps/core/theming/colors.dart';
 import 'package:tps/core/theming/styles.dart';
 import 'package:tps/core/widgets/app_text_button.dart';
+import 'package:tps/features/home/data/models/profile_model.dart';
+import 'package:tps/features/local_auth/logic/cubit/auth_cubit.dart';
 
 class AuthForm extends StatefulWidget {
   final double width;
-  const AuthForm({super.key, required this.width});
+  const AuthForm({
+    super.key,
+    required this.width,
+  });
 
   @override
   State<AuthForm> createState() => _AuthFormState();
 }
 
 class _AuthFormState extends State<AuthForm> {
-  late String otpCode;
+  String otpCode = "";
 
-  // void navigationOptions(BuildContext context) async {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -35,7 +42,9 @@ class _AuthFormState extends State<AuthForm> {
         const Gap(24),
         AppTextButton(
           textStyle: Styles.font16medium,
-          onPressed: () {},
+          onPressed: () {
+            navigationOptions(context);
+          },
           text: "التالى",
         ),
       ],
@@ -76,8 +85,50 @@ class _AuthFormState extends State<AuthForm> {
       }),
       onCompleted: (code) {
         otpCode = code;
-        // navigationOptions(context);
+        navigationOptions(context);
       },
     );
+  }
+
+  void navigationOptions(BuildContext context) async {
+    if (otpCode.isNotEmpty) {
+      final ProfileModel? profile = await checkOtp(context, otpCode);
+      if (profile != null) {
+        context.pushReplacementNamed(Routes.homeScreen);
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              duration: Duration(seconds: 1),
+              backgroundColor: Colors.red,
+              content: Text(
+                'كود التحقق غير صحيح',
+                style: TextStyle(fontSize: 18, color: Colors.white),
+              )),
+        );
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            duration: Duration(seconds: 1),
+            backgroundColor: Colors.red,
+            content: Text(
+              'ادخل كود التحقق',
+              style: TextStyle(fontSize: 18, color: Colors.white),
+            )),
+      );
+    }
+  }
+
+  Future<ProfileModel?> checkOtp(
+      BuildContext context, String otpCodePins) async {
+    final cubit = context.read<AuthCubit>();
+    final List<ProfileModel> profiles = cubit.profiles;
+
+    for (var profile in profiles) {
+      if (profile.pin == otpCodePins) {
+        return profile;
+      }
+    }
+    return null;
   }
 }

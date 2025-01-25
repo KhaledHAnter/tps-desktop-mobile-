@@ -10,11 +10,14 @@ class AuthCubit extends Cubit<AuthState> {
   final AuthRepo repo;
   AuthCubit(this.repo) : super(const AuthState.initial());
 
+  List<ProfileModel> profiles = [];
+
   Future<void> fetchallProfileData() async {
     emit(const AuthState.authLoading());
     try {
       final profile = await repo.fetchallProfileData();
-      emit(AuthState.authsuccess(profile!));
+      profiles = profile!;
+      emit(AuthState.authsuccess(profile));
     } catch (e) {
       emit(AuthState.autherror(e.toString()));
     }

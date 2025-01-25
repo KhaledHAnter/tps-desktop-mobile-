@@ -39,8 +39,20 @@ class AuthScreen extends StatelessWidget {
                         ],
                       );
                     } else {
-                      return AuthCodeSide(
-                        width: constraints.maxWidth,
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        // crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: <Widget>[
+                          const CircleLogo(),
+                          const Gap(48),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 48, right: 100),
+                            child: AuthForm(
+                              width: constraints.maxWidth,
+                            ),
+                          ),
+                        ],
                       );
                     }
                   },
