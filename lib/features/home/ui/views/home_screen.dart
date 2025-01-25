@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -17,8 +16,8 @@ import 'package:tps/features/home/ui/views/widgets/web_welcome_header.dart';
 
 import 'widgets/app_search_bar.dart';
 import 'widgets/catigory_section.dart';
-import 'widgets/player_section_bloc_builder.dart';
 import 'widgets/mobile_welcome_header.dart';
+import 'widgets/player_section_bloc_builder.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -166,12 +165,10 @@ class _HomeScreenState extends State<HomeScreen> {
         fieldHeight: 70,
         fieldWidth: pinWidth,
         borderWidth: 1,
-        activeColor: ColorsManager
-            .mainBage, // Replace with ColorsManager.blue if you have it
+        activeColor: ColorsManager.mainBage,
         inactiveColor: ColorsManager.mainBage,
         inactiveFillColor: Colors.white,
-        activeFillColor: ColorsManager.mainBage
-            .withOpacity(0.3), // Replace with ColorsManager.lightBlue if needed
+        activeFillColor: ColorsManager.mainBage.withOpacity(0.3),
         selectedColor: Colors.grey,
         selectedFillColor: Colors.white,
       ),

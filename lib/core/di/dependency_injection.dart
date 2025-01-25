@@ -2,6 +2,8 @@ import 'package:get_it/get_it.dart';
 import 'package:tps/core/helpers/directory_utils.dart';
 import 'package:tps/core/helpers/excel_gen_utils.dart';
 import 'package:tps/features/home/data/repos/excel_generation_repo.dart';
+import 'package:tps/features/local_auth/data/repos/auth_repo.dart';
+import 'package:tps/features/local_auth/logic/cubit/auth_cubit.dart';
 import 'package:tps/features/player_details/data/repos/delete_player_repo.dart';
 import 'package:tps/features/player_details/data/repos/fetch_single_player_repo.dart';
 import 'package:tps/features/player_details/data/repos/freeze_player_repo.dart';
@@ -62,4 +64,7 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<ExercisesRepo>(
       () => ExercisesRepo(firestoreService));
   getIt.registerSingleton<ExercisesCubit>(ExercisesCubit(getIt()));
+  // Auth
+  getIt.registerLazySingleton<AuthRepo>(() => AuthRepo(firestoreService));
+  getIt.registerSingleton<AuthCubit>(AuthCubit(getIt()));
 }
