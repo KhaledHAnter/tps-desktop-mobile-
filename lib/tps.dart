@@ -27,7 +27,7 @@ class Tps extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         fontFamily: "DIN Next LT Arabic",
       ),
-      initialRoute: Routes.authScreen,
+      initialRoute: Routes.localAuthScreen,
       onGenerateRoute: appRouter.generateRoute,
     );
   }
