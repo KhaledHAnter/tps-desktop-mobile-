@@ -22,7 +22,7 @@ class ExercisesCubit extends Cubit<ExercisesState> {
   final TextEditingController repsController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey();
   String? phone;
-  int? weight;
+  double? weight;
   int? sets;
   int? reps;
   List<HistoryModel> history = [];
@@ -35,8 +35,8 @@ class ExercisesCubit extends Cubit<ExercisesState> {
   void decrementSets(int value) =>
       sets! > 0 ? sets = (sets ?? 0) - value : null;
 
-  void incrementWeight(int value) => weight = (weight ?? 0) + value;
-  void decrementWeight(int value) =>
+  void incrementWeight(double value) => weight = (weight ?? 0) + value;
+  void decrementWeight(double value) =>
       weight! > 0 ? weight = (weight ?? 0) - value : null;
 
   Future<void> addExercise(String phone) async {

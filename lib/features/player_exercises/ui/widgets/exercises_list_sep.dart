@@ -33,47 +33,50 @@ class ExercisesListSep extends StatelessWidget {
               separatorBuilder: (context, index) => const Divider(
                 height: 16,
               ),
-              itemBuilder: (context, index) => GestureDetector(
-                onTap: () {
-                  context.pushNamed(Routes.exerciseDetailsScreen,
-                      arguments: exercises[index]);
-                },
-                child: Dismissible(
-                  confirmDismiss: (direction) async =>
-                      cubit.showDeleteConfirmationDialog(context),
-                  key: UniqueKey(),
-                  background: Container(
-                    alignment: Alignment.centerRight,
-                    padding: const EdgeInsets.only(right: 16),
-                    color: Colors.redAccent,
-                    child: const Icon(
-                      Icons.delete,
-                      color: Colors.white,
+              itemBuilder: (context, index) {
+                final newIndex = exercises.length - index - 1;
+                return GestureDetector(
+                  onTap: () {
+                    context.pushNamed(Routes.exerciseDetailsScreen,
+                        arguments: exercises[newIndex]);
+                  },
+                  child: Dismissible(
+                    confirmDismiss: (direction) async =>
+                        cubit.showDeleteConfirmationDialog(context),
+                    key: UniqueKey(),
+                    background: Container(
+                      alignment: Alignment.centerRight,
+                      padding: const EdgeInsets.only(right: 16),
+                      color: Colors.redAccent,
+                      child: const Icon(
+                        Icons.delete,
+                        color: Colors.white,
+                      ),
+                    ),
+                    onDismissed: (direction) => cubit.deleteExercise(
+                        cubit.phone ?? "", exercises[newIndex].name),
+                    child: ListTile(
+                      leading: const Icon(
+                        Icons.fitness_center,
+                        color: Colors.redAccent,
+                      ),
+                      title: Text(
+                        exercises[newIndex].name,
+                        style: Styles.font16medium
+                            .copyWith(fontWeight: FontWeight.bold),
+                      ),
+                      subtitle: Text(
+                        "${exercises[newIndex].reps} مجموعات  -  ${exercises[newIndex].sets} عدات",
+                        style: Styles.font14medium,
+                      ),
+                      trailing: const Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.redAccent,
+                      ),
                     ),
                   ),
-                  onDismissed: (direction) => cubit.deleteExercise(
-                      cubit.phone ?? "", exercises[index].name),
-                  child: ListTile(
-                    leading: const Icon(
-                      Icons.fitness_center,
-                      color: Colors.redAccent,
-                    ),
-                    title: Text(
-                      exercises[index].name,
-                      style: Styles.font16medium
-                          .copyWith(fontWeight: FontWeight.bold),
-                    ),
-                    subtitle: Text(
-                      "${exercises[index].reps} مجموعات  -  ${exercises[index].sets} عدات",
-                      style: Styles.font14medium,
-                    ),
-                    trailing: const Icon(
-                      Icons.arrow_forward_ios,
-                      color: Colors.redAccent,
-                    ),
-                  ),
-                ),
-              ),
+                );
+              },
             ),
     );
   }

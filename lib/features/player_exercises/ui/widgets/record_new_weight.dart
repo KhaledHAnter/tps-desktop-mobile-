@@ -15,7 +15,7 @@ class RecordNewWeight extends StatefulWidget {
 }
 
 class _RecordNewWeightState extends State<RecordNewWeight> {
-  int weight = 0;
+  double weight = 0;
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<ExercisesCubit>();
@@ -26,60 +26,85 @@ class _RecordNewWeightState extends State<RecordNewWeight> {
         color: Colors.grey.shade300,
         borderRadius: BorderRadius.circular(8),
       ),
-      child: Row(
-        children: <Widget>[
-          const Icon(
-            Icons.add,
-            color: Colors.green,
-          ),
-          const Gap(8),
-          ChangeNumberCircleAvatar(
-              number: 5,
-              onTap: () {
-                cubit.incrementWeight(5);
-                setState(() {
-                  weight = cubit.weight!;
-                });
-              }),
-          const Gap(4),
-          ChangeNumberCircleAvatar(
-            number: 1,
-            onTap: () {
-              cubit.incrementWeight(1);
-              setState(() {
-                weight = cubit.weight!;
-              });
-            },
-          ),
-          const Spacer(),
+      child: Column(
+        children: [
           Text(
             "${cubit.weight} كجم",
-            style: Styles.font16medium,
-          ),
-          const Spacer(),
-          ChangeNumberCircleAvatar(
-            number: 5,
-            onTap: () {
-              cubit.decrementWeight(5);
-              setState(() {
-                weight = cubit.weight!;
-              });
-            },
-          ),
-          const Gap(4),
-          ChangeNumberCircleAvatar(
-            number: 1,
-            onTap: () {
-              cubit.decrementWeight(1);
-              setState(() {
-                weight = cubit.weight!;
-              });
-            },
+            style: Styles.font20bold,
           ),
           const Gap(8),
-          const Icon(
-            Icons.remove,
-            color: Colors.red,
+          Row(
+            children: <Widget>[
+              const Icon(
+                Icons.add,
+                color: Colors.green,
+              ),
+              const Gap(8),
+              ChangeNumberCircleAvatar(
+                  number: 5,
+                  onTap: () {
+                    cubit.incrementWeight(5);
+                    setState(() {
+                      weight = cubit.weight!;
+                    });
+                  }),
+              const Gap(4),
+              ChangeNumberCircleAvatar(
+                number: 1,
+                onTap: () {
+                  cubit.incrementWeight(1);
+                  setState(() {
+                    weight = cubit.weight!;
+                  });
+                },
+              ),
+              const Gap(4),
+              ChangeNumberCircleAvatar(
+                number: 0.5,
+                onTap: () {
+                  cubit.incrementWeight(0.5);
+                  setState(() {
+                    weight = cubit.weight!;
+                  });
+                },
+              ),
+              const Spacer(),
+              const Spacer(),
+              ChangeNumberCircleAvatar(
+                number: 0.5,
+                onTap: () {
+                  cubit.decrementWeight(0.5);
+                  setState(() {
+                    weight = cubit.weight!;
+                  });
+                },
+              ),
+              const Gap(4),
+              ChangeNumberCircleAvatar(
+                number: 1,
+                onTap: () {
+                  cubit.decrementWeight(1);
+                  setState(() {
+                    weight = cubit.weight!;
+                  });
+                },
+              ),
+              const Gap(4),
+              ChangeNumberCircleAvatar(
+                number: 5,
+                onTap: () {
+                  cubit.decrementWeight(5);
+                  setState(() {
+                    weight = cubit.weight!;
+                  });
+                },
+              ),
+              const Gap(8),
+              const Icon(
+                Icons.remove,
+                color: Colors.red,
+              ),
+            ],
           ),
         ],
       ),

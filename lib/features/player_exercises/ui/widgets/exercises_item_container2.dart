@@ -21,7 +21,8 @@ class ExercisesItemContainer2 extends StatelessWidget {
           fecthSuccess: (exercises) => ExercisesListSep(
             exercises: exercises,
           ),
-          fecthError: (message) => Text(message),
+          fecthError: (message) =>
+              Text(message, style: const TextStyle(color: Colors.red)),
         );
       },
     );

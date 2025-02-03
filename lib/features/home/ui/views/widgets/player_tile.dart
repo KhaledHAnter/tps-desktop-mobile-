@@ -75,9 +75,13 @@ class PlayerTile extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Text(
-            player.name,
-            style: Styles.font16medium.copyWith(fontWeight: FontWeight.w600),
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            alignment: Alignment.center,
+            child: Text(
+              player.name,
+              style: Styles.font16medium.copyWith(fontWeight: FontWeight.w600),
+            ),
           ),
           const Gap(4),
           Text(

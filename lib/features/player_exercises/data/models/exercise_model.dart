@@ -1,5 +1,5 @@
 class HistoryModel {
-  final int weight;
+  final double weight;
   final int reps;
   final int sets;
   final DateTime date;
