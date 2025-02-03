@@ -3,7 +3,7 @@ import 'package:tps/core/theming/colors.dart';
 import 'package:tps/core/theming/styles.dart';
 
 class ChangeNumberCircleAvatar extends StatelessWidget {
-  final int number;
+  final double number;
   final void Function()? onTap;
 
   const ChangeNumberCircleAvatar({

@@ -12,6 +12,7 @@ import 'package:tps/features/player_details/ui/views/player_details_screen.dart'
 import 'package:tps/features/player_exercises/data/models/exercise_model.dart';
 import 'package:tps/features/player_exercises/logic/cubit/exercises_cubit.dart';
 import 'package:tps/features/player_exercises/ui/views/exercise_details_screen.dart';
+import 'package:tps/features/player_exercises/ui/views/exercise_statistics_screen.dart';
 import 'package:tps/features/player_exercises/ui/views/player_exercises_screen.dart';
 import '../di/dependency_injection.dart';
 import 'routes.dart';
@@ -92,6 +93,10 @@ class AppRouter {
               exercise: arrguments,
             ),
           ),
+        );
+      case Routes.exerciseStatisticsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ExerciseStatisticsScreen(),
         );
       default:
         return MaterialPageRoute(
