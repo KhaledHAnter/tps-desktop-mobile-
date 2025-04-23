@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../data/models/category_model.dart';
 import '../../../data/models/player_model.dart';
-import '../../../../../generated/l10n.dart';
 
 class PlayerTile extends StatelessWidget {
   final PlayerModel player;
@@ -73,44 +74,58 @@ class PlayerTile extends StatelessWidget {
         color: ColorsManager.containergray,
         borderRadius: BorderRadius.circular(8),
       ),
-      child: Column(
+      child: Stack(
         children: [
-          FittedBox(
-            fit: BoxFit.scaleDown,
-            alignment: Alignment.center,
-            child: Text(
-              player.name,
-              style: Styles.font16medium.copyWith(fontWeight: FontWeight.w600),
-            ),
-          ),
-          const Gap(4),
-          Text(
-            player.sport,
-            style: Styles.font16medium,
-          ),
-          const Gap(4),
-          Text(
-            getCategoryText(player.phase, categories),
-            style: Styles.font14medium,
-          ),
-          const Spacer(
-            flex: 3,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Row(
-              children: [
-                Text(showMoney ? "${player.money} ج.م" : "*****ج.م",
-                    style: Styles.font14medium),
-                const Spacer(),
-                Text(
-                  "${player.remainingDuration}يوم",
-                  style: Styles.font14medium.copyWith(color: Colors.redAccent),
+          Positioned(
+              left: 2,
+              child: Container(
+                width: 15,
+                height: 15,
+                decoration: const BoxDecoration(
+                    color: Colors.redAccent, shape: BoxShape.circle),
+              )),
+          Column(
+            children: [
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                alignment: Alignment.center,
+                child: Text(
+                  player.name,
+                  style:
+                      Styles.font16medium.copyWith(fontWeight: FontWeight.w600),
                 ),
-              ],
-            ),
+              ),
+              const Gap(4),
+              Text(
+                player.sport,
+                style: Styles.font16medium,
+              ),
+              const Gap(4),
+              Text(
+                getCategoryText(player.phase, categories),
+                style: Styles.font14medium,
+              ),
+              const Spacer(
+                flex: 3,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Row(
+                  children: [
+                    Text(showMoney ? "${player.money} ج.م" : "*****ج.م",
+                        style: Styles.font14medium),
+                    const Spacer(),
+                    Text(
+                      "${player.remainingDuration}يوم",
+                      style:
+                          Styles.font14medium.copyWith(color: Colors.redAccent),
+                    ),
+                  ],
+                ),
+              ),
+              const Spacer(),
+            ],
           ),
-          const Spacer(),
         ],
       ),
     );
