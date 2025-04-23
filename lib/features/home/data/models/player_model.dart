@@ -23,4 +23,22 @@ class PlayerModel {
     required this.age,
     required this.shouldShowReminder,
   });
+
+  PlayerModel copyWith({bool? shouldShowReminder}) {
+    return PlayerModel(
+      name: name,
+      age: age,
+      sport: sport,
+      phase: phase,
+      phone: phone,
+      money: money,
+      subsDuration: subsDuration,
+      startDate: startDate,
+      endDate: endDate,
+      remainingDuration: remainingDuration,
+      description: description,
+      freeze: freeze,
+      shouldShowReminder: shouldShowReminder ?? this.shouldShowReminder,
+    );
+  }
 }

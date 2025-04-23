@@ -48,7 +48,11 @@ class PlayerActionButtons extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: List.generate(
-          buttons.length, (index) => PlayerAction(model: buttons[index])),
+          buttons.length,
+          (index) => PlayerAction(
+                model: buttons[index],
+                show: index == 2 && player.shouldShowReminder,
+              )),
     );
   }
 

@@ -25,6 +25,7 @@ import '../../../../core/di/dependency_injection.dart';
 class PlayerDetailsScreen extends StatelessWidget {
   final PlayerModel player;
   final bool showMoney;
+
   const PlayerDetailsScreen(
       {super.key, required this.player, required this.showMoney});
 

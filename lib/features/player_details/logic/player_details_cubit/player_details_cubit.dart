@@ -1,4 +1,5 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tps/core/helpers/cach_time.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -16,7 +17,8 @@ class PlayerDetailsCubit extends Cubit<PlayerDetailsState> {
     return '$day-$month-$year';
   }
 
-  Future<void> sendMessageOnWhatsApp(String phoneNumber, String message) async {
+  Future<void> sendMessageOnWhatsApp(
+      String phoneNumber, String message) async {
     await saveChatTimestamp(phoneNumber);
     final Uri whatsappUrl = Uri.parse(
         'https://wa.me/+$phoneNumber?text=${Uri.encodeComponent(message)}');

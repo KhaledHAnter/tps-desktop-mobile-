@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:tps/features/home/ui/views/widgets/chat_notify_banner.dart';
 
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
@@ -76,17 +77,7 @@ class PlayerTile extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          Visibility(
-            visible: player.shouldShowReminder,
-            child: Positioned(
-                left: 2,
-                child: Container(
-                  width: 15,
-                  height: 15,
-                  decoration: const BoxDecoration(
-                      color: Colors.redAccent, shape: BoxShape.circle),
-                )),
-          ),
+          ChatNotifyBanner(show: player.shouldShowReminder),
           Column(
             children: [
               FittedBox(

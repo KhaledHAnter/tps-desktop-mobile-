@@ -18,13 +18,16 @@ class FetchPlayersRepo {
     } else {
       final futures = rawData.map((data) async {
         final lastChat = await getLastChatTimestamp(data['phone']);
-        bool shouldShowReminder = true;
-        if (lastChat != null) {
-          final difference = DateTime.now().difference(lastChat);
-          shouldShowReminder = difference.inHours >= 24;
-        }
+        bool shouldShowReminder = false;
         final endDate = DateTime.parse(data['endDate']);
         final remainingDays = endDate.difference(DateTime.now()).inDays;
+        if (remainingDays > 0) {
+          shouldShowReminder = true;
+          if (lastChat != null) {
+            final difference = DateTime.now().difference(lastChat);
+            shouldShowReminder = difference.inHours >= 24;
+          }
+        }
 
         return PlayerModel(
           name: data['name'],
