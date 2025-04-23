@@ -76,14 +76,17 @@ class PlayerTile extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          Positioned(
-              left: 2,
-              child: Container(
-                width: 15,
-                height: 15,
-                decoration: const BoxDecoration(
-                    color: Colors.redAccent, shape: BoxShape.circle),
-              )),
+          Visibility(
+            visible: player.shouldShowReminder,
+            child: Positioned(
+                left: 2,
+                child: Container(
+                  width: 15,
+                  height: 15,
+                  decoration: const BoxDecoration(
+                      color: Colors.redAccent, shape: BoxShape.circle),
+                )),
+          ),
           Column(
             children: [
               FittedBox(

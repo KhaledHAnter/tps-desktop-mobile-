@@ -1,7 +1,7 @@
 import '../../../../core/helpers/firestore_services.dart';
 import '../../../../core/networking/add_player_result.dart';
-import '../models/player_model.dart';
 import '../models/freeze_model.dart';
+import '../models/player_model.dart';
 
 class AddPlayerRepo {
   final FirestoreService _firestoreService;
@@ -37,6 +37,7 @@ class AddPlayerRepo {
       remainingDuration: remainingDuration,
       freeze: freeze,
       description: description,
+      shouldShowReminder: false,
     );
   }
 

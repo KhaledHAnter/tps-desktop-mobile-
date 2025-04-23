@@ -6,6 +6,7 @@ class PlayerModel {
   final int money, subsDuration, remainingDuration, age;
   final DateTime startDate, endDate;
   final List<FreezeModel>? freeze;
+  final bool shouldShowReminder;
 
   PlayerModel({
     required this.name,
@@ -20,5 +21,6 @@ class PlayerModel {
     required this.remainingDuration,
     this.description,
     required this.age,
+    required this.shouldShowReminder,
   });
 }

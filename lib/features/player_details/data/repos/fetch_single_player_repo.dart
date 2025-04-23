@@ -1,3 +1,4 @@
+import 'package:tps/core/helpers/cach_time.dart';
 import 'package:tps/core/helpers/firestore_services.dart';
 import 'package:tps/core/networking/fetch_players_result.dart';
 import 'package:tps/features/home/data/models/freeze_model.dart';
@@ -17,6 +18,12 @@ class FetchSinglePlayerRepo {
         final endDate = DateTime.parse(rawData['endDate']);
         final remainingDays = endDate.difference(DateTime.now()).inDays;
         final dataRemainingDays = rawData['remainingDuration'];
+        final lastChat = await getLastChatTimestamp(rawData['phone']);
+        bool shouldShowReminder = true;
+        if (lastChat != null) {
+          final difference = DateTime.now().difference(lastChat);
+          shouldShowReminder = difference.inHours >= 24;
+        }
 
         final player = PlayerModel(
           name: rawData['name'],
@@ -34,6 +41,7 @@ class FetchSinglePlayerRepo {
                   : 0
               : dataRemainingDays, // Avoid negative durations
           description: rawData['description'],
+          shouldShowReminder: shouldShowReminder,
           freeze: (rawData['freeze'] as List<dynamic>?)
               ?.map((freezeData) => FreezeModel(
                     freezeDays: freezeData['freezeDays'],

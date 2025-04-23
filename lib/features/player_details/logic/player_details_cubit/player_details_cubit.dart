@@ -1,9 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:tps/core/helpers/cach_time.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-part 'player_details_state.dart';
 part 'player_details_cubit.freezed.dart';
+part 'player_details_state.dart';
 
 class PlayerDetailsCubit extends Cubit<PlayerDetailsState> {
   PlayerDetailsCubit() : super(const PlayerDetailsState.initial());
@@ -16,6 +17,7 @@ class PlayerDetailsCubit extends Cubit<PlayerDetailsState> {
   }
 
   Future<void> sendMessageOnWhatsApp(String phoneNumber, String message) async {
+    await saveChatTimestamp(phoneNumber);
     final Uri whatsappUrl = Uri.parse(
         'https://wa.me/+$phoneNumber?text=${Uri.encodeComponent(message)}');
 

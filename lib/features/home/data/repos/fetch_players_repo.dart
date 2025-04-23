@@ -1,7 +1,9 @@
+import 'package:tps/core/helpers/cach_time.dart';
+
 import '../../../../core/helpers/firestore_services.dart';
 import '../../../../core/networking/fetch_players_result.dart';
-import '../models/player_model.dart';
 import '../models/freeze_model.dart';
+import '../models/player_model.dart';
 
 class FetchPlayersRepo {
   final FirestoreService _firestoreService;
@@ -15,7 +17,13 @@ class FetchPlayersRepo {
     if (rawData == null) {
       return const FetchPlayersResult.error('Error fetching players');
     } else {
-      return FetchPlayersResult.success(rawData.map((data) {
+      return FetchPlayersResult.success(rawData.map((data) async {
+        final lastChat = await getLastChatTimestamp(data['phone']);
+        bool shouldShowReminder = true;
+        if (lastChat != null) {
+          final difference = DateTime.now().difference(lastChat);
+          shouldShowReminder = difference.inHours >= 24;
+        }
         final endDate = DateTime.parse(data['endDate']);
         final remainingDays = endDate.difference(DateTime.now()).inDays;
 
@@ -32,6 +40,7 @@ class FetchPlayersRepo {
           remainingDuration: remainingDays > 0 ? remainingDays : 0,
           // Ensure no negative durations
           description: data['description'],
+          shouldShowReminder: shouldShowReminder,
           freeze: (data['freeze'] as List<dynamic>?)
               ?.map((freezeData) => FreezeModel(
                     freezeDays: freezeData['freezeDays'],
