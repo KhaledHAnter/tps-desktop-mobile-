@@ -7,7 +7,6 @@ import '../models/player_model.dart';
 
 class FetchPlayersRepo {
   final FirestoreService _firestoreService;
-
   FetchPlayersRepo(this._firestoreService);
 
   /// Fetch players and map them to PlayerModel
@@ -17,7 +16,7 @@ class FetchPlayersRepo {
     if (rawData == null) {
       return const FetchPlayersResult.error('Error fetching players');
     } else {
-      return FetchPlayersResult.success(rawData.map((data) async {
+      final futures = rawData.map((data) async {
         final lastChat = await getLastChatTimestamp(data['phone']);
         bool shouldShowReminder = true;
         if (lastChat != null) {
@@ -48,7 +47,10 @@ class FetchPlayersRepo {
                   ))
               .toList(),
         );
-      }).toList());
+      }).toList();
+      final players = await Future.wait(futures); // ✅ Await all futures
+
+      return FetchPlayersResult.success(players);
     }
   }
 }
