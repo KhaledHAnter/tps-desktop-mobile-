@@ -43,8 +43,9 @@ class ExerciseDetailsScreen extends StatelessWidget {
                   const Gap(12),
                   ExerciseStatistics(
                     exerciseName: "إحصائيات التمرينة",
-                    onTap: () => context
-                        .pushNamed(Routes.singleExerciseStatisticsScreen),
+                    onTap: () => context.pushNamed(
+                        Routes.singleExerciseStatisticsScreen,
+                        arguments: exercise),
                   ),
                   const Gap(24),
                   Align(
