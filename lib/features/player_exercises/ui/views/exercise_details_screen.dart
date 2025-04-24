@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:tps/core/helpers/extentions.dart';
+import 'package:tps/core/routing/routes.dart';
 import 'package:tps/core/theming/colors.dart';
 import 'package:tps/core/theming/styles.dart';
 import 'package:tps/core/widgets/app_text_button.dart';
@@ -40,8 +41,10 @@ class ExerciseDetailsScreen extends StatelessWidget {
                     exerciseName: exercise.name,
                   ),
                   const Gap(12),
-                  const ExerciseStatistics(
+                  ExerciseStatistics(
                     exerciseName: "إحصائيات التمرينة",
+                    onTap: () => context
+                        .pushNamed(Routes.singleExerciseStatisticsScreen),
                   ),
                   const Gap(24),
                   Align(

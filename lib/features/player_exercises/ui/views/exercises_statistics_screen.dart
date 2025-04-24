@@ -6,10 +6,10 @@ import 'package:tps/features/player_exercises/data/models/exercise_model.dart';
 import 'package:tps/features/player_exercises/ui/widgets/build_exercise_chart.dart';
 import 'package:tps/features/player_exercises/ui/widgets/statistics_header.dart';
 
-class ExerciseStatisticsScreen extends StatelessWidget {
+class ExercisesStatisticsScreen extends StatelessWidget {
   final List<ExerciseModel> allExercises;
 
-  const ExerciseStatisticsScreen({super.key, required this.allExercises});
+  const ExercisesStatisticsScreen({super.key, required this.allExercises});
 
   @override
   Widget build(BuildContext context) {
