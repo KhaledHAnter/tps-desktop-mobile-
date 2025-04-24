@@ -28,11 +28,15 @@ class SingleExerciseStatistics extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    exercise.name,
-                    style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      exercise.name,
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
                   ),
+                  const Gap(4),
                   const SizedBox(height: 8),
                   AspectRatio(
                     aspectRatio: 1.5,
