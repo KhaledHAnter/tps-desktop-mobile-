@@ -12,8 +12,9 @@ import 'package:tps/features/player_details/ui/views/player_details_screen.dart'
 import 'package:tps/features/player_exercises/data/models/exercise_model.dart';
 import 'package:tps/features/player_exercises/logic/cubit/exercises_cubit.dart';
 import 'package:tps/features/player_exercises/ui/views/exercise_details_screen.dart';
-import 'package:tps/features/player_exercises/ui/views/exercise_statistics_screen.dart';
+import 'package:tps/features/player_exercises/ui/views/exercises_statistics_screen.dart';
 import 'package:tps/features/player_exercises/ui/views/player_exercises_screen.dart';
+import 'package:tps/features/player_exercises/ui/views/single_exercise_statistics.dart';
 
 import '../../features/home/logic/category_cubit/category_cubit.dart';
 import '../../features/home/logic/fetch_player_cubit/fetch_players_cubit.dart';
@@ -96,8 +97,18 @@ class AppRouter {
           ),
         );
       case Routes.exerciseStatisticsScreen:
+        arrguments as List<ExerciseModel>;
         return MaterialPageRoute(
-          builder: (_) => const ExerciseStatisticsScreen(),
+          builder: (_) => ExercisesStatisticsScreen(
+            allExercises: arrguments,
+          ),
+        );
+      case Routes.singleExerciseStatisticsScreen:
+        arrguments as ExerciseModel;
+        return MaterialPageRoute(
+          builder: (_) => SingleExerciseStatistics(
+            exercise: arrguments,
+          ),
         );
       default:
         return MaterialPageRoute(

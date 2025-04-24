@@ -8,4 +8,6 @@ class Routes {
   static const String palyerExercisesScreen = '/palyerExercisesScreen';
   static const String exerciseDetailsScreen = '/exerciseDetailsScreen';
   static const String exerciseStatisticsScreen = '/exerciseStatisticsScreen';
+  static const String singleExerciseStatisticsScreen =
+      '/singleExerciseStatisticsScreen';
 }

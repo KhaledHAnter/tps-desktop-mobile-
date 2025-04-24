@@ -26,6 +26,7 @@ class ExercisesCubit extends Cubit<ExercisesState> {
   int? sets;
   int? reps;
   List<HistoryModel> history = [];
+  List<ExerciseModel> allExercises = [];
 
   void incrementReps(int value) => reps = (reps ?? 0) + value;
   void decrementReps(int value) =>
@@ -57,6 +58,7 @@ class ExercisesCubit extends Cubit<ExercisesState> {
     try {
       emit(const ExercisesState.fecthLoading());
       final exercises = await repo.getExercises(phone);
+      allExercises = exercises;
       emit(ExercisesState.fecthSuccess(exercises));
     } catch (e) {
       emit(const ExercisesState.fecthError('خطأ في جلب التمارين'));

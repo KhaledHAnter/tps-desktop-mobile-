@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:tps/core/helpers/extentions.dart';
+import 'package:tps/core/routing/routes.dart';
 import 'package:tps/core/theming/colors.dart';
 import 'package:tps/core/theming/styles.dart';
 import 'package:tps/core/widgets/app_text_button.dart';
@@ -12,6 +13,7 @@ import 'package:tps/features/player_exercises/logic/cubit/exercises_cubit.dart';
 import 'package:tps/features/player_exercises/ui/widgets/exercise_details_header.dart';
 import 'package:tps/features/player_exercises/ui/widgets/exercise_history_bloc_listener.dart';
 import 'package:tps/features/player_exercises/ui/widgets/exercise_history_card.dart';
+import 'package:tps/features/player_exercises/ui/widgets/exercise_statistics.dart';
 import 'package:tps/features/player_exercises/ui/widgets/record_new_reps.dart';
 import 'package:tps/features/player_exercises/ui/widgets/record_new_sets.dart';
 import 'package:tps/features/player_exercises/ui/widgets/record_new_weight.dart';
@@ -39,25 +41,11 @@ class ExerciseDetailsScreen extends StatelessWidget {
                     exerciseName: exercise.name,
                   ),
                   const Gap(12),
-                  GrayContainer(
-                    child: Row(
-                      children: <Widget>[
-                        const Icon(
-                          Icons.analytics_outlined,
-                          color: ColorsManager.mainBage,
-                        ),
-                        const Gap(8),
-                        Text(
-                          "إحصائيات التمرينة",
-                          style: Styles.font16medium,
-                        ),
-                        const Spacer(),
-                        const Icon(
-                          Icons.arrow_forward_ios,
-                          color: ColorsManager.mainBage,
-                        ),
-                      ],
-                    ),
+                  ExerciseStatistics(
+                    exerciseName: "إحصائيات التمرينة",
+                    onTap: () => context.pushNamed(
+                        Routes.singleExerciseStatisticsScreen,
+                        arguments: exercise),
                   ),
                   const Gap(24),
                   Align(
