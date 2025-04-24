@@ -59,6 +59,21 @@ class ExerciseStatisticsScreen extends StatelessWidget {
       return FlSpot(x, volume);
     }).toList();
 
+// 🧠 Determine trend direction
+    Color trendColor = Colors.grey;
+    if (spots.length >= 2) {
+      final firstVolume = spots.first.y;
+      final lastVolume = spots.last.y;
+
+      if (lastVolume > firstVolume) {
+        trendColor = Colors.lightGreen; // 📈 Improved
+      } else if (lastVolume < firstVolume) {
+        trendColor = Colors.redAccent; // 📉 Decreased
+      } else {
+        trendColor = Colors.grey; // Same volume
+      }
+    }
+
     return LineChartData(
       titlesData: FlTitlesData(
         bottomTitles: AxisTitles(
@@ -86,10 +101,10 @@ class ExerciseStatisticsScreen extends StatelessWidget {
         LineChartBarData(
           spots: spots,
           isCurved: false,
-          color: Colors.blue,
+          color: Colors.black,
           dotData: const FlDotData(show: true),
           belowBarData:
-              BarAreaData(show: true, color: Colors.blue.withOpacity(0.2)),
+              BarAreaData(show: true, color: trendColor.withOpacity(0.2)),
         )
       ],
     );
