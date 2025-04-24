@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:tps/core/helpers/extentions.dart';
+import 'package:tps/core/routing/routes.dart';
 import 'package:tps/features/player_exercises/logic/cubit/exercises_cubit.dart';
 import 'package:tps/features/player_exercises/ui/widgets/delete_exercise_bloc_listener.dart';
+import 'package:tps/features/player_exercises/ui/widgets/exercise_statistics.dart';
 import 'package:tps/features/player_exercises/ui/widgets/exercises_header.dart';
 import 'package:tps/features/player_exercises/ui/widgets/exercises_item_container2.dart';
 
@@ -24,6 +27,11 @@ class PlayerExercisesScreen extends StatelessWidget {
             children: [
               ExercisesHeader(
                 phone: phone,
+              ),
+              const Gap(18),
+              ExerciseStatistics(
+                exerciseName: "إحصائيات التمارين",
+                onTap: () => context.pushNamed(Routes.exerciseStatisticsScreen),
               ),
               const Gap(18),
               const ExercisesItemContainer2(),

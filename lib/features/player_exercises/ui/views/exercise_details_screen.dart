@@ -12,6 +12,7 @@ import 'package:tps/features/player_exercises/logic/cubit/exercises_cubit.dart';
 import 'package:tps/features/player_exercises/ui/widgets/exercise_details_header.dart';
 import 'package:tps/features/player_exercises/ui/widgets/exercise_history_bloc_listener.dart';
 import 'package:tps/features/player_exercises/ui/widgets/exercise_history_card.dart';
+import 'package:tps/features/player_exercises/ui/widgets/exercise_statistics.dart';
 import 'package:tps/features/player_exercises/ui/widgets/record_new_reps.dart';
 import 'package:tps/features/player_exercises/ui/widgets/record_new_sets.dart';
 import 'package:tps/features/player_exercises/ui/widgets/record_new_weight.dart';
@@ -39,25 +40,8 @@ class ExerciseDetailsScreen extends StatelessWidget {
                     exerciseName: exercise.name,
                   ),
                   const Gap(12),
-                  GrayContainer(
-                    child: Row(
-                      children: <Widget>[
-                        const Icon(
-                          Icons.analytics_outlined,
-                          color: ColorsManager.mainBage,
-                        ),
-                        const Gap(8),
-                        Text(
-                          "إحصائيات التمرينة",
-                          style: Styles.font16medium,
-                        ),
-                        const Spacer(),
-                        const Icon(
-                          Icons.arrow_forward_ios,
-                          color: ColorsManager.mainBage,
-                        ),
-                      ],
-                    ),
+                  const ExerciseStatistics(
+                    exerciseName: "إحصائيات التمرينة",
                   ),
                   const Gap(24),
                   Align(
