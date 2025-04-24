@@ -16,6 +16,7 @@ class PlayerExercisesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<ExercisesCubit>().phone = phone;
+
     print(context.read<ExercisesCubit>().phone);
     return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -31,7 +32,8 @@ class PlayerExercisesScreen extends StatelessWidget {
               const Gap(18),
               ExerciseStatistics(
                 exerciseName: "إحصائيات التمارين",
-                onTap: () => context.pushNamed(Routes.exerciseStatisticsScreen),
+                onTap: () => context.pushNamed(Routes.exerciseStatisticsScreen,
+                    arguments: context.read<ExercisesCubit>().allExercises),
               ),
               const Gap(18),
               const ExercisesItemContainer2(),

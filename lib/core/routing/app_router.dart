@@ -96,8 +96,11 @@ class AppRouter {
           ),
         );
       case Routes.exerciseStatisticsScreen:
+        arrguments as List<ExerciseModel>;
         return MaterialPageRoute(
-          builder: (_) => const ExerciseStatisticsScreen(),
+          builder: (_) => ExerciseStatisticsScreen(
+            allExercises: arrguments,
+          ),
         );
       default:
         return MaterialPageRoute(
