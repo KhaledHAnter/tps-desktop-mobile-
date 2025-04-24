@@ -6,6 +6,7 @@ class PlayerModel {
   final int money, subsDuration, remainingDuration, age;
   final DateTime startDate, endDate;
   final List<FreezeModel>? freeze;
+  final bool shouldShowReminder;
 
   PlayerModel({
     required this.name,
@@ -20,5 +21,24 @@ class PlayerModel {
     required this.remainingDuration,
     this.description,
     required this.age,
+    required this.shouldShowReminder,
   });
+
+  PlayerModel copyWith({bool? shouldShowReminder}) {
+    return PlayerModel(
+      name: name,
+      age: age,
+      sport: sport,
+      phase: phase,
+      phone: phone,
+      money: money,
+      subsDuration: subsDuration,
+      startDate: startDate,
+      endDate: endDate,
+      remainingDuration: remainingDuration,
+      description: description,
+      freeze: freeze,
+      shouldShowReminder: shouldShowReminder ?? this.shouldShowReminder,
+    );
+  }
 }

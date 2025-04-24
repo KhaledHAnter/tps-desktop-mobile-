@@ -20,14 +20,14 @@ class BottomSheetBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = context.read<AddPlayerCubit>();
 
-    Future<void> pasteText() async {
-      try {
-        final clipboardData = await Clipboard.getData(Clipboard.kTextPlain);
-        cubit.phaseController = clipboardData?.text ?? "Clipboard is empty";
-      } catch (e) {
-        cubit.phaseController = "00";
-      }
-    }
+    // Future<void> pasteText() async {
+    //   try {
+    //     final clipboardData = await Clipboard.getData(Clipboard.kTextPlain);
+    //     cubit.phaseController = clipboardData?.text ?? "Clipboard is empty";
+    //   } catch (e) {
+    //     cubit.phaseController = "00";
+    //   }
+    // }
 
     return Container(
       // height: MediaQuery.sizeOf(context).height / 1.6,

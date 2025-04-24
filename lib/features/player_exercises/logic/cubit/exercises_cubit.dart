@@ -4,8 +4,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tps/features/player_exercises/data/models/exercise_model.dart';
 import 'package:tps/features/player_exercises/data/repos/exercises_repo.dart';
 
-part 'exercises_state.dart';
 part 'exercises_cubit.freezed.dart';
+part 'exercises_state.dart';
 
 class ExercisesCubit extends Cubit<ExercisesState> {
   @override

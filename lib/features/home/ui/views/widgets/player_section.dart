@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tps/core/helpers/extentions.dart';
 import 'package:tps/core/routing/routes.dart';
+
 import '../../../data/models/player_model.dart';
 import 'player_tile.dart';
 
@@ -23,7 +24,7 @@ class PlayersSection extends StatelessWidget {
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () => context.pushNamed(Routes.palyerDetailsScreen,
-              arguments: { 'player': players[index], 'showMoney': showMoney }),
+              arguments: {'player': players[index], 'showMoney': showMoney}),
           child: PlayerTile(
             player: players[index],
             showMoney: showMoney,

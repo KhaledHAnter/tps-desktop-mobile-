@@ -14,11 +14,12 @@ import 'package:tps/features/player_exercises/logic/cubit/exercises_cubit.dart';
 import 'package:tps/features/player_exercises/ui/views/exercise_details_screen.dart';
 import 'package:tps/features/player_exercises/ui/views/exercise_statistics_screen.dart';
 import 'package:tps/features/player_exercises/ui/views/player_exercises_screen.dart';
-import '../di/dependency_injection.dart';
-import 'routes.dart';
+
 import '../../features/home/logic/category_cubit/category_cubit.dart';
 import '../../features/home/logic/fetch_player_cubit/fetch_players_cubit.dart';
 import '../../features/home/ui/views/home_screen.dart';
+import '../di/dependency_injection.dart';
+import 'routes.dart';
 
 class AppRouter {
   ExercisesCubit exercisesCubit = getIt<ExercisesCubit>();
