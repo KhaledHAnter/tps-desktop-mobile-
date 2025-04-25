@@ -40,21 +40,22 @@ class ComparisonBox extends StatelessWidget {
           spacing: 16,
           runSpacing: 8,
           children: [
-            _buildStat(
-                "Total Sets", "$totalSets sets", latest.sets, previous.sets),
+            _buildStat("Total Sets", "$totalSets sets", latest.sets,
+                previous.sets, context),
             _buildStat("Avg Weight", "${latest.weight} KG", latest.weight,
-                previous.weight),
-            _buildStat(
-                "Volume", "${volumeNow.toInt()} KG", volumeNow, volumeBefore),
-            _buildStat(
-                "Total Reps", "$totalReps reps", latest.reps, previous.reps),
+                previous.weight, context),
+            _buildStat("Volume", "${volumeNow.toInt()} KG", volumeNow,
+                volumeBefore, context),
+            _buildStat("Total Reps", "$totalReps reps", latest.reps,
+                previous.reps, context),
           ],
         ),
       ],
     );
   }
 
-  Widget _buildStat(String title, String value, num current, num previous) {
+  Widget _buildStat(String title, String value, num current, num previous,
+      BuildContext context) {
     final diff = current - previous;
     final percentage = previous == 0 ? 0 : (diff / previous * 100).round();
     final isPositive = diff >= 0;
@@ -62,7 +63,7 @@ class ComparisonBox extends StatelessWidget {
     final arrow = isPositive ? "▲" : "▼";
 
     return SizedBox(
-      width: 160,
+      width: MediaQuery.sizeOf(context).width / 2 - 60,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
