@@ -24,25 +24,28 @@ class SingleExerciseStatistics extends StatelessWidget {
           children: [
             const StatisticsHeader(),
             const Gap(16),
-            GrayContainer(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Align(
-                    alignment: Alignment.center,
-                    child: Text(
-                      exercise.name,
-                      style: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.bold),
+            SizedBox(
+              width: MediaQuery.sizeOf(context).width / 3,
+              child: GrayContainer(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        exercise.name,
+                        style: const TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
                     ),
-                  ),
-                  const Gap(4),
-                  const SizedBox(height: 8),
-                  AspectRatio(
-                    aspectRatio: 1.5,
-                    child: LineChart(buildChart(exercise)),
-                  ),
-                ],
+                    const Gap(4),
+                    const SizedBox(height: 8),
+                    AspectRatio(
+                      aspectRatio: 1.5,
+                      child: LineChart(buildChart(exercise)),
+                    ),
+                  ],
+                ),
               ),
             ),
             const Gap(8),
