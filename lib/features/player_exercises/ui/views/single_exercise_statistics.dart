@@ -25,7 +25,7 @@ class SingleExerciseStatistics extends StatelessWidget {
             const StatisticsHeader(),
             const Gap(16),
             SizedBox(
-              width: MediaQuery.sizeOf(context).width / 3,
+              height: MediaQuery.sizeOf(context).height / 3,
               child: GrayContainer(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

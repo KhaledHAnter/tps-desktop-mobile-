@@ -1,0 +1,2 @@
+/Users/khaledh.anter/Development/Projects/tps-desktop-mobile-/android/app/.cxx/Debug/z63r4u6m/x86/CMakeFiles/edit_cache.dir
+/Users/khaledh.anter/Development/Projects/tps-desktop-mobile-/android/app/.cxx/Debug/z63r4u6m/x86/CMakeFiles/rebuild_cache.dir
