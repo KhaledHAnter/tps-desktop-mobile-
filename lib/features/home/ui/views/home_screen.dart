@@ -73,7 +73,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       const Gap(16),
                       const AppSearchBar(),
                       const Gap(24),
-                      const CatigorySection(),
+                      BlocBuilder<FetchPlayersCubit, FetchPlayersState>(
+                        builder: (context, state) {
+                          if (state is FetchSuccess) {
+                            return CatigorySection(
+                              playersIndex: state.players.length,
+                            );
+                          } else {
+                            return const CatigorySection();
+                          }
+                        },
+                      ),
                       const Gap(16),
                     ],
                   ),

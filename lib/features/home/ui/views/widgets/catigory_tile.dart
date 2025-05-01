@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
 
 class CategoryTile extends StatelessWidget {
+  final int? playersCount;
   const CategoryTile({
     super.key,
     required this.title,
     required this.isSelected,
+    this.playersCount,
   });
 
   final String title;
@@ -25,7 +28,11 @@ class CategoryTile extends StatelessWidget {
           borderRadius: BorderRadius.circular(8)),
       child: Center(
         child: Text(
-          title,
+          isSelected
+              ? playersCount == null
+                  ? title
+                  : "$title ($playersCount)"
+              : title,
           style: Styles.font14medium,
         ),
       ),
