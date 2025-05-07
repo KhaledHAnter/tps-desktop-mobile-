@@ -1,7 +1,7 @@
-
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../data/repos/add_player_repo.dart';
 import 'add_player_state.dart';
 
@@ -10,13 +10,11 @@ class AddPlayerCubit extends Cubit<AddPlayerState> {
   final TextEditingController ageController = TextEditingController();
   final TextEditingController sportController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey();
-
   String phaseController = '';
   final TextEditingController durationController = TextEditingController();
   final TextEditingController moneyController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
-
   final AddPlayerRepo addPlayerRepo;
 
   AddPlayerCubit(this.addPlayerRepo) : super(const AddPlayerState.initial());
@@ -62,7 +60,7 @@ class AddPlayerCubit extends Cubit<AddPlayerState> {
   Future<void> pasteText() async {
     try {
       final clipboardData = await Clipboard.getData(Clipboard.kTextPlain);
-      phoneController.text = clipboardData?.text ?? "00";
+      phoneController.text = clipboardData?.text ?? "";
     } catch (e) {
       phoneController.text = "00";
     }
